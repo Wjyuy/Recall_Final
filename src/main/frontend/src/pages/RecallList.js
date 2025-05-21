@@ -113,24 +113,6 @@ function RecallList() {
         }
     };
 	
-//	const handleDownloadExcel = async () => {
-//		 try {
-//		    const response = await axios.get(
-//		      "https://recall-final-backendtest.onrender.com/recall/downloadExcel",
-//		      { responseType: "blob" }
-//		    );
-//
-//		    const url = window.URL.createObjectURL(new Blob([response.data]));
-//		    const link = document.createElement("a");
-//		    link.href = url;
-//		    link.setAttribute("download", "recall_list.xlsx");
-//		    document.body.appendChild(link);
-//		    link.click();
-//		    link.remove();
-//		  } catch (error) {
-//		    console.error("엑셀 다운로드 실패:", error);
-//		  }
-//		};
 
     if (loading) return <div style={{ textAlign: 'center', padding: '20px' }}>리콜 정보를 불러오는 중입니다...</div>;
     if (error) return <div style={{ textAlign: 'center', padding: '20px', color: 'red' }}>오류: {error}</div>;
