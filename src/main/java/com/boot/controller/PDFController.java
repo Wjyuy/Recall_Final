@@ -56,6 +56,7 @@ public class PDFController {
         File pdfFile = pdfGenerationService.generatePdfFromUrl(url, "generated_from_url.pdf");
         sendFileToClient(pdfFile, response, "generated_from_url.pdf");
     }
+    
 
     private void sendFileToClient(File file, HttpServletResponse response, String fileName) throws IOException {
         response.setContentType("application/pdf");

@@ -74,12 +74,7 @@ function App() {
           <Route path="/recall_statics_year/pdf" element={<PdfDownloadPage />} />
         </Routes>
 
-        {backendData && (
-          <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
-            <h3>백엔드 데이터:</h3>
-            <p>{backendData}</p>
-          </div>
-        )}
+       
       </MainLayout>
     </Router>
   );

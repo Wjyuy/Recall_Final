@@ -33,7 +33,7 @@ const DefectListSearch = ({ searchCriteria, onSearchChange, onSearchSubmit }) =>
         onChange={onSearchChange}
       />
 
-      <button type="submit" className="uk-button uk-button-primary">검색</button>
+      <button type="submit" className="button uk-button-primary">검색</button>
     </div>
   </form>
 );

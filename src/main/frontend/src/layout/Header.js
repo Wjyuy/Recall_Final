@@ -35,7 +35,7 @@ const menuItems = [
 
 function Header() {
   return (
-    <header style={{ backgroundColor: '#333', color: 'white', padding: '10px', display: 'flex', alignItems: 'center' }}>
+    <header style={{ backgroundColor: '#333', color: 'white', padding: '10px', display: 'flex', alignItems: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000 }}>
       <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
         <h1 style={{ margin: 0 }}>Recall center</h1>
       </Link>

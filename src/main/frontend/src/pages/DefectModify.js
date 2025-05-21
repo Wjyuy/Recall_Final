@@ -107,29 +107,6 @@ function DefectModify() {
 
     return (
         <main id="main">
-            {/* Page Title */}
-            <div className="page-title">
-                <div className="heading">
-                    <div className="container">
-                        <div className="row d-flex justify-content-center text-center">
-                            <div className="col-lg-8">
-                                <h1>신고 내역 수정</h1>
-                                <p className="mb-0">신고된 차량 결함 내역을 수정합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <nav className="breadcrumbs">
-                    <div className="container">
-                        <ol>
-                            <li><Link to="/">홈</Link></li>
-                            <li><Link to="/defect_list">신고 내역</Link></li>
-                            <li><Link to={`/defect_detail/${id}`}>상세 보기</Link></li>
-                            <li className="current">수정</li>
-                        </ol>
-                    </div>
-                </nav>
-            </div>
 
             {/* Starter Section Section */}
             <section id="starter-section" className="starter-section section" style={{ padding: '40px 0' }}>

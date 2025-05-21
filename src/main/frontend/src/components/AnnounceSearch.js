@@ -24,7 +24,7 @@ const AnnounceSearch = ({ onSearch, initialType = '', initialKeyword = '' }) => 
         onChange={e => setKeyword(e.target.value)}
         placeholder="검색어를 입력하세요"
       />
-      <button type="submit">검색</button>
+      <button className="buttons" type="submit">검색</button>
     </form>
   );
 };
