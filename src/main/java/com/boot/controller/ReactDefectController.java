@@ -97,7 +97,7 @@ public class ReactDefectController {
 
 
     // ID를 받아 defect_reports 테이블에서 데이터를 조회하여 반환하는 API (기존 유지)
-    @GetMapping("/selectDefectreport")
+    @GetMapping("/selectDefectreport{id}")
     public Defect_ReportsDTO ajaxSelectDefect(@RequestParam("id") int id) {
         log.info("@# AJAX 요청 id => " + id);
         List<Defect_ReportsDTO> defectList = defactservice.selectDefectreport(id);
@@ -115,6 +115,26 @@ public class ReactDefectController {
         log.info("manufacturing_period: " + defect_DetailsDTO.getManufacturing_period());
         defactservice.insertDefectDetails(defect_DetailsDTO);
         return "redirect:main";
+    }
+
+    /**
+     * React용 결함 상세 정보 저장/수정 (검수 완료)
+     * POST /api/insertDefectDetails
+     * @param defect_DetailsDTO JSON body로 전달
+     * @return 저장 결과(성공/실패)
+     */
+    @PostMapping("/insertDefectDetails")
+    public ResponseEntity<?> insertDefectDetailsReact(@RequestBody Defect_DetailsDTO defect_DetailsDTO) {
+        log.info("[React] insertDefectDetails() 호출");
+        log.info("[React] defect_DetailsDTO => {}", defect_DetailsDTO);
+        log.info("[React] manufacturing_period: {}", defect_DetailsDTO.getManufacturing_period());
+        try {
+            defactservice.insertDefectDetails(defect_DetailsDTO);
+            return ResponseEntity.ok().body("success");
+        } catch (Exception e) {
+            log.error("[React] insertDefectDetails 오류", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("fail");
+        }
     }
 
     // ... (나머지 기존 메소드들은 그대로 유지) ...
@@ -263,23 +283,31 @@ public class ReactDefectController {
         }
     }
 
-    // (선택) 리콜 상세 정보 조회 API
     @GetMapping("/recall_detail/{id}")
-    public ResponseEntity<Defect_DetailsDTO> getRecallDetail(@PathVariable("id") Long id) {
-        log.info("@# getRecallDetail() 호출. ID: {}", id);
+    public ResponseEntity<?> getRecallDetail(@PathVariable("id") Long id) {
+        log.info("@# getRecallDetail 호출. 리콜 ID: {}", id);
         try {
-        	Defect_DetailsDTO recall = recallService.getRecallById(id); // 서비스에서 단일 리콜 DTO 조회
-            if (recall != null) {
-                return new ResponseEntity<>(recall, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            Defect_DetailsDTO recall = recallService.getRecallById(id);
+
+            if (recall == null) {
+                log.warn("@# 리콜 ID {}에 대한 정보가 없습니다.", id);
+                return new ResponseEntity<>("리콜 정보를 찾을 수 없습니다.", HttpStatus.NOT_FOUND);
             }
+
+            // 유사 리콜 ID 가져오기
+            List<Integer> similarIds = recallService.getSimilarRecallIds(id);
+
+            // React 컴포넌트가 예상하는 형식으로 데이터 구성
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("recall", recall);
+            responseData.put("similarIds", similarIds);
+
+            return new ResponseEntity<>(responseData, HttpStatus.OK);
         } catch (Exception e) {
-            log.error("@# 리콜 상세 정보 조회 중 오류 발생: {}", e.getMessage(), e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("@# 리콜 상세 정보 조회 중 오류 발생 (ID: {}): {}", id, e.getMessage(), e);
+            return new ResponseEntity<>("리콜 상세 정보를 불러오는 데 실패했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     // CSV 전체 다운로드 API
     @GetMapping("/recall/downloadCsv")
     public ResponseEntity<byte[]> downloadRecallCsv() {
