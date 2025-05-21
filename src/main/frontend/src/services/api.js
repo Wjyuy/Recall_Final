@@ -1,8 +1,8 @@
 // services/api.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8485/api'; // 예시 백엔드 URL
-
+// const API_BASE_URL = 'http://localhost:8485/api'; // 예시 백엔드 URL
+const API_BASE_URL = window.location.hostname == 'localhost' ? 'http://localhost:8485/api' : 'https://recall-final-backend.onrender.com/api';
 export const fetchTestData = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/test`);

@@ -29,7 +29,8 @@ function PdfDownloadPage() {
   const params = new URLSearchParams(window.location.search);
   const startYear = params.get('startYear') || '';
   const endYear = params.get('endYear') || '';
-  const pdfUrl = `http://localhost:8485/pdf/recall_statics_summaryList?startYear=${startYear}&endYear=${endYear}`;
+  // const pdfUrl = `http://localhost:8485/pdf/recall_statics_summaryList?startYear=${startYear}&endYear=${endYear}`;
+  const pdfUrl = `https://recall-final-backend.onrender.com/api/pdf/recall_statics_summaryList?startYear=${startYear}&endYear=${endYear}`;
   useEffect(() => {
     window.open(pdfUrl, '_blank');
   }, [pdfUrl]);
@@ -78,12 +79,7 @@ function App() {
           <Route path="/jwt-test" element={<JwtTestPage />} />
         </Routes>
 
-        {backendData && (
-          <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
-            <h3>백엔드 데이터:</h3>
-            <p>{backendData}</p>
-          </div>
-        )}
+       
       </MainLayout>
     </Router>
   );

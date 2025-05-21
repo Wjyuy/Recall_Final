@@ -270,12 +270,28 @@ const RecallStaticsYearPage = () => {
         <button
         className="btn-get-started pdf-download-button"
         style={{ marginBottom: 24 }}
-        onClick={() => {
-            const params = [];
-            if (startYear) params.push(`startYear=${startYear}`);
-            if (endYear) params.push(`endYear=${endYear}`);
-            window.location.href = `/recall_statics_year/pdf?${params.join('&')}`;
-        }}
+onClick={() => {
+  const params = [];
+  if (startYear) params.push(`startYear=${startYear}`);
+  if (endYear) params.push(`endYear=${endYear}`);
+  const pdfUrl = `http://localhost:8485/pdf/recall_statics_summaryList?${params.join('&')}`;
+
+  // 동적으로 form 생성
+  const form = document.createElement('form');
+  form.method = 'GET';
+  form.action = 'http://localhost:8485/generatePdfFromUrl';
+  form.target = '_self'; // 새 창이 아니라 현재 창에서 다운로드
+
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = 'url';
+  input.value = pdfUrl;
+  form.appendChild(input);
+
+  document.body.appendChild(form);
+  form.submit();
+  document.body.removeChild(form);
+}}
         data-tooltip="pdf를 다운받으시면, 자료에 대한 gemini의 summarize도 포함됩니다!"
         >
         PDF 다운로드
