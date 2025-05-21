@@ -11,6 +11,7 @@ public class JwtUtil {
 
 	private static final Key key = Keys.hmacShaKeyFor(secret.getBytes());
 
+	// JWT토큰 생성
 	public static String generateToken(String adminId) {
 		return Jwts.builder()
 				.setSubject(adminId)
@@ -19,6 +20,7 @@ public class JwtUtil {
 				.compact();
 	}
 
+	// JWT토큰 검증
 	public static String validateToken(String token) {
 		try {
 			return Jwts.parserBuilder()

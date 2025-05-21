@@ -41,14 +41,11 @@
 				method: "POST",
 				data: { id: id, password: password },
 				
-				success: function(token) {
-					// 토큰을 쿠키에 저장
-					document.cookie = "jwt_token=" + token + "; path=/";
+				success: function(msg) {
 					alert("로그인 성공");
-
-					// 페이지 이동
 					window.location.href = "/admin/test";
 				},
+
 				error: function() {
 					$("#error-msg").text("아이디 또는 비밀번호가 올바르지 않습니다.");
 				}
