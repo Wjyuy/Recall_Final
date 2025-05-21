@@ -16,7 +16,7 @@ RUN chmod +x gradlew
 
 RUN ls -l gradlew
 
-RUN ./gradlew bootJar --no-daemon
+RUN ./gradlew bootJar --no-daemon --stacktrace --info
 
 RUN cp build/libs/*.jar app.jar
 
