@@ -63,6 +63,77 @@
   .table-custom tr:hover {
     background-color: #f1f1f1;
   }
+  /* 테이블 기본 스타일 정리 */
+  .table-form {
+    width: 60%;
+    margin: 2em auto;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* row 간 여백 */
+  }
+
+  /* 제목 셀 정렬 및 너비 */
+  .table-form th.th {
+    text-align: left;
+    vertical-align: middle;
+    width: 150px;
+    padding-right: 10px;
+    font-weight: 500;
+  }
+
+  /* 입력 칸 여백 및 라인 정리 */
+  .table-form td.td {
+    vertical-align: middle;
+    padding-bottom: 5px;
+  }
+
+  /* 아이콘 옆 공백 제거 */
+  .table-form i[class^="ion-"] {
+    margin-left: 5px;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #999;
+  }
+
+  /* 비밀번호 눈 아이콘 버튼 위치 보정 */
+  .layerPasswd input[type="password"] {
+    padding-right: 35px; /* 아이콘 공간 확보 */
+  }
+
+  .layerPasswd button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .layerPasswd button i {
+    font-size: 18px;
+    color: #333;
+  }
+
+  /* 라디오 버튼 간격 정리 */
+  .table-form td.radio label {
+    margin-right: 20px;
+  }
+  /* 모바일 대응 (반응형) */
+  @media screen and (max-width: 768px) {
+    .table-form {
+      width: 90%;
+    }
+
+    .table-form th.th {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .table-form td.td {
+      display: block;
+    }
+  }
 
   .faqann-form {
 		  background-color: var(--surface-color);
@@ -158,6 +229,70 @@
 		    transform: rotate(360deg);
 		  }
 		}
+
+    div.paging {
+	  width: 100%;
+	  display: inline-flex;
+	  align-items: center;
+	  margin-top: 20px;
+	  justify-content: center;
+	}
+	div.paging>i,
+	div.paging>div.pages {
+	  margin: 0 10px;
+	}
+	div.paging>i,
+	div.paging>div.pages>span {
+	  margin: 0 3px;
+	  cursor: pointer;
+	}
+	span.active {
+	  color: orangered;
+	  font-weight: bold;
+	}
+	input, select, button{
+	height: 38PX;
+	line-height: 38PX;
+	vertical-align: middle;
+	box-sizing: border-box;
+	}
+	button{
+	background-color: #00796b;
+	color: white;
+	border: none;
+	padding: 0PX 16PX;
+	cursor: pointer;
+	}
+	button:hover{
+	background-color: #1a5739;
+	}
+
+  input,select,textarea {
+    height: 38px;
+    line-height: 38px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0 10px; /* 텍스트와 테두리 간의 간격을 좀 더 여유롭게 */
+    border: 1px solid #ccc; /* 미세한 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #f9f9f9; /* 배경색 */
+    font-size: 14px; /* 텍스트 크기 */
+    color: #333; /* 텍스트 색상 */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* 깔끔한 폰트 */
+  font-weight: 400; /* 적당한 폰트 두께 */
+  text-align: left; /* 텍스트 정렬 */
+    transition: all 0.3s ease; /* 애니메이션 효과 */
+  }
+
+
+
+    input:focus, textarea:focus {
+      border-color: #007bff;
+      background-color: #fff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
 
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
