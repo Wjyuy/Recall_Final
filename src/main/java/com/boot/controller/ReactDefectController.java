@@ -9,7 +9,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus; // ResponseEntity 사용을 위해 추가
 import org.springframework.http.ResponseEntity; // ResponseEntity 사용을 위해 추가
-import org.springframework.stereotype.Controller; // 기존 어노테이션 유지
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin; // CORS 설정을 위해 추가
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +37,6 @@ import com.boot.service.RecallServiceImpl.XmlParserUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Controller 
 @Slf4j
 @RequestMapping("/api")
 @RestController
