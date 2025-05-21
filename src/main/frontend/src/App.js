@@ -20,6 +20,7 @@ import DefectDetailsCheckPage from './pages/DefectDetailsCheckPage';
 import RecallStaticsYearPage from './pages/RecallStaticsYearPage'; // RecallStaticsYearPage import
 import { fetchTestData } from './services/api';
 import './styles/App.css';
+import './styles/main.css';
 
 function PdfDownloadPage() {
   // 쿼리스트링에서 startYear, endYear 추출

@@ -130,3 +130,18 @@ export const fetchDefectReportById = async (id) => {
     }
 };
 
+/**
+ * 연도별 리콜 통계 데이터 조회 (ReactRecallStaticController 연동)
+ * @param {Object} params { startYear, endYear }
+ * @returns {Promise<Object>} 통계 데이터 (summary, summaryList, groupedRecallStats 등)
+ */
+export const fetchRecallStaticsYear = async (params = {}) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/recall_statics_year`, { params });
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch recall statics year:', error);
+        throw error;
+    }
+};
+

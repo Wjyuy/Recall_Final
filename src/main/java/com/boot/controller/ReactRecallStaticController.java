@@ -28,13 +28,8 @@ public class ReactRecallStaticController {
 	@Autowired
     private RecallService recallService;
 	
-//	@RequestMapping("/recall_statics")
-//	public String recall_statics(Model model) {
-//		return "recall_statics";
-//	}
-	
 	@RequestMapping(value = "/recall_statics_year", method = {RequestMethod.GET, RequestMethod.POST})
-	public String recall_statics_year( 
+	public Map<String, Object> recall_statics_year( 
 			@RequestParam(required = false) Integer startYear,
 		    @RequestParam(required = false) Integer endYear,
 		    Model model,
@@ -50,21 +45,21 @@ public class ReactRecallStaticController {
 		}
 		paramMap.put("start_year", startYear);
         paramMap.put("end_year", endYear);
-        
         //리콜현황
         DefectReportSummaryDTO summary = recallService.getDefectReportSummary(paramMap);
-        model.addAttribute("summary", summary);
         List<DefectReportSummaryDTO> summaryList  = recallService.getDefectReportSummaryByYear(paramMap);
-        model.addAttribute("summaryList", summaryList);
         List<ManufacturerRecallDTO> stats = recallService.getYearlyRecallStats(startYear, endYear);
-        model.addAttribute("recallStats", stats);
-        
         Map<String, List<ManufacturerRecallDTO>> grouped = stats.stream()
         	    .collect(Collectors.groupingBy(ManufacturerRecallDTO::getCar_manufacturer));
-
-        	model.addAttribute("groupedRecallStats", grouped);
-        	
-		return "recall_statics_year";
+        // JSON 응답용 Map 생성
+        Map<String, Object> result = new HashMap<>();
+        result.put("summary", summary);
+        result.put("summaryList", summaryList);
+        result.put("recallStats", stats);
+        result.put("groupedRecallStats", grouped.entrySet().stream()
+            .map(e -> Map.of("key", e.getKey(), "value", e.getValue()))
+            .collect(Collectors.toList()));
+        return result;
 	}
 	
 	@GetMapping("/recall_statics_month")

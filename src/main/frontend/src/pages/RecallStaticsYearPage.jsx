@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 
 const API_BASE_URL = 'http://localhost:8485/api';
 
@@ -102,24 +102,15 @@ const RecallStaticsYearPage = () => {
       )}
       {summaryList.length > 0 && (
         <section>
-          {/* 연도별 리콜 통계 차트 */}
-          <h3 style={{ marginTop: 32 }}>연도별 리콜 대수(전체) 추이</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={summaryList} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-              <XAxis dataKey="report_year" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="totalCount" name="전체 대수" fill="#8884d8" />
-              <Bar dataKey="domesticCount" name="국산 대수" fill="#82ca9d" />
-              <Bar dataKey="importedCount" name="수입 대수" fill="#ffc658" />
-            </BarChart>
-          </ResponsiveContainer>
+          {/* 자세히 보기 토글 버튼 */}
           <button type="button" onClick={e => {
             const el = document.getElementById('content1');
             if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+            e.target.textContent = el.style.display === 'block' ? '자세히 보기 -' : '자세히 보기 +';
           }} className="btn-get-started" style={{ marginBottom: 16 }}>자세히 보기 +</button>
           <div id="content1" style={{ display: 'none' }}>
+            
+            {/* 연도별 리콜현황 표 */}
             <h3>연도별 리콜현황</h3>
             <table className="table-summary" style={{ marginBottom: 32 }}>
               <thead>
@@ -147,7 +138,7 @@ const RecallStaticsYearPage = () => {
                 ))}
               </tbody>
             </table>
-            {/* 연도별 리콜현황 BarChart 시각화 */}
+            {/* 연도별 리콜 대수(BarChart) */}
             <h4 style={{ margin: '32px 0 8px' }}>연도별 리콜 대수(BarChart)</h4>
             <div style={{ width: '100%', height: 320, background: '#fafbfc', borderRadius: 8, marginBottom: 32, padding: 16 }}>
               <ResponsiveContainer width="100%" height="100%">
@@ -156,89 +147,140 @@ const RecallStaticsYearPage = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="domesticCount" name="국산 대수" fill="#1976d2" />
-                  <Bar dataKey="importedCount" name="수입 대수" fill="#ff9800" />
-                  <Bar dataKey="totalCount" name="전체 대수" fill="#43a047" />
+                  <Bar dataKey="domesticModelCount" name="국산 대수" fill="#1976d2" />
+                  <Bar dataKey="importedModelCount" name="수입 대수" fill="#ff9800" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            {/* PDF 다운로드 버튼 */}
-            <button
-              className="btn-get-started pdf-download-button"
-              style={{ marginBottom: 24 }}
-              onClick={() => {
-                const params = [];
-                if (startYear) params.push(`startYear=${startYear}`);
-                if (endYear) params.push(`endYear=${endYear}`);
-                window.location.href = `/recall_statics_year/pdf?${params.join('&')}`;
-              }}
-              data-tooltip="pdf를 다운받으시면, 자료에 대한 gemini의 summarize도 포함됩니다!"
-            >
-              PDF 다운로드
-            </button>
+            {/* 연도별 대수 리콜현황 (RoundChart) */}
+            <h4 style={{ margin: '32px 0 8px' }}>연도별 대수 리콜현황 (LineChart)</h4>
+            <div style={{ width: '100%', height: 320, background: '#fafbfc', borderRadius: 8, marginBottom: 32, padding: 16 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={summaryList} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                  <XAxis dataKey="report_year" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="domesticCount" name="국산 대수" stroke="#80c1ba" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="importedCount" name="수입 대수" stroke="#b7dcd8" strokeWidth={2} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            
           </div>
         </section>
       )}
-      {groupedRecallStats.length > 0 && (
-        <section>
-          <h3>제조사별 리콜 대수 비율</h3>
-          <ResponsiveContainer width="100%" height={320}>
-            <PieChart>
-              <Pie
-                data={groupedRecallStats.map(entry => ({ name: entry.key, value: entry.value.reduce((sum, recall) => sum + recall.recallCount, 0) }))}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={120}
-                label
-              >
-                {groupedRecallStats.map((entry, idx) => (
-                  <Cell key={`cell-${idx}`} fill={["#8884d8", "#82ca9d", "#ffc658", "#ff8042", "#8dd1e1", "#a4de6c", "#d0ed57"][idx % 7]} />
+      {/* groupedRecallStats 표: 제조사명/계 */}
+            <h4 style={{ margin: '32px 0 8px' }}>제조사별 리콜 요약 통계</h4>
+            <table className="table-summary" style={{ marginBottom: 32 }}>
+              <thead>
+                <tr><th>제조사명</th><th>계</th></tr>
+              </thead>
+              <tbody>
+                {groupedRecallStats.map(entry => (
+                  <tr key={entry.key} style={{ fontWeight: 'bold' }}>
+                    <td>{entry.key}</td>
+                    <td>{entry.value.reduce((sum, recall) => sum + recall.recallCount, 0)}</td>
+                  </tr>
                 ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-          <h4 style={{ margin: '32px 0 8px' }}>제조사별 리콜 대수(PieChart)</h4>
-          <div style={{ width: '100%', height: 320, background: '#fafbfc', borderRadius: 8, marginBottom: 32, padding: 16 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
+              </tbody>
+            </table>
+            {/* 제조사별 연도 상세 토글 표 */}
+            <button type="button" onClick={e => {
+            const el = document.getElementById('content2');
+            if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+            e.target.textContent = el.style.display === 'block' ? '자세히 보기 -' : '자세히 보기 +';
+          }} className="btn-get-started" style={{ marginBottom: 16 }}>자세히 보기 +</button>
+
+            <div id="content2" style={{ display: 'none' }}>
+                <h4 style={{ margin: '32px 0 8p x',display: 'none' }}>제조사별 연도별 리콜 상세</h4>
+                <table id="makerDetailTable" className="table-summary" style={{ marginBottom: 32, display: 'none' }}>
+                <thead>
+                    <tr>
+                    <th>해당 연도</th>
+                    <th>제조사명</th>
+                    <th>계</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {groupedRecallStats.map((entry, idx) => (
+                    <React.Fragment key={entry.key}>
+                        <tr
+                        className="subtotal"
+                        style={{ fontWeight: 'bold', cursor: 'pointer', background: '#f5f5f5' }}
+                        onClick={e => {
+                            const detailRows = document.querySelectorAll(`.detail-row-${idx}`);
+                            detailRows.forEach(row => {
+                            row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+                            });
+                            const cell = e.currentTarget.querySelector('td');
+                            if (cell.innerText.includes('+')) {
+                            cell.innerText = cell.innerText.replace('+', '-');
+                            } else {
+                            cell.innerText = cell.innerText.replace('-', '+');
+                            }
+                        }}
+                        >
+                        <td>{'합산 +'}</td>
+                        <td>{entry.key}</td>
+                        <td>{entry.value.reduce((sum, recall) => sum + recall.recallCount, 0)}</td>
+                        </tr>
+                        {entry.value.map((recall, i) => (
+                        <tr
+                            key={recall.reportYear + '-' + i}
+                            className={`detail-row-${idx}`}
+                            style={{ display: 'none', background: '#f9f9f9' }}
+                        >
+                            <td>{recall.reportYear}</td>
+                            <td>{recall.car_manufacturer}</td>
+                            <td>{recall.recallCount}</td>
+                        </tr>
+                        ))}
+                    </React.Fragment>
+                    ))}
+                </tbody>
+                </table>
+                
+        {groupedRecallStats.length > 0 && (
+            <section>
+            <h3>제조사별 리콜 대수 비율</h3>
+            <ResponsiveContainer width="100%" height={320}>
+                <PieChart>
                 <Pie
-                  data={groupedRecallStats.map(entry => ({ name: entry.key, value: entry.value.reduce((sum, recall) => sum + recall.recallCount, 0) }))}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={110}
-                  label
-                >
-                  {groupedRecallStats.map((entry, idx) => (
-                    <Cell key={`cell2-${idx}`} fill={["#1976d2", "#ff9800", "#43a047", "#e91e63", "#9c27b0", "#00bcd4", "#ffc107"][idx % 7]} />
-                  ))}
+                    data={groupedRecallStats.map(entry => ({ name: entry.key, value: entry.value.reduce((sum, recall) => sum + recall.recallCount, 0) }))}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={120}
+                    label
+                    >
+                    {groupedRecallStats.map((entry, idx) => (
+                        <Cell key={`cell-${idx}`} fill={["#8884d8", "#82ca9d", "#ffc658", "#ff8042", "#8dd1e1", "#a4de6c", "#d0ed57"][idx % 7]} />
+                    ))}
                 </Pie>
                 <Tooltip />
                 <Legend />
-              </PieChart>
+                </PieChart>
             </ResponsiveContainer>
-          </div>
-          <h3>연도별 리콜 요약 통계-제조사별</h3>
-          <table className="table-summary" style={{ marginBottom: 32 }}>
-            <thead>
-              <tr><th>제조사명</th><th>계</th></tr>
-            </thead>
-            <tbody>
-              {groupedRecallStats.map(entry => (
-                <tr key={entry.key} style={{ fontWeight: 'bold' }}>
-                  <td>{entry.key}</td>
-                  <td>{entry.value.reduce((sum, recall) => sum + recall.recallCount, 0)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+            </section>
       )}
+
+        {/* PDF 다운로드 버튼 */}
+        <button
+        className="btn-get-started pdf-download-button"
+        style={{ marginBottom: 24 }}
+        onClick={() => {
+            const params = [];
+            if (startYear) params.push(`startYear=${startYear}`);
+            if (endYear) params.push(`endYear=${endYear}`);
+            window.location.href = `/recall_statics_year/pdf?${params.join('&')}`;
+        }}
+        data-tooltip="pdf를 다운받으시면, 자료에 대한 gemini의 summarize도 포함됩니다!"
+        >
+        PDF 다운로드
+        </button>
+    </div>
       {/* 데이터가 없을 때 안내 */}
       {!loading && !error && summaryList.length === 0 && (
         <div style={{ color: '#888', margin: '32px 0' }}>조회된 통계 데이터가 없습니다.</div>

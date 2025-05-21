@@ -41,28 +41,6 @@ function RecallDetail() {
 
     return (
         <main id="main">
-            {/* Page Title */}
-            <div className="page-title">
-                <div className="heading">
-                    <div className="container">
-                        <div className="row d-flex justify-content-center text-center">
-                            <div className="col-lg-8">
-                                <h1>리콜 상세 내역</h1>
-                                <p className="mb-0">선택하신 리콜에 대한 상세 정보를 확인합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <nav className="breadcrumbs">
-                    <div className="container">
-                        <ol>
-                            <li><Link to="/">홈</Link></li>
-                            <li><Link to="/recall_list">리콜내역조회</Link></li>
-                            <li className="current">리콜 상세</li>
-                        </ol>
-                    </div>
-                </nav>
-            </div>{/* End Page Title */}
 
             {/* Starter Section Section */}
             <section id="starter-section" className="starter-section section">

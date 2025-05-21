@@ -61,27 +61,6 @@ function DefectDetail() {
 
     return (
         <main id="main">
-            <div className="page-title">
-                <div className="heading">
-                    <div className="container">
-                        <div className="row d-flex justify-content-center text-center">
-                            <div className="col-lg-8">
-                                <h1>신고 상세 내역</h1>
-                                <p className="mb-0">차량 결함 신고의 상세 정보를 확인합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <nav className="breadcrumbs">
-                    <div className="container">
-                        <ol>
-                            <li><Link to="/">차량리콜도우미</Link></li>
-                            <li><Link to="/defect_list">신고 내역</Link></li>
-                            <li className="current">상세 보기</li>
-                        </ol>
-                    </div>
-                </nav>
-            </div>
 
             <section id="starter-section" className="starter-section section" style={{ padding: '40px 0' }}>
                 <div className="container" data-aos="fade-up">

@@ -126,28 +126,7 @@ function ReportDefectPage() {
 
   return (
     <main id="main">
-      {/* Page Title (공통 레이아웃 사용 시) */}
-      <div className="page-title">
-        <div className="heading">
-          <div className="container">
-            <div className="row d-flex justify-content-center text-center">
-              <div className="col-lg-8">
-                <h1>차량 결함 신고</h1>
-                <p className="mb-0">차량 결함에 대한 정보를 입력해주세요.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav className="breadcrumbs">
-          <div className="container">
-            <ol>
-              <li><Link to="/">차량리콜도우미</Link></li>
-              <li className="current">결함 신고</li>
-            </ol>
-          </div>
-        </nav>
-      </div>{/* End Page Title */}
-
+    
       <section id="defect-report-section" className="defect-report-section section" style={{ padding: '40px 0' }}>
         <div className="container" data-aos="fade-up">
           <div className="section-title text-center">

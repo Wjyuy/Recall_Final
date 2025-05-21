@@ -30,28 +30,6 @@ function AnnounceWritePage() {
 
   return (
     <main id="main">
-      {/* Page Title */}
-      <div className="page-title">
-        <div className="heading">
-          <div className="container">
-            <div className="row d-flex justify-content-center text-center">
-              <div className="col-lg-8">
-                <h1>공지사항 작성</h1>
-                <p className="mb-0">새로운 공지사항을 작성합니다.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav className="breadcrumbs">
-          <div className="container">
-            <ol>
-              <li><Link to="/">차량리콜도우미</Link></li>
-              <li><Link to="/announce">공지사항</Link></li>
-              <li className="current">공지사항 작성</li>
-            </ol>
-          </div>
-        </nav>
-      </div>{/* End Page Title */}
 
       <section id="announce-write-section" className="announce-write-section section" style={{ padding: '40px 0' }}>
         <div className="container" data-aos="fade-up">
