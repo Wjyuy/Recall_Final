@@ -8,6 +8,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -117,7 +118,12 @@ public class DefectCsvController {
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setHeader("Content-Disposition", "attachment; filename*=UTF-8''" + filename);
 
-            workbook.write(response.getOutputStream());
+            // ✅ 응답 스트림 처리 
+            ServletOutputStream out = response.getOutputStream();
+            workbook.write(out);
+            out.flush();   // 필수
+            out.close();   // 필수
+
         } catch (Exception e) {
             log.error("Excel 다운로드 실패", e);
             if (!response.isCommitted()) {
