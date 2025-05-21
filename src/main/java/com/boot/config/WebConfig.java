@@ -23,7 +23,11 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new JwtInterceptor())
-			.addPathPatterns("/admin/**")     // /admin 경로 하위는 모두 인터셉트
+			.addPathPatterns(
+					"/admin/**"	// /admin 경로 하위는 모두 인터셉트
+//					,"/announce_write"
+//					,"/defect_details_check"
+					)     
 			.excludePathPatterns("/admin/login"); // 로그인은 제외
 	} 
 }
