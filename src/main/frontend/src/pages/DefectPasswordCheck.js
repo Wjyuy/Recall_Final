@@ -78,14 +78,6 @@ function DefectPasswordCheck() {
                                     <button
                                         type="button"
                                         onClick={handlePasswordCheck}
-                                        style={{
-                                            padding: '8px 15px',
-                                            backgroundColor: '#007bff',
-                                            color: 'white',
-                                            border: 'none',
-                                            borderRadius: '4px',
-                                            cursor: 'pointer'
-                                        }}
                                     >
                                         확인
                                     </button>
@@ -95,14 +87,7 @@ function DefectPasswordCheck() {
                             <div className="pwdButtonC" style={{ textAlign: 'center', marginTop: '20px' }}>
                                 <button
                                     onClick={handleGoBack}
-                                    style={{
-                                        padding: '10px 20px',
-                                        backgroundColor: '#6c757d', // 회색 버튼
-                                        color: 'white',
-                                        border: 'none',
-                                        borderRadius: '5px',
-                                        cursor: 'pointer'
-                                    }}
+                                    style={{backgroundColor: '#6c757d'}}
                                 >
                                     돌아가기
                                 </button>

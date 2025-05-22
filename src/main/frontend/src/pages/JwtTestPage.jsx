@@ -37,12 +37,18 @@ function JwtTestPage() {
 	}, []);
 
 	return (
+		<section id="starter-section" className="starter-section section">
+      <div className="container" data-aos="fade-up">
+        <div className="section-title text-center">
+            <h2 className="title">관리자 페이지</h2>
+        </div>
 		<div style={{ padding: "40px" }}>
-			<h2>JWT 인증 테스트 페이지</h2>
 			{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
 
             <LogoutButton /> {/* ✅ 여기에 추가 */}
 		</div>
+		</div>
+		</section>
 	);
 }
 

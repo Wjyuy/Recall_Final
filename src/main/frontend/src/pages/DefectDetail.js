@@ -109,39 +109,21 @@ function DefectDetail() {
                                 </tr>
                             </tbody>
                         </table>
-                        <div className="buttons" style={{ textAlign: 'center', marginTop: '20px' }}>
+                        <div className="download-btn-group">
                             <button
                                 type="button"
                                 onClick={handleModifyClick}
-                                style={{
-                                    padding: '10px 20px',
-                                    backgroundColor: '#28a745', // 수정 버튼 색상
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer',
-                                    marginRight: '10px'
-                                }}
+                                style={{ marginRight: '12px' }}
                             >
                                 수정
                             </button>
                             <button
                                 type="button"
                                 onClick={handleToListClick}
-                                style={{
-                                    padding: '10px 20px',
-                                    backgroundColor: '#007bff', // 목록보기 버튼 색상
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer'
-                                }}
+                                style={{backgroundColor: '#6c757d'}}
                             >
                                 목록보기
                             </button>
-                            {/* JSP의 '삭제' 로직은 보안상 POST 요청이 되어야 하므로 <form> 내에 submit 버튼으로 두는 것이 일반적입니다. */}
-                            {/* 여기서는 단순 버튼으로 처리하고, 실제 삭제 로직은 별도의 확인 모달과 API 호출로 처리합니다. */}
-                            {/* <button type="button" onClick={handleDeleteClick}>삭제</button> */}
                         </div>
                     </div>
                 </div>
