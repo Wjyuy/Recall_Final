@@ -376,6 +376,26 @@ margin-left: 20px;
 	box-sizing: border-box;
   }
 .year-form {
+  display: flex;
+  align-items: center; /* flex-end 대신 center 또는 baseline */
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.inline-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+}
+
+@media (max-width: 600px) {
+  .year-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+.year-form {
 	  background-color: #f9f9f9;
 	  padding: 20px;
 	  margin: 30px auto;
@@ -443,8 +463,8 @@ margin-left: 20px;
 	    font-weight: 500;
 	    font-size: 14px;
 	    letter-spacing: 1px;
-display: block;              /* block 요소로 변경 */
-margin: 32px auto;           /* 위아래 여백 + 좌우 자동(가운데) */
+      display: block;              /* block 요소로 변경 */
+      margin: 32px auto;           /* 위아래 여백 + 좌우 자동(가운데) */
 	    padding: 14px 40px;
 	    border-radius: 50px;
 	    transition: 0.3s;
@@ -483,6 +503,8 @@ margin: 32px auto;           /* 위아래 여백 + 좌우 자동(가운데) */
 	    opacity: 1; /* 마우스 오버 시 보이게 함 */
 	    visibility: visible;
 	  }
+    
+    
 
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */

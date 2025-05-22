@@ -73,12 +73,13 @@ function AnnounceViewPage() {
             </div>
             <hr style={{ borderTop: '1px solid #eee', margin: '20px 0' }} />
 
-            <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100" style={{ marginBottom: '20px' }}>
-              <div className="services-list" style={{ display: 'flex', justifyContent: 'space-between' }}>
+            </div>
+            <div className="download-btn-group">
                 <button
                   onClick={handlePrevArticle}
                   disabled={isPrevDisabled}
                   className='uk-button uk-button-default'
+                  style={{ marginRight: '12px' }}
                 >
                   이전글
                 </button>
@@ -90,24 +91,17 @@ function AnnounceViewPage() {
                 >
                   다음글
                 </button>
-              </div>
             </div>
 
             <div style={{ textAlign: 'center' }}>
               <button
                 onClick={handleGoBack}
                 style={{
-                  padding: '10px 30px',
                   backgroundColor: '#6c757d',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
                 }}
               >
                 목록으로 돌아가기
               </button>
-            </div>
           </div>
         </div>
     </section>
