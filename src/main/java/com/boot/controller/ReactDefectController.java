@@ -331,6 +331,8 @@ public class ReactDefectController {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //    }
+  
+/*    
     
 //	API -> DB 저장 메서드 (100건 테스트용)
 	@ResponseBody
@@ -405,4 +407,6 @@ public class ReactDefectController {
 
 		return "전체 동기화 완료! 총 insert: " + inserted + ", update: " + updated + ", skip: " + skipped;
 	}
+	
+*/
 }
