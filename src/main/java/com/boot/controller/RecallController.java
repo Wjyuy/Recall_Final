@@ -34,190 +34,190 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api")
 @Slf4j
 public class RecallController {
-/*	
-	@Autowired
-    private RecallService recallService;
-	
-	@RequestMapping(value = "/recall_statics_year", method = {RequestMethod.GET, RequestMethod.POST})
-	public String recall_statics_year( 
-			@RequestParam(required = false) Integer startYear,
-		    @RequestParam(required = false) Integer endYear,
-		    Model model,
-		    HttpSession session) {
-		
-		log.info("@#recall_statics_year");
-		Map<String, Object> paramMap = new HashMap<>();
-		if (startYear == null || startYear == 0) {
-			startYear=2000;
-		}
-		if (endYear == null || endYear == 0) {
-			endYear=2025;
-		}
-		paramMap.put("start_year", startYear);
-        paramMap.put("end_year", endYear);
-        
-        //리콜현황
-        DefectReportSummaryDTO summary = recallService.getDefectReportSummary(paramMap);
-        model.addAttribute("summary", summary);
-        List<DefectReportSummaryDTO> summaryList  = recallService.getDefectReportSummaryByYear(paramMap);
-        model.addAttribute("summaryList", summaryList);
-        List<ManufacturerRecallDTO> stats = recallService.getYearlyRecallStats(startYear, endYear);
-        model.addAttribute("recallStats", stats);
-        
-        Map<String, List<ManufacturerRecallDTO>> grouped = stats.stream()
-        	    .collect(Collectors.groupingBy(ManufacturerRecallDTO::getCar_manufacturer));
 
-        	model.addAttribute("groupedRecallStats", grouped);
-        	
-    	session.setAttribute("pdfStartYear", startYear); // 세션에 시작 연도 저장
-        session.setAttribute("pdfEndYear", endYear);     // 세션에 종료 연도 저장
-        log.info("@#Session saved - startYear: " + session.getAttribute("pdfStartYear") + ", endYear: " + session.getAttribute("pdfEndYear"));
-		return "recall_statics_year";
-	}
-	
-	@GetMapping("/recall_statics_month")
-    public String recall_statics_month(
-        @RequestParam(required = false) Integer startYear,
-        @RequestParam(required = false) Integer endYear,
-        @RequestParam(required = false) Integer startMonth,
-        @RequestParam(required = false) Integer endMonth,
-        Model model) {
-		
-		log.info("recall_statics_month");
-        Map<String, Object> params = new HashMap<>();
-        params.put("start_year", startYear);
-        params.put("start_month", startMonth);
-        params.put("end_year", endYear);
-        params.put("end_month", endMonth);
+//	
+//	@Autowired
+//    private RecallService recallService;
+//	
+//	@RequestMapping(value = "/recall_statics_year", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String recall_statics_year( 
+//			@RequestParam(required = false) Integer startYear,
+//		    @RequestParam(required = false) Integer endYear,
+//		    Model model,
+//		    HttpSession session) {
+//		
+//		log.info("@#recall_statics_year");
+//		Map<String, Object> paramMap = new HashMap<>();
+//		if (startYear == null || startYear == 0) {
+//			startYear=2000;
+//		}
+//		if (endYear == null || endYear == 0) {
+//			endYear=2025;
+//		}
+//		paramMap.put("start_year", startYear);
+//        paramMap.put("end_year", endYear);
+//        
+//        //리콜현황
+//        DefectReportSummaryDTO summary = recallService.getDefectReportSummary(paramMap);
+//        model.addAttribute("summary", summary);
+//        List<DefectReportSummaryDTO> summaryList  = recallService.getDefectReportSummaryByYear(paramMap);
+//        model.addAttribute("summaryList", summaryList);
+//        List<ManufacturerRecallDTO> stats = recallService.getYearlyRecallStats(startYear, endYear);
+//        model.addAttribute("recallStats", stats);
+//        
+//        Map<String, List<ManufacturerRecallDTO>> grouped = stats.stream()
+//        	    .collect(Collectors.groupingBy(ManufacturerRecallDTO::getCar_manufacturer));
+//
+//        	model.addAttribute("groupedRecallStats", grouped);
+//        	
+//    	session.setAttribute("pdfStartYear", startYear); // 세션에 시작 연도 저장
+//        session.setAttribute("pdfEndYear", endYear);     // 세션에 종료 연도 저장
+//        log.info("@#Session saved - startYear: " + session.getAttribute("pdfStartYear") + ", endYear: " + session.getAttribute("pdfEndYear"));
+//		return "recall_statics_year";
+//	}
+//	
+//	@GetMapping("/recall_statics_month")
+//    public String recall_statics_month(
+//        @RequestParam(required = false) Integer startYear,
+//        @RequestParam(required = false) Integer endYear,
+//        @RequestParam(required = false) Integer startMonth,
+//        @RequestParam(required = false) Integer endMonth,
+//        Model model) {
+//		
+//		log.info("recall_statics_month");
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("start_year", startYear);
+//        params.put("start_month", startMonth);
+//        params.put("end_year", endYear);
+//        params.put("end_month", endMonth);
+//
+//        List<DefectReportSummaryDTO> monthsummaryList = recallService.getDefectReportSummaryByMonth(params);
+////        log.info("monthsummaryList"+monthsummaryList);
+//        model.addAttribute("monthsummaryList", monthsummaryList);
+////        log.info("monthsummaryList: {}", monthsummaryList);
+//        List<ManufacturerRecallDTO> stats = recallService.getYearlyRecallStatsByMonth(params);
+//        model.addAttribute("recallStats", stats);
+//        Map<String, List<ManufacturerRecallDTO>> grouped = stats.stream()
+//        	    .collect(Collectors.groupingBy(ManufacturerRecallDTO::getCar_manufacturer));
+//
+//        	model.addAttribute("groupedRecallStats", grouped);
+//        
+//        return "recall_statics_month"; 
+//    }
+//	
+//	
+//	// DB에서 값을 받아오도록 수정
+//	@RequestMapping("/recall_list")
+//	public String recall_list(Criteria cri, Model model) throws Exception {
+//		List<Defect_DetailsDTO> list = recallService.getAllRecallByCri(cri);
+//		int total = recallService.getRecallTotalCount(cri);
+//
+//		model.addAttribute("recall_list", list);
+//		model.addAttribute("pageMaker", new PageDTO(total, cri));
+//		
+//		log.info("@# PageDTO : "+new PageDTO(total, cri));
+//		
+////		return "recall_list";
+//		return "result";
+//	}
+//
+//	
+//
+////	API -> DB 저장 메서드 (전체)
+//	@ResponseBody
+//	@GetMapping("/recall/saveAll")
+//	public String saveAllToDb() throws Exception {
+//		String cntntsId = "0301";
+//		int perPage = 100;
+//
+//		// 1페이지 먼저 요청 → 전체 건수(totalCount) 파악
+//		Criteria cri = new Criteria(1, perPage);
+//		String firstXml = recallService.fetchXmlFromApi(cri, cntntsId);
+//		int total = XmlParserUtil.getTotalCount(firstXml);
+//		int totalPages = (int) Math.ceil((double) total / perPage);
+//
+//		int savedCount = 0;
+//
+//		for (int page = 1; page <= totalPages; page++) {
+//			Criteria pageCri = new Criteria(page, perPage);
+//			String xml = recallService.fetchXmlFromApi(pageCri, cntntsId);
+//			List<Defect_DetailsDTO> list = XmlParserUtil.parseToList(xml);
+//			recallService.saveApiDataToDB(list);
+//			savedCount += list.size();
+//			
+//			log.info(">>> " + page + "페이지 처리 완료 (" + list.size() + "건)");
+//		}
+//		
+//		System.out.println("totalCount: " + total);
+//		return "전체 저장 완료! 총 " + savedCount + "건 저장됨.";
+//	}
+//
+////	API 동기화 메서드 (전체)
+//	@GetMapping("/recall/syncAll")
+//	@ResponseBody
+//	public String syncAllToDb() throws Exception {
+//		String cntntsId = "0301";
+//		int perPage = 100;
+//
+//		// 먼저 1페이지 호출해서 전체 개수 파악
+//		Criteria cri = new Criteria(1, perPage);
+//		String firstXml = recallService.fetchXmlFromApi(cri, cntntsId);
+//		int total = XmlParserUtil.getTotalCount(firstXml);
+//		int totalPages = (int) Math.ceil((double) total / perPage);
+//
+//		int inserted = 0, updated = 0, skipped = 0;
+//
+//		for (int page = 1; page <= totalPages; page++) {
+//			Criteria pageCri = new Criteria(page, perPage);
+//			String xml = recallService.fetchXmlFromApi(pageCri, cntntsId);
+//			List<Defect_DetailsDTO> list = XmlParserUtil.parseToList(xml);
+//
+//			SyncDTO result = recallService.syncApiDataWithDB(list);
+//
+//			inserted += result.getInserted();
+//			updated += result.getUpdated();
+//			skipped += result.getSkipped();
+//
+//			System.out.println(page + "페이지 완료: [insert " + result.getInserted()
+//					+ ", update " + result.getUpdated() + ", skip " + result.getSkipped() + "]");
+//		}
+//
+//		return "전체 동기화 완료! 총 insert: " + inserted + ", update: " + updated + ", skip: " + skipped;
+//	}
+//	
+//	// CSV 파일로 변환
+//	@GetMapping("/recall/export")
+//	@ResponseBody
+//	public String exportRecallToCsv() {
+//		try {
+//			List<Defect_DetailsDTO> list = recallService.getAllRecalls(); // 전체 불러오기
+//
+//			OutputStreamWriter writer = new OutputStreamWriter(
+//					new FileOutputStream("C:/develop/recall-ai-recommend/recall.csv"),
+//					StandardCharsets.UTF_8
+//				);
+//			writer.write("id,manufacturer,model_name,recall_type,additional_info\n");
+//
+//			for (Defect_DetailsDTO dto : list) {
+//				writer.write(dto.getId() + "," +
+//					clean(dto.getManufacturer()) + "," +
+//					clean(dto.getModel_name()) + "," +
+//					clean(dto.getRecall_type()) + "," +
+//					clean(dto.getAdditional_info()) + "\n");
+//			}
+//
+//			writer.close();
+//			return "CSV 파일 생성 완료!";
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return "CSV 생성 실패: " + e.getMessage();
+//		}
+//	}
+//
+//	// CSV에 쓸 때 콤마나 개행 제거
+//	private String clean(String text) {
+//		if (text == null) return "";
+//		return text.replaceAll("[\\r\\n,]", " ").trim();
+//	}
 
-        List<DefectReportSummaryDTO> monthsummaryList = recallService.getDefectReportSummaryByMonth(params);
-//        log.info("monthsummaryList"+monthsummaryList);
-        model.addAttribute("monthsummaryList", monthsummaryList);
-//        log.info("monthsummaryList: {}", monthsummaryList);
-        List<ManufacturerRecallDTO> stats = recallService.getYearlyRecallStatsByMonth(params);
-        model.addAttribute("recallStats", stats);
-        Map<String, List<ManufacturerRecallDTO>> grouped = stats.stream()
-        	    .collect(Collectors.groupingBy(ManufacturerRecallDTO::getCar_manufacturer));
-
-        	model.addAttribute("groupedRecallStats", grouped);
-        
-        return "recall_statics_month"; 
-    }
-	
-	
-	// DB에서 값을 받아오도록 수정
-	@RequestMapping("/recall_list")
-	public String recall_list(Criteria cri, Model model) throws Exception {
-		List<Defect_DetailsDTO> list = recallService.getAllRecallByCri(cri);
-		int total = recallService.getRecallTotalCount(cri);
-
-		model.addAttribute("recall_list", list);
-		model.addAttribute("pageMaker", new PageDTO(total, cri));
-		
-		log.info("@# PageDTO : "+new PageDTO(total, cri));
-		
-//		return "recall_list";
-		return "result";
-	}
-
-	
-
-//	API -> DB 저장 메서드 (전체)
-	@ResponseBody
-	@GetMapping("/recall/saveAll")
-	public String saveAllToDb() throws Exception {
-		String cntntsId = "0301";
-		int perPage = 100;
-
-		// 1페이지 먼저 요청 → 전체 건수(totalCount) 파악
-		Criteria cri = new Criteria(1, perPage);
-		String firstXml = recallService.fetchXmlFromApi(cri, cntntsId);
-		int total = XmlParserUtil.getTotalCount(firstXml);
-		int totalPages = (int) Math.ceil((double) total / perPage);
-
-		int savedCount = 0;
-
-		for (int page = 1; page <= totalPages; page++) {
-			Criteria pageCri = new Criteria(page, perPage);
-			String xml = recallService.fetchXmlFromApi(pageCri, cntntsId);
-			List<Defect_DetailsDTO> list = XmlParserUtil.parseToList(xml);
-			recallService.saveApiDataToDB(list);
-			savedCount += list.size();
-			
-			log.info(">>> " + page + "페이지 처리 완료 (" + list.size() + "건)");
-		}
-		
-		System.out.println("totalCount: " + total);
-		return "전체 저장 완료! 총 " + savedCount + "건 저장됨.";
-	}
-
-//	API 동기화 메서드 (전체)
-	@GetMapping("/recall/syncAll")
-	@ResponseBody
-	public String syncAllToDb() throws Exception {
-		String cntntsId = "0301";
-		int perPage = 100;
-
-		// 먼저 1페이지 호출해서 전체 개수 파악
-		Criteria cri = new Criteria(1, perPage);
-		String firstXml = recallService.fetchXmlFromApi(cri, cntntsId);
-		int total = XmlParserUtil.getTotalCount(firstXml);
-		int totalPages = (int) Math.ceil((double) total / perPage);
-
-		int inserted = 0, updated = 0, skipped = 0;
-
-		for (int page = 1; page <= totalPages; page++) {
-			Criteria pageCri = new Criteria(page, perPage);
-			String xml = recallService.fetchXmlFromApi(pageCri, cntntsId);
-			List<Defect_DetailsDTO> list = XmlParserUtil.parseToList(xml);
-
-			SyncDTO result = recallService.syncApiDataWithDB(list);
-
-			inserted += result.getInserted();
-			updated += result.getUpdated();
-			skipped += result.getSkipped();
-
-			System.out.println(page + "페이지 완료: [insert " + result.getInserted()
-					+ ", update " + result.getUpdated() + ", skip " + result.getSkipped() + "]");
-		}
-
-		return "전체 동기화 완료! 총 insert: " + inserted + ", update: " + updated + ", skip: " + skipped;
-	}
-	
-	// CSV 파일로 변환
-	@GetMapping("/recall/export")
-	@ResponseBody
-	public String exportRecallToCsv() {
-		try {
-			List<Defect_DetailsDTO> list = recallService.getAllRecalls(); // 전체 불러오기
-
-			OutputStreamWriter writer = new OutputStreamWriter(
-					new FileOutputStream("C:/develop/recall-ai-recommend/recall.csv"),
-					StandardCharsets.UTF_8
-				);
-			writer.write("id,manufacturer,model_name,recall_type,additional_info\n");
-
-			for (Defect_DetailsDTO dto : list) {
-				writer.write(dto.getId() + "," +
-					clean(dto.getManufacturer()) + "," +
-					clean(dto.getModel_name()) + "," +
-					clean(dto.getRecall_type()) + "," +
-					clean(dto.getAdditional_info()) + "\n");
-			}
-
-			writer.close();
-			return "CSV 파일 생성 완료!";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "CSV 생성 실패: " + e.getMessage();
-		}
-	}
-
-	// CSV에 쓸 때 콤마나 개행 제거
-	private String clean(String text) {
-		if (text == null) return "";
-		return text.replaceAll("[\\r\\n,]", " ").trim();
-	}
-	
-*/
 }
