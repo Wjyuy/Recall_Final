@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LogoutButton from "../components/LogoutButton";
+import ApiSaveButton from "../components/ApiSaveButton";
+import ApiSyncButton from "../components/ApiSyncButton";
 
 function JwtTestPage() {
 	const [message, setMessage] = useState("확인 중...");
@@ -45,11 +47,14 @@ function JwtTestPage() {
 		<div style={{ padding: "40px" }}>
 			{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
 
-            <LogoutButton /> {/* ✅ 여기에 추가 */}
+			<ApiSaveButton />
+			<ApiSyncButton />
+            <LogoutButton />
+			
 		</div>
 		</div>
 		</section>
 	);
-}
+}	
 
 export default JwtTestPage;
