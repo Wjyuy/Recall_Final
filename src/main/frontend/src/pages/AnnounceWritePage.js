@@ -3,9 +3,39 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import FormEditor from '../components/FormEditor'; // FormEditor import
+import { useEffect } from 'react';
 
 function AnnounceWritePage() {
+
+  // ✅ JWT 인증 체크 useEffect
   const navigate = useNavigate();
+
+  useEffect(() => {
+	const token = localStorage.getItem("jwt_token");
+
+	if (!token) {
+		alert("관리자 로그인이 필요합니다.");
+		navigate("/login");
+		return;
+	}
+
+	// fetch("http://localhost:8485/api/admin/test-auth", {
+	fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/test-auth", {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json"
+		}
+	})
+		.then(res => {
+			if (res.status !== 200)
+       throw new Error("인증 실패");
+		})
+		.catch(err => {
+			alert("접근 권한이 없습니다. 다시 로그인해주세요.");
+			navigate("/login");
+		});
+  }, [navigate]);
+
   const initialAnnounceData = { title: '', content: '' }; 
   // FormEditor에 전달할 필드 정의
   const fields = [
@@ -15,7 +45,8 @@ function AnnounceWritePage() {
 
   // 공지사항 제출 로직
   const handleAnnounceSubmit = async (formData) => {
-    const API_URL = 'http://localhost:8485/api/announce/write'; // 공지사항 작성 API 경로
+    // const API_URL = 'http://localhost:8485/api/announce/write'; // 공지사항 작성 API 경로
+    const API_URL = `${process.env.REACT_APP_API_BASE_URL}/api/announce/write`;
 
     // 백엔드 AnnounceDTO 필드에 맞게 formData를 가공할 수 있음
     // 예: const payload = { ...formData, writer: '관리자' };

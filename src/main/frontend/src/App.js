@@ -18,6 +18,8 @@ import RecallList from './pages/RecallList';
 import RecallDetail from './pages/RecallDetail';
 import DefectDetailsCheckPage from './pages/DefectDetailsCheckPage';
 import RecallStaticsYearPage from './pages/RecallStaticsYearPage'; // RecallStaticsYearPage import
+import LoginPage from './pages/LoginPage';
+import JwtTestPage from './pages/JwtTestPage';
 import { fetchTestData } from './services/api';
 import './styles/App.css';
 import './styles/main.css';
@@ -27,7 +29,8 @@ function PdfDownloadPage() {
   const params = new URLSearchParams(window.location.search);
   const startYear = params.get('startYear') || '';
   const endYear = params.get('endYear') || '';
-  const pdfUrl = `http://localhost:8485/pdf/recall_statics_summaryList?startYear=${startYear}&endYear=${endYear}`;
+  //  const pdfUrl = `http://localhost:8485/pdf/recall_statics_summaryList?startYear=${startYear}&endYear=${endYear}`;
+ const pdfUrl = `https://recall-final-backend.onrender.com/api/pdf/recall_statics_summaryList?startYear=${startYear}&endYear=${endYear}`;
   useEffect(() => {
     window.open(pdfUrl, '_blank');
   }, [pdfUrl]);
@@ -72,6 +75,8 @@ function App() {
           <Route path="/defect_details_check" element={<DefectDetailsCheckPage />} />
           <Route path="/recall_statics_year" element={<RecallStaticsYearPage />} />
           <Route path="/recall_statics_year/pdf" element={<PdfDownloadPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/jwt-test" element={<JwtTestPage />} />
         </Routes>
 
        

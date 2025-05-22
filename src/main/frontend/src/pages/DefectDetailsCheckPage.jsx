@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchDefectReportById, saveDefectDetails } from '../services/recallApiService';
+
+
 
 const initialState = {
   id: '',
@@ -35,10 +38,38 @@ function formatDateToYYMMDD(dateStr) {
 }
 
 const DefectDetailsCheckPage = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState(initialState);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+
+  // ✅ JWT 인증 체크 useEffect
+	useEffect(() => {
+		const token = localStorage.getItem("jwt_token");
+		if (!token) {
+			alert("관리자 로그인이 필요합니다.");
+			navigate("/login");
+			return;
+		}
+
+		// fetch("http://localhost:8485/api/admin/test-auth", {
+		fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/test-auth", {
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-Type": "application/json"
+			}
+		})
+			.then(res => {
+				if (res.status !== 200) {
+					throw new Error("인증 실패");
+				}
+			})
+			.catch(err => {
+				alert("접근 권한이 없습니다. 다시 로그인해주세요.");
+				navigate("/login");
+			});
+	}, [navigate]);
 
   // ID 검색
   const handleSearchDefect = async () => {

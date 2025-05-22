@@ -112,6 +112,7 @@ function RecallList() {
             alert("엑셀 파일 다운로드에 실패했습니다. 다시 시도해주세요.");
         }
     };
+	
 
     if (loading) return <div style={{ textAlign: 'center', padding: '20px' }}>리콜 정보를 불러오는 중입니다...</div>;
     if (error) return <div style={{ textAlign: 'center', padding: '20px', color: 'red' }}>오류: {error}</div>;

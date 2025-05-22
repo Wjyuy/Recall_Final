@@ -173,7 +173,7 @@ public class ReactDefectController {
             return new ResponseEntity<>(response, HttpStatus.OK);
 
         } catch (Exception e) {
-            log.error("@# 공지사항 목록 조회 중 오류 발생: {}", e.getMessage());
+            log.error("@# 목록 조회 중 오류 발생: {}", e.getMessage());
             // 오류 발생 시 500 Internal Server Error 반환
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

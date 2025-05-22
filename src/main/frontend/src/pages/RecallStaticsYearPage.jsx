@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 
-const API_BASE_URL = 'http://localhost:8485/api';
+// const API_BASE_URL = 'http://localhost:8485/api';
+const API_BASE_URL = '${process.env.REACT_APP_API_BASE_URL}/api';
 
 const CURRENT_YEAR = new Date().getFullYear();
 const YEAR_RANGE = Array.from({ length: 26 }, (_, i) => 2000 + i); // 2000~2025
