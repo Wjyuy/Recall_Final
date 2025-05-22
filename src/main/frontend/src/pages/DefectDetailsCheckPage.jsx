@@ -114,94 +114,98 @@ const DefectDetailsCheckPage = () => {
   };
 
   return (
-    <div className="container" style={{ maxWidth: 700, margin: '0 auto', padding: 24 }}>
-      <h2 style={{ margin: '32px 0 16px' }}>신고 내역 검수</h2>
-      <form onSubmit={handleSubmit} className="uk-form-stacked">
-        <table className="uk-table table-form" style={{ marginBottom: 32 }}>
-          <tbody>
-            <tr>
-              <th className="th">아이디</th>
-              <td className="td">
-                <input type="text" name="id" value={form.id} onChange={handleChange} placeholder="아이디를 입력하세요" className="uk-input uk-form-width-medium" />
-                <button type="button" onClick={handleSearchDefect} style={{ marginLeft: 8 }} disabled={searchLoading}>
-                  {searchLoading ? '검색 중...' : '검색'}
-                </button>
-                {searchError && <span style={{ color: 'red', marginLeft: 8 }}>{searchError}</span>}
-              </td>
-            </tr>
-            <tr>
-              <th className="th">리콜정보</th>
-              <td className="td">
-                <select name="product_name1" value={form.product_name1} onChange={handleChange} className="uk-select">
-                  <option value="">선택</option>
-                  <option value="볼보">볼보</option>
-                  <option value="마세라티">마세라티</option>
-                  <option value="벤츠">벤츠</option>
-                  <option value="볼보트럭">볼보트럭</option>
-                  <option value="현대자동차">현대자동차</option>
-                </select>
-                <input name="product_name" value={form.product_name} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={7} placeholder="예)계기판 관련 리콜" style={{ marginLeft: 8 }} />
-              </td>
-            </tr>
-            <tr>
-              <th className="th">자동차 제조사</th>
-              <td className="td">
-                <input name="manufacturer" value={form.manufacturer} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" placeholder="예)볼보 자동차 코리아" readOnly />
-              </td>
-            </tr>
-            <tr>
-              <th className="th">기간</th>
-              <td className="td">
-                <input name="start_date" value={form.start_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" />
-                ~
-                <input name="end_date" value={form.end_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" style={{ marginLeft: 8 }} />
-                <span style={{ marginLeft: 10, fontWeight: 'bold' }}>{form.manufacturing_period}</span>
-                <input type="hidden" name="manufacturing_period" value={form.manufacturing_period} />
-              </td>
-            </tr>
-            <tr>
-              <th className="th">자동차 모델명</th>
-              <td className="td">
-                <input name="model_name" value={form.model_name} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" />
-              </td>
-            </tr>
-            <tr>
-              <th className="th">리콜 형식</th>
-              <td className="td">
-                <input name="recall_type" value={form.recall_type} className="uk-input uk-form-width-medium" type="text" readOnly />
-              </td>
-            </tr>
-            <tr>
-              <th className="th">회사(대표번호)</th>
-              <td className="td">
-                <select name="company_select" value={form.company_select} onChange={handleCompanyChange} className="uk-select">
-                  <option value="">회사 선택</option>
-                  <option value="[볼보자동차]">[볼보자동차]</option>
-                  <option value="[마세라티]">[마세라티]</option>
-                  <option value="[벤츠코리아]">[벤츠코리아]</option>
-                  <option value="[볼보트럭]">[볼보트럭]</option>
-                  <option value="[현대자동차]">[현대자동차]</option>
-                </select>
-                <input name="contact_number" value={form.contact_number} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={20} placeholder="예)볼보자동차 대표번호 1588-1777" style={{ marginLeft: 8 }} />
-                <input type="hidden" name="contact_info" value={form.contact_info} />
-              </td>
-            </tr>
-            <tr>
-              <th className="th">상세 결함</th>
-              <td className="td">
-                <textarea name="additional_info" value={form.additional_info} onChange={handleChange} className="uk-input uk-form-width-medium" rows={4} style={{ resize: 'vertical' }} />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div style={{ textAlign: 'center' }}>
-          <button type="submit" style={{ padding: '10px 32px', fontSize: 16, borderRadius: 5, backgroundColor: '#00796b', color: 'white', border: 'none' }}>
-            검수 완료
-          </button>
+     <section id="starter-section" className="starter-section section">
+      <div className="container" data-aos="fade-up">
+        <div className="section-title text-center">
+            <h2 className="title">신고 검수</h2>
         </div>
-        {successMsg && <div style={{ color: 'green', textAlign: 'center', marginTop: 16 }}>{successMsg}</div>}
-      </form>
-    </div>
+        <form onSubmit={handleSubmit} className="uk-form-stacked">
+          <table className="uk-table table-form" style={{ marginBottom: 32 }}>
+            <tbody>
+              <tr>
+                <th className="th">아이디</th>
+                <td className="td">
+                  <input type="text" name="id" value={form.id} onChange={handleChange} placeholder="아이디를 입력하세요" className="uk-input uk-form-width-medium" />
+                  <button type="button" onClick={handleSearchDefect} style={{ marginLeft: 8 }} disabled={searchLoading}>
+                    {searchLoading ? '검색 중...' : '검색'}
+                  </button>
+                  {searchError && <span style={{ color: 'red', marginLeft: 8 }}>{searchError}</span>}
+                </td>
+              </tr>
+              <tr>
+                <th className="th">리콜정보</th>
+                <td className="td">
+                  <select name="product_name1" value={form.product_name1} onChange={handleChange} className="uk-select">
+                    <option value="">선택</option>
+                    <option value="볼보">볼보</option>
+                    <option value="마세라티">마세라티</option>
+                    <option value="벤츠">벤츠</option>
+                    <option value="볼보트럭">볼보트럭</option>
+                    <option value="현대자동차">현대자동차</option>
+                  </select>
+                  <input name="product_name" value={form.product_name} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={7} placeholder="예)계기판 관련 리콜" style={{ marginLeft: 8 }} />
+                </td>
+              </tr>
+              <tr>
+                <th className="th">자동차 제조사</th>
+                <td className="td">
+                  <input name="manufacturer" value={form.manufacturer} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" placeholder="예)볼보 자동차 코리아" readOnly />
+                </td>
+              </tr>
+              <tr>
+                <th className="th">기간</th>
+                <td className="td">
+                  <input name="start_date" value={form.start_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" />
+                  ~
+                  <input name="end_date" value={form.end_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" style={{ marginLeft: 8 }} />
+                  <span style={{ marginLeft: 10, fontWeight: 'bold' }}>{form.manufacturing_period}</span>
+                  <input type="hidden" name="manufacturing_period" value={form.manufacturing_period} />
+                </td>
+              </tr>
+              <tr>
+                <th className="th">자동차 모델명</th>
+                <td className="td">
+                  <input name="model_name" value={form.model_name} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <th className="th">리콜 형식</th>
+                <td className="td">
+                  <input name="recall_type" value={form.recall_type} className="uk-input uk-form-width-medium" type="text" readOnly />
+                </td>
+              </tr>
+              <tr>
+                <th className="th">회사(대표번호)</th>
+                <td className="td">
+                  <select name="company_select" value={form.company_select} onChange={handleCompanyChange} className="uk-select">
+                    <option value="">회사 선택</option>
+                    <option value="[볼보자동차]">[볼보자동차]</option>
+                    <option value="[마세라티]">[마세라티]</option>
+                    <option value="[벤츠코리아]">[벤츠코리아]</option>
+                    <option value="[볼보트럭]">[볼보트럭]</option>
+                    <option value="[현대자동차]">[현대자동차]</option>
+                  </select>
+                  <input name="contact_number" value={form.contact_number} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={20} placeholder="예)볼보자동차 대표번호 1588-1777" style={{ marginLeft: 8 }} />
+                  <input type="hidden" name="contact_info" value={form.contact_info} />
+                </td>
+              </tr>
+              <tr>
+                <th className="th">상세 결함</th>
+                <td className="td">
+                  <textarea name="additional_info" value={form.additional_info} onChange={handleChange} className="uk-input uk-form-width-medium" rows={4} style={{ resize: 'vertical' }} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div style={{ textAlign: 'center' }}>
+            <button type="submit" style={{ padding: '10px 32px', fontSize: 16, borderRadius: 5, backgroundColor: '#00796b', color: 'white', border: 'none' }}>
+              검수 완료
+            </button>
+          </div>
+          {successMsg && <div style={{ color: 'green', textAlign: 'center', marginTop: 16 }}>{successMsg}</div>}
+        </form>
+      </div>
+    </section>
   );
 };
 

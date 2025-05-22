@@ -48,6 +48,7 @@ public class ReactFAQController {
 			// 2. 서비스 계층을 통해 전체 FAQ 개수를 조회합니다.
 			int total = service.noticegetTotalCount(cri);
 			log.info("@# 전체 FAQ 개수: {}", total);
+			log.info("@# 전체 FAQ 개수: {}", noticeList);
 			
 			// 3. PageDTO (페이징 정보) 생성
 			PageDTO pageMaker = new PageDTO(total, cri);

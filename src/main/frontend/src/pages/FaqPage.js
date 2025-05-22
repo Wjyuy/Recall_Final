@@ -93,6 +93,11 @@ function FaqPage() {
                   </div>
                 </div>
 
+                <AnnounceSearch
+                  onSearch={handleSearch}
+                  initialType={pageMaker.cri.type}
+                  initialKeyword={pageMaker.cri.keyword}
+                />
                 <div className="col-lg-8" data-aos="fade-up" data-aos-delay="200">
                   <div className="faq-container">
                     {faqs.length > 0 ? (
@@ -110,16 +115,11 @@ function FaqPage() {
 
           {/* Blog Pagination Section (AnnouncePage에서 재사용) */}
           <section id="blog-pagination" className="blog-pagination section">
-            <AnnounceSearch
-              onSearch={handleSearch}
-              initialType={pageMaker.cri.type}
-              initialKeyword={pageMaker.cri.keyword}
-            />
             <Pagination pageMaker={pageMaker} onPageChange={handlePageChange} />
           </section>{/* /Blog Pagination Section */}
 
           <div style={{ textAlign: 'right', marginTop: '20px' }}>
-             <Link to="/notice_write" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px', textDecoration: 'none' }}>글작성</Link>
+             <Link to="/notice_write" >질문 작성하기</Link>
           </div>
         </div>
       </section>{/* /Starter Section Section */}

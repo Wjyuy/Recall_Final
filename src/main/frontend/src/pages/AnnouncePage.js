@@ -1,4 +1,5 @@
 // pages/AnnouncePage.js
+// 공지사항 리스트 출력되는 페이지 입니다
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, Link } from 'react-router-dom'; // URL 쿼리 파라미터 읽기
 import AnnounceList from '../components/AnnounceList';
@@ -93,21 +94,22 @@ const handleSearch = useCallback((searchParams) => {
   if (error) return <div>오류: {error}</div>;
 
   return (
-    <div className="announce-page">
-      <h2>공지사항</h2>
-      <AnnounceList announcements={announcements} total={pageMaker.total} />
-      
-      <div style={{ textAlign: 'right', marginTop: '20px' }}>
-          <Link to="/announce_write" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px', textDecoration: 'none' }}>글쓰기</Link>
-      </div>
-
-      <AnnounceSearch
-        onSearch={handleSearch}
-        initialType={pageMaker.cri.type}
-        initialKeyword={pageMaker.cri.keyword}
-      />
-      <Pagination pageMaker={pageMaker} onPageChange={handlePageChange} />
-    </div>
+    <section id="starter-section" className="starter-section section">
+      <div className="container" data-aos="fade-up">
+          <div className="section-title text-center">
+              <h2 className="title">공지사항</h2>
+          </div>
+          <div className="widgets-container">
+            <AnnounceSearch
+              onSearch={handleSearch}
+              initialType={pageMaker.cri.type}
+              initialKeyword={pageMaker.cri.keyword}
+              />
+            <AnnounceList announcements={announcements} total={pageMaker.total} />
+          </div>
+          <Pagination pageMaker={pageMaker} onPageChange={handlePageChange} />
+        </div>
+    </section>
   );
 }
 

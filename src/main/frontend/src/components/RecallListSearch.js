@@ -46,17 +46,7 @@ const RecallListSearch = ({ searchCriteria, onSearchSubmit, onSearchChange }) =>
         placeholder="검색어를 입력하세요"
         style={{ flexGrow: 1, padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
       />
-      <button
-        type="submit"
-        style={{
-          padding: '8px 15px',
-          backgroundColor: '#007bff',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-        }}
-      >
+      <button type="submit" >
         검색
       </button>
     </form>

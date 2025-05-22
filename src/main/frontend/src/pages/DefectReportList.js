@@ -140,14 +140,14 @@ function DefectReportList() {
                             onSearchSubmit={handleSearchSubmit}
                         />
 
-                        <table className="table-custom uk-table uk-table-striped uk-table-hover" style={{ width: '80%', margin: '0 auto' }}>
+                        <table className="table-custom">
                             <thead>
                                 <tr>
-                                    <td>번호</td>
-                                    <td>신고자</td>
-                                    <td>신고유형</td>
-                                    <td>모델명</td>
-                                    <td>신고일</td>
+                                    <th>번호</th>
+                                    <th>신고자</th>
+                                    <th>신고유형</th>
+                                    <th>모델명</th>
+                                    <th>신고일</th>
                                 </tr>
                             </thead>
                             <tbody>
