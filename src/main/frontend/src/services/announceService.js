@@ -3,7 +3,10 @@ import axios from 'axios';
 
 //  const API_BASE_URL = 'http://localhost:8485/api';
 // const API_BASE_URL = window.location.hostname == 'localhost' ? 'http://localhost:8485/api' : 'https://recall-final-backend.onrender.com/api';
-//const API_BASE_URL = 'https://recall-final-backend.onrender.com/api';
+
+// const API_BASE_URL = 'https://recall-final-backend.onrender.com/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
  // 공지사항전체
 export const fetchAnnouncements = async (params) => {

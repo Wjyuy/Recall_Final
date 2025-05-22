@@ -3,9 +3,11 @@ import axios from 'axios';
 // format은 이제 여기서 직접 사용하지 않으므로 제거해도 됩니다.
 // import { format } from 'date-fns';
 
-//  const API_BASE_URL = 'http://localhost:8485/api';
-//const API_BASE_URL = 'https://recall-final-backend.onrender.com/api';
+
+// const API_BASE_URL = 'http://localhost:8485/api';
+// const API_BASE_URL = 'https://recall-final-backend.onrender.com/api';
 // const API_BASE_URL = window.location.hostname == 'localhost' ? 'http://localhost:8485/api' : 'https://recall-final-backend.onrender.com/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const fetchDefectReports = async (searchCriteria) => {
     try {
