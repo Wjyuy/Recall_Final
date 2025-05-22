@@ -4,7 +4,7 @@ import ApiSaveButton from "../components/ApiSaveButton";
 import ApiSyncButton from "../components/ApiSyncButton";
 
 function JwtTestPage() {
-	const [message, setMessage] = useState("");
+	const [message, setMessage] = useState("뭔가를 넣어 놨습니다. 화이팅.");
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -24,10 +24,10 @@ function JwtTestPage() {
 				"Content-Type": "application/json"
 				}
 			})
-			// .then(res => {
-			// 	if (res.status !== 200)
-			// 		throw new Error("인증 실패");
-			// })
+			.then(res => {
+				if (res.status !== 200)
+					throw new Error("인증 실패");
+			})
 			.catch(err => {
 				console.error(err);
 				setError("접근 권한이 없습니다.");
