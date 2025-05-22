@@ -34,7 +34,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api")
 @Slf4j
 public class RecallController {
-
+	
+/*
 	
 	@Autowired
     private RecallService recallService;
@@ -219,5 +220,6 @@ public class RecallController {
 		if (text == null) return "";
 		return text.replaceAll("[\\r\\n,]", " ").trim();
 	}
-
+	
+*/
 }
