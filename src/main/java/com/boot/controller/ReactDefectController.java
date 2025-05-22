@@ -159,26 +159,21 @@ public class ReactDefectController {
     public ResponseEntity<Map<String, Object>> getDefectList(Criteria cri) {
     	log.info("@# getDefectList() 호출: {}", cri);
     	try {
-            // 1. 공지사항 목록 조회
     		ArrayList<DefectListDTO> defectList = pageService.listWithPaging(cri);
             
-            // 2. 전체 공지사항 개수 조회
             int total = pageService.getTotalCount(cri);
             log.info("@# 전체 공지사항 개수: {}", total);
 
-            // 3. PageDTO (pageMaker) 생성
             PageDTO pageMaker = new PageDTO(total, cri);
 
-            // 4. 응답 데이터를 담을 Map 생성
             Map<String, Object> response = new HashMap<>();
-            response.put("list", defectList); // 공지사항 목록
-            response.put("pageMaker", pageMaker); // 페이징 정보
+            response.put("list", defectList); 
+            response.put("pageMaker", pageMaker); 
 
-            // 5. ResponseEntity를 통해 JSON 데이터와 HTTP 상태 코드(OK) 반환
             return new ResponseEntity<>(response, HttpStatus.OK);
 
         } catch (Exception e) {
-            log.error("@# 공지사항 목록 조회 중 오류 발생: {}", e.getMessage());
+            log.error("@# 목록 조회 중 오류 발생: {}", e.getMessage());
             // 오류 발생 시 500 Internal Server Error 반환
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

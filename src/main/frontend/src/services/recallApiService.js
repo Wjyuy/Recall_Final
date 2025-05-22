@@ -8,6 +8,8 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 // 리콜 목록을 가져오는 함수 (검색 조건 포함)
 export const fetchRecallReports = async (searchCriteria) => {
+    console.log("API_BASE_URL:", API_BASE_URL);
+    
     try {
         const params = new URLSearchParams();
         // searchCriteria의 모든 유효한 속성을 URL 파라미터로 추가

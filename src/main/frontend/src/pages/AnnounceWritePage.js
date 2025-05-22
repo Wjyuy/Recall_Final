@@ -19,7 +19,8 @@ function AnnounceWritePage() {
 		return;
 	}
 
-	fetch("http://localhost:8485/api/admin/test-auth", {
+	// fetch("http://localhost:8485/api/admin/test-auth", {
+	fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/test-auth", {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json"
@@ -44,7 +45,8 @@ function AnnounceWritePage() {
 
   // 공지사항 제출 로직
   const handleAnnounceSubmit = async (formData) => {
-    const API_URL = 'http://localhost:8485/api/announce/write'; // 공지사항 작성 API 경로
+    // const API_URL = 'http://localhost:8485/api/announce/write'; // 공지사항 작성 API 경로
+    const API_URL = `${process.env.REACT_APP_API_BASE_URL}/api/announce/write`;
 
     // 백엔드 AnnounceDTO 필드에 맞게 formData를 가공할 수 있음
     // 예: const payload = { ...formData, writer: '관리자' };

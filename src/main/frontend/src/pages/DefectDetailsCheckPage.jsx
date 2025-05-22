@@ -53,7 +53,8 @@ const DefectDetailsCheckPage = () => {
 			return;
 		}
 
-		fetch("http://localhost:8485/api/admin/test-auth", {
+		// fetch("http://localhost:8485/api/admin/test-auth", {
+		fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/test-auth", {
 			headers: {
 				Authorization: `Bearer ${token}`,
 				"Content-Type": "application/json"
