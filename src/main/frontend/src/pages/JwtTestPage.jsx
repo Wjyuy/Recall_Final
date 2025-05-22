@@ -4,7 +4,7 @@ import ApiSaveButton from "../components/ApiSaveButton";
 import ApiSyncButton from "../components/ApiSyncButton";
 
 function JwtTestPage() {
-	const [message, setMessage] = useState("확인 중...");
+	const [message, setMessage] = useState("");
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -20,15 +20,14 @@ function JwtTestPage() {
 		fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/test-auth`, {
 			method: "GET",
 			headers: {
-				"Authorization": `Bearer ${token}`,
+				Authorization: `Bearer ${token}`,
 				"Content-Type": "application/json"
-			}
-		})
-			.then(res => {
-				if (res.status === 200) return res.text();
-				else throw new Error("인증 실패");
+				}
 			})
-			.then(data => setMessage(data))
+			// .then(res => {
+			// 	if (res.status !== 200)
+			// 		throw new Error("인증 실패");
+			// })
 			.catch(err => {
 				console.error(err);
 				setError("접근 권한이 없습니다.");
@@ -40,21 +39,21 @@ function JwtTestPage() {
 
 	return (
 		<section id="starter-section" className="starter-section section">
-      <div className="container" data-aos="fade-up">
-        <div className="section-title text-center">
-            <h2 className="title">관리자 페이지</h2>
-        </div>
-		<div style={{ padding: "40px" }}>
-			{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
+			<div className="container" data-aos="fade-up">
+				<div className="section-title text-center">
+					<h2 className="title">관리자 페이지</h2>
+				</div>
+				<div style={{ padding: "40px" }}>
+					{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
 
-			<ApiSaveButton />
-			<ApiSyncButton />
-            <LogoutButton />
-			
-		</div>
-		</div>
+					<ApiSaveButton />
+					<ApiSyncButton />
+					<LogoutButton />
+
+				</div>
+			</div>
 		</section>
 	);
-}	
+}
 
 export default JwtTestPage;
