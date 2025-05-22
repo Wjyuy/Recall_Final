@@ -1,6 +1,6 @@
 // components/Button.js
 import React from 'react';
-import './Button.css'; // components/Button.css
+import '../styles/main.css';
 
 function Button({ onClick, children }) {
   return (

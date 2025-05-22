@@ -128,7 +128,7 @@ function ReportDefectPage() {
   return (
     <main id="main">
     
-      <section id="defect-report-section" className="defect-report-section section" style={{ padding: '40px 0' }}>
+      <section id="starter-section" className="starter-section section" style={{ padding: '40px 0' }}>
         <div className="container" data-aos="fade-up">
           <div className="section-title text-center">
             <h2 className="title">정보 입력</h2>
@@ -139,8 +139,7 @@ function ReportDefectPage() {
             <form onSubmit={handleSubmit} className="uk-form-stacked">
               <hr style={{ margin: 'auto' }} />
 
-              <table className="uk-table uk-table-divider table-form valickTbl1"
-                     style={{ marginLeft: '35%', marginBottom: '5%', marginTop: '5%' }}>
+              <table className="uk-table uk-table-divider table-form valickTbl1">
                 <colgroup>
                   <col className="th" />
                   <col className="td" />
@@ -242,9 +241,7 @@ function ReportDefectPage() {
               </table>
 
               <h2>자동차 정보 입력</h2>
-              <table className="uk-table uk-table-divider table-form valickTbl2"
-                     style={{ marginLeft: '35%', marginBottom: '5%', marginTop: '5%' }}>
-                <hr />
+              <table className="uk-table uk-table-divider table-form valickTbl2">
                 <colgroup>
                   <col className="th" />
                   <col className="td" />
@@ -304,17 +301,7 @@ function ReportDefectPage() {
                 {submitError && <div className="error-message" style={{ color: 'red', marginTop: '10px' }}>{submitError}</div>}
                 {submitSuccess && <div className="sent-message" style={{ color: 'green', marginTop: '10px' }}>{submitSuccess}</div>}
 
-                <button type="submit" disabled={loading} style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#007bff',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  marginTop: '20px'
-                }}>
-                  자동차 결함 신고
-                </button>
+                <button type="submit" disabled={loading}>자동차 결함 신고</button>
               </div>
             </form>
           </div>

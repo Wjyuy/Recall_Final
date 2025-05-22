@@ -135,7 +135,7 @@ function RecallList() {
                             onSearchSubmit={handleSearchSubmit}
                         />
 
-                        <table className="table-custom" style={{ width: '100%', margin: '0 auto', borderCollapse: 'collapse' }}>
+                        <table className="table-custom">
                             <thead>
                                 <tr>
                                     <th>리콜 ID</th>
@@ -155,7 +155,7 @@ function RecallList() {
                                             <td>{item.id}</td>
                                             <td>{item.product_name}</td>
                                             <td>{item.manufacturer}</td>
-                                            <td>{item.manufacturing_period}</td> {/* 날짜라면 format 필요 */}
+                                            <td>{item.manufacturing_period}</td> 
                                             <td>{item.additional_info}</td>
                                             <td>{item.model_name}</td>
                                             <td>{item.recall_type}</td>
@@ -171,33 +171,16 @@ function RecallList() {
                         </table>
                     </div>
 
-                    <div style={{ textAlign: 'center', marginTop: '30px' }}>
+                    <div className="download-btn-group">
                         <button
                             id="downloadCsvBtn"
                             onClick={handleDownloadCsv}
-                            style={{
-                                padding: '10px 20px',
-                                backgroundColor: '#007bff',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '5px',
-                                cursor: 'pointer',
-                                marginRight: '10px'
-                            }}
                         >
                             CSV 전체 다운로드
                         </button>
                         <button
                             id="excelDownloadBtn"
                             onClick={handleDownloadExcel}
-                            style={{
-                                padding: '10px 20px',
-                                backgroundColor: '#28a745',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '5px',
-                                cursor: 'pointer'
-                            }}
                         >
                             엑셀 전체 다운로드
                         </button>

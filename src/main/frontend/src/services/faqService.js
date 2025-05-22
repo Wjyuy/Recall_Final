@@ -1,6 +1,7 @@
 // services/faqService.js
 import axios from 'axios';
 
+
 // const API_BASE_URL = 'http://localhost:8485/api'; // Spring Boot API 주소에 맞춰 변경
 // const API_BASE_URL = 'https://recall-final-backend.onrender.com/api';
 // const API_BASE_URL = window.location.hostname == 'localhost' ? 'http://localhost:8485/api' : 'https://recall-final-backend.onrender.com/api';

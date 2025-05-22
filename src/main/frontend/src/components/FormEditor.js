@@ -83,15 +83,7 @@ const FormEditor = ({ fields, onSubmit, initialData = {}, submitButtonText = '�
           <button
             type="submit"
             disabled={loading}
-            style={{
-              padding: '10px 20px',
-              backgroundColor: '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: loading ? 'not-allowed' : 'pointer',
-              marginTop: 20,
-            }}
+            className='buttons'
           >
             {loading ? '처리 중...' : submitButtonText}
           </button>

@@ -1,13 +1,15 @@
 // src/components/DefectListSearch.js
 
 const DefectListSearch = ({ searchCriteria, onSearchChange, onSearchSubmit }) => (
-  <form onSubmit={onSearchSubmit} className="uk-form-stacked" style={{ marginBottom: '20px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
+  
+  <form onSubmit={onSearchSubmit} className="uk-form-stacked" style={{ marginBottom: '20px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+
       <select
         name="type"
         className="uk-select uk-form-width-small"
         value={searchCriteria.type}
         onChange={onSearchChange}
+        style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
       >
         <option value="">전체</option>
         <option value="T">모델명</option>
@@ -21,6 +23,7 @@ const DefectListSearch = ({ searchCriteria, onSearchChange, onSearchSubmit }) =>
         className="uk-input uk-form-width-medium"
         placeholder="키워드 입력"
         value={searchCriteria.keyword}
+        style={{ flexGrow: 1, padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
         onChange={onSearchChange}
       />
 
@@ -34,7 +37,6 @@ const DefectListSearch = ({ searchCriteria, onSearchChange, onSearchSubmit }) =>
       />
 
       <button type="submit" className="button uk-button-primary">검색</button>
-    </div>
   </form>
 );
 

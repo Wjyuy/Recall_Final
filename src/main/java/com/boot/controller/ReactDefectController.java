@@ -167,8 +167,8 @@ public class ReactDefectController {
             PageDTO pageMaker = new PageDTO(total, cri);
 
             Map<String, Object> response = new HashMap<>();
-            response.put("list", defectList); 
-            response.put("pageMaker", pageMaker); 
+            response.put("list", defectList);
+            response.put("pageMaker", pageMaker);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 

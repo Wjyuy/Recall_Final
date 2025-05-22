@@ -59,67 +59,58 @@ function AnnounceViewPage() {
   const isNextDisabled = !announce.nextId;
 
   return (
-    <div className="announce-detail-page" style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-      <h2>{announce.title}</h2>
-      <p style={{ color: '#666', fontSize: '0.9em' }}>작성일: {formatDateTime(announce.created_at)}</p>
-      <hr style={{ borderTop: '1px solid #eee', margin: '20px 0' }} />
-      <div className="announce-content" dangerouslySetInnerHTML={{ __html: announce.content }} style={{ lineHeight: '1.6' }}>
-        {/* 보안 유의 */}
-      </div>
-      <hr style={{ borderTop: '1px solid #eee', margin: '20px 0' }} />
+    <section id="starter-section" className="starter-section section">
+      <div className="container" data-aos="fade-up">
+          <div className="section-title text-center">
+              <h2 className="title">공지사항</h2>
+          </div>
 
-      <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100" style={{ marginBottom: '20px' }}>
-        <div className="services-list" style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <button
-            onClick={handlePrevArticle}
-            disabled={isPrevDisabled}
-            style={{
-              padding: '10px 20px',
-              backgroundColor: isPrevDisabled ? '#ccc' : '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: isPrevDisabled ? 'not-allowed' : 'pointer',
-              opacity: isPrevDisabled ? 0.6 : 1
-            }}
-          >
-            이전글
-          </button>
-          
-          <button
-            onClick={handleNextArticle}
-            disabled={isNextDisabled}
-            style={{
-              padding: '10px 20px',
-              backgroundColor: isNextDisabled ? '#ccc' : '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: isNextDisabled ? 'not-allowed' : 'pointer',
-              opacity: isNextDisabled ? 0.6 : 1
-            }}
-          >
-            다음글
-          </button>
+          <div className="announce-detail-page" style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+            <h2>{announce.title}</h2>
+            <p style={{ color: '#666', fontSize: '0.9em' }}>작성일: {formatDateTime(announce.created_at)}</p>
+            <hr style={{ borderTop: '1px solid #eee', margin: '20px 0' }} />
+            <div className="announce-content" dangerouslySetInnerHTML={{ __html: announce.content }} style={{ lineHeight: '1.6' }}>
+            </div>
+            <hr style={{ borderTop: '1px solid #eee', margin: '20px 0' }} />
+
+            <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100" style={{ marginBottom: '20px' }}>
+              <div className="services-list" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <button
+                  onClick={handlePrevArticle}
+                  disabled={isPrevDisabled}
+                  className='uk-button uk-button-default'
+                >
+                  이전글
+                </button>
+                
+                <button
+                  onClick={handleNextArticle}
+                  disabled={isNextDisabled}
+                  className='uk-button uk-button-default'
+                >
+                  다음글
+                </button>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center' }}>
+              <button
+                onClick={handleGoBack}
+                style={{
+                  padding: '10px 30px',
+                  backgroundColor: '#6c757d',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                }}
+              >
+                목록으로 돌아가기
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div style={{ textAlign: 'center' }}>
-        <button
-          onClick={handleGoBack}
-          style={{
-            padding: '10px 30px',
-            backgroundColor: '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
-        >
-          목록으로 돌아가기
-        </button>
-      </div>
-    </div>
+    </section>
   );
 }
 

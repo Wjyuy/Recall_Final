@@ -16,7 +16,7 @@ const Pagination = ({ pageMaker, onPageChange }) => {
               {prev && (
                 <li className="paginate_button">
                   <button type="button" onClick={() => handlePageClick(startPage - 1)} className="link-button">
-                    <i className="bi bi-chevron-left">이전</i>
+                    <i className="bi bi-chevron-left"></i>
                   </button>
                 </li>
               )}
@@ -30,7 +30,7 @@ const Pagination = ({ pageMaker, onPageChange }) => {
               {next && (
                 <li className="paginate_button">
                   <button type="button" onClick={() => handlePageClick(endPage + 1)} className="link-button">
-                    <i className="bi bi-chevron-right">다음</i>
+                    <i className="bi bi-chevron-right"></i>
                   </button>
                 </li>
               )}

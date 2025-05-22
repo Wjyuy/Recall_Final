@@ -60,36 +60,34 @@ function AnnounceWritePage() {
   };
 
   return (
-    <main id="main">
-
-      <section id="announce-write-section" className="announce-write-section section" style={{ padding: '40px 0' }}>
-        <div className="container" data-aos="fade-up">
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <FormEditor
-                  fields={fields}
-                  onSubmit={handleAnnounceSubmit}
-                  initialData={initialAnnounceData}
-                  submitButtonText="공지사항 작성하기"
-              />
-               <div className="col-md-12 text-center" style={{ marginTop: '20px' }}>
-                    <Link to="/announce" style={{
-                        padding: '10px 20px',
-                        backgroundColor: '#6c757d',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '5px',
-                        textDecoration: 'none',
-                        display: 'inline-block',
-                        verticalAlign: 'middle',
-                        cursor: 'pointer'
-                    }}>목록으로</Link>
-                </div>
-            </div>
-          </div>
+    <section id="starter-section" className="starter-section section">
+      <div className="container" data-aos="fade-up">
+        <div className="section-title text-center">
+            <h2 className="title">공지사항 작성</h2>
         </div>
-      </section>
-    </main>
+        <main id="main">
+
+          <section id="announce-write-section" className="announce-write-section section" style={{ padding: '40px 0' }}>
+            <div className="container" data-aos="fade-up">
+              <div className="row justify-content-center">
+                <div className="col-lg-8">
+                  <FormEditor
+                      fields={fields}
+                      onSubmit={handleAnnounceSubmit}
+                      initialData={initialAnnounceData}
+                      submitButtonText="공지사항 작성하기"
+                  />
+                   <button
+                    type="button"
+                    onClick={() => window.location.href = '/announce'}
+                    className='buttons'>목록으로</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </section>
   );
 }
 
