@@ -458,7 +458,7 @@ margin-left: 20px;
 	  
 	  .btn-get-started {
 	    color: color-mix(in srgb, var(--default-color), transparent 40%);
-	    background: var(--accent-color);
+	    /* background: var(--accent-color); */
 	    font-family: var(--heading-font);
 	    font-weight: 500;
 	    font-size: 14px;
