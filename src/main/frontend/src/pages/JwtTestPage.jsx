@@ -15,7 +15,7 @@ function JwtTestPage() {
 		}
 
 		// fetch("http://localhost:8485/api/admin/test-auth", {
-		fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/test-auth", {
+		fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/test-auth`, {
 			method: "GET",
 			headers: {
 				"Authorization": `Bearer ${token}`,
