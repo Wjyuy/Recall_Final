@@ -31,6 +31,7 @@ function ReportDefectPage() {
   });
 
   const [passwordError, setPasswordError] = useState('');
+  const [isPasswordValid, setIsPasswordValid] = useState(false); // ★ 이 줄을 추가합니다 ★
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState(null);
@@ -62,6 +63,7 @@ function ReportDefectPage() {
     }));
     const { isValid, message } = validatePassword(newPassword);
     setPasswordError(message);
+    setIsPasswordValid(isValid);
   };
 
   const togglePassword = () => { // 이 함수도 사용되도록 아래 JSX에 추가됨
@@ -134,12 +136,14 @@ function ReportDefectPage() {
             <h2 className="title">정보 입력</h2>
           </div>
 
-          <div className="widgets-container" style={{ textAlign: 'center' }}>
             {/* 폼 제출 핸들러 연결 */}
             <form onSubmit={handleSubmit} className="uk-form-stacked">
-              <hr style={{ margin: 'auto' }} />
 
-              <table className="uk-table uk-table-divider table-form valickTbl1">
+          <div className="widgets-container" style={{ textAlign: 'center' }}>
+                    <div className="section-title text-center">
+                      <h3 className="title">신고자 정보</h3>
+                    </div>
+              <table className="table-custom">
                 <colgroup>
                   <col className="th" />
                   <col className="td" />
@@ -160,7 +164,7 @@ function ReportDefectPage() {
                     <td className="td">
                       <input id="residentId" name="birth_date"
                              className="uk-input uk-form-width-medium" type="text"
-                             maxLength="8" placeholder="예)19990101"
+                             maxLength="8" placeholder="예: 19990101"
                              value={formData.birth_date} onChange={handleChange} required />
                     </td>
                   </tr>
@@ -186,10 +190,12 @@ function ReportDefectPage() {
                     <th className="th">주소<i className="ion-ios7-checkmark-empty"></i></th>
                     <td className="td addr">
                       <p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <input id="zipcode" name="zipcode" className="uk-input uk-form-width-medium reqed" title="주소" type="text" readOnly value={formData.zipcode || ''}/>
-                        <button type="button" id="zipcodeBtn" onClick={daumPostcode} className="uk-button uk-button-secondary" style={{ marginLeft: '10px' }}>
-                          우편번호 찾기
+                        <button type="button" id="zipcodeBtn" onClick={daumPostcode} className="uk-button uk-button-secondary">
+                          우편번호
                         </button>
+                        </div>
                       </p>
                       <input id="addrBase" name="address" className="uk-input uk-form-width-large" type="text" placeholder="기본주소"
                              value={formData.address} onChange={handleChange} required />
@@ -215,11 +221,10 @@ function ReportDefectPage() {
                   <tr className="layerPasswd">
                     <th className="th">비밀번호<i className="ion-ios7-checkmark-empty"></i></th>
                     <td className="td">
-                      <div style={{ position: 'relative', display: 'inline-block' }}>
+                      <div style={{ position: 'relative' }}>
                         <input id="password" name="password"
                                className="uk-input uk-form-width-medium reqed"
                                onInput={handlePasswordChange}
-                               style={{ paddingRight: '30px' }}
                                title="비밀번호"
                                type={showPassword ? 'text' : 'password'}
                                value={formData.password}
@@ -229,8 +234,7 @@ function ReportDefectPage() {
                           <i id="eyeIcon" className={`ion-ios-${showPassword ? 'eye-off' : 'eye'}`} style={{ color: 'black' }}></i>
                         </button>
                       </div>
-                      <br />
-                      {passwordError && <span id="password-msg" className="uk-text-meta" style={{ color: 'red' }}>{passwordError}</span>}
+                      {passwordError && <span id="password-msg" className="uk-text-meta" style={{ color: isPasswordValid  ? 'green' : 'red' }}>{passwordError}</span>}
                       <br />
                       <span className="uk-text-meta">
                         비밀번호는 9~15자의 영문/숫자/특수문자(~, !, @, #, $, *, (, ), =, +, _, ., |) 혼용만 가능합니다.
@@ -239,9 +243,12 @@ function ReportDefectPage() {
                   </tr>
                 </tbody>
               </table>
-
-              <h2>자동차 정보 입력</h2>
-              <table className="uk-table uk-table-divider table-form valickTbl2">
+                </div>
+<div className="widgets-container" data-aos="fade-up">
+              <div className="section-title text-center">
+                <h3 className="title">자동차 정보</h3>
+              </div>
+              <table className="table-custom">
                 <colgroup>
                   <col className="th" />
                   <col className="td" />
@@ -265,7 +272,7 @@ function ReportDefectPage() {
                     <td className="td">
                       <input id="vehicleNumber" name="car_registration_number"
                              className="uk-input uk-form-width-medium" type="text"
-                             placeholder="예 )서울00나0000"
+                             placeholder="예 :서울00나0000"
                              value={formData.car_registration_number} onChange={handleChange} required />
                     </td>
                   </tr>
@@ -301,10 +308,10 @@ function ReportDefectPage() {
                 {submitError && <div className="error-message" style={{ color: 'red', marginTop: '10px' }}>{submitError}</div>}
                 {submitSuccess && <div className="sent-message" style={{ color: 'green', marginTop: '10px' }}>{submitSuccess}</div>}
 
-                <button type="submit" disabled={loading}>자동차 결함 신고</button>
+                <button type="submit" disabled={loading} style={{ marginTop: '10px' }}>결함 신고하기</button>
+              </div>
               </div>
             </form>
-          </div>
         </div>
       </section>
     </main>

@@ -503,6 +503,24 @@ margin-left: 20px;
 	    opacity: 1; /* 마우스 오버 시 보이게 함 */
 	    visibility: visible;
 	  }
+    /* 모든 table-custom 내 input, textarea를 셀 전체에 꽉 차게 */
+.table-custom td input[type="text"],
+.table-custom td input[type="date"],
+.table-custom td input[type="password"],
+.table-custom td textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  font-size: 1rem;
+  padding: 8px 10px;
+}
+.table-custom td {
+  padding: 6px 8px;
+}
+
+
+
+
     
     
 
