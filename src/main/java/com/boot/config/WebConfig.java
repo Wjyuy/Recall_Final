@@ -1,4 +1,4 @@
-package com.boot.config; // 패키지명은 당신의 프로젝트 구조에 맞게 변경하세요.
+package com.boot.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
