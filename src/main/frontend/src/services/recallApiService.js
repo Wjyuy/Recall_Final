@@ -20,7 +20,7 @@ export const fetchRecallReports = async (searchCriteria) => {
             }
         }
         // 예시: GET /api/recall_list?pageNum=1&amount=10&type=manufacturer&keyword=현대
-        const response = await axios.get(`${API_BASE_URL}/api/recall_list?${params.toString()}`);
+        const response = await axios.get(`${API_BASE_URL}/recall_list?${params.toString()}`);
         return response.data; // { list: [...], pageMaker: {...} } 형태를 예상
     } catch (error) {
         console.error("Failed to fetch recall reports:", error);
