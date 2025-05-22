@@ -25,10 +25,11 @@ const menuItems = [
   { label: '리콜통계', link: '/recall_statics_year' },
   {
     label: '관리자',
-    link: '/defect_details_check',
+    link: '/jwt-test',
     children: [
       { label: '리콜정보검수', link: '/defect_details_check' },
       { label: '공지사항작성', link: '/announce_write' },
+      { label: '관리자로그인', link: '/login' },
     ],
   },
 ];

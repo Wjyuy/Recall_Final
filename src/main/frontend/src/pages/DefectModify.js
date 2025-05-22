@@ -189,30 +189,15 @@ function DefectModify() {
                             <div className="buttons" style={{ textAlign: 'center', marginTop: '20px' }}>
                                 <div className="buttonCenter" style={{ display: 'inline-block' }}>
                                     <button
-                                        type="submit" // 폼 제출 버튼
-                                        style={{
-                                            padding: '10px 20px',
-                                            backgroundColor: '#28a745', // 수정 버튼 색상
-                                            color: 'white',
-                                            border: 'none',
-                                            borderRadius: '5px',
-                                            cursor: 'pointer',
-                                            marginRight: '10px'
-                                        }}
+                                        type="submit"
+                                        style={{ marginRight: '12px' }}
                                     >
                                         수정
                                     </button>
                                     <button
                                         type="button" // 폼 제출 아님
                                         onClick={handleDelete}
-                                        style={{
-                                            padding: '10px 20px',
-                                            backgroundColor: '#dc3545', // 삭제 버튼 색상
-                                            color: 'white',
-                                            border: 'none',
-                                            borderRadius: '5px',
-                                            cursor: 'pointer'
-                                        }}
+                                        style={{ backgroundColor: '#dc3545', marginRight: '12px' }}
                                     >
                                         삭제
                                     </button>
@@ -221,15 +206,7 @@ function DefectModify() {
                                     type="button" // 폼 제출 아님
                                     className="rightButton"
                                     onClick={handleToList}
-                                    style={{
-                                        padding: '10px 20px',
-                                        backgroundColor: '#6c757d', // 목록보기 버튼 색상
-                                        color: 'white',
-                                        border: 'none',
-                                        borderRadius: '5px',
-                                        cursor: 'pointer',
-                                        marginLeft: '20px' // 오른쪽 버튼처럼 보이도록 마진 추가
-                                    }}
+                                    style={{ backgroundColor: '#6c757d' }}
                                 >
                                     목록보기
                                 </button>
