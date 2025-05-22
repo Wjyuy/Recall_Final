@@ -108,7 +108,7 @@ function ReportDefectPage() {
 
     try {
       // const API_URL = 'http://localhost:8485/api/defect_reports_ok';
-      const API_URL = '${process.env.REACT_APP_API_BASE_URL}/api/defect_reports_ok';
+      const API_URL = `${process.env.REACT_APP_API_BASE_URL}/defect_reports_ok`;
       const dataToSend = { ...formData };
       delete dataToSend.mobile_number_display;
       delete dataToSend.phone_number_display;
@@ -116,7 +116,7 @@ function ReportDefectPage() {
       const response = await axios.post(API_URL, dataToSend);
       setSubmitSuccess(response.data || '결함 신고가 성공적으로 접수되었습니다.');
       setTimeout(() => {
-        navigate('/defect_reports_ok');
+        navigate('/defect_list');
       }, 1500);
     } catch (err) {
       setSubmitError(err.response?.data || err.message || '결함 신고 중 오류가 발생했습니다.');
@@ -144,7 +144,7 @@ function ReportDefectPage() {
                   <col className="th" />
                   <col className="td" />
                 </colgroup>
-                <tbody>
+                  <tbody>
                   {/* 신고인 정보 */}
                   <tr>
                     <th className="th">신고인<i className="ion-ios7-checkmark-empty"></i></th>
@@ -160,7 +160,7 @@ function ReportDefectPage() {
                     <td className="td">
                       <input id="residentId" name="birth_date"
                              className="uk-input uk-form-width-medium" type="text"
-                             maxLength="8" placeholder="예)99010101"
+                             maxLength="8" placeholder="예)19990101"
                              value={formData.birth_date} onChange={handleChange} required />
                     </td>
                   </tr>

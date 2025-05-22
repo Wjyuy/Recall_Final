@@ -45,18 +45,7 @@ export const fetchRecallDetail = async (id) => {
     }
 };
 
-/**
- * 결함 상세 조회 (ID로)
- */
-export const fetchDefectDetail = async (id) => {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/defect_detail/${id}`);
-        return response.data; // { defect: {...} }
-    } catch (error) {
-        console.error(`Failed to fetch defect detail for ID ${id}:`, error);
-        throw error;
-    }
-};
+
 
 /**
  * 결함 상세 정보 저장/수정 (검수 완료)

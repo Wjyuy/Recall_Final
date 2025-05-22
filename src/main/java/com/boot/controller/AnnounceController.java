@@ -20,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class AnnounceController {
+	
+/*
 
 	@Autowired
 	private FaqannService service;
@@ -82,4 +84,7 @@ public class AnnounceController {
 		
 		return "announce_view";
 	}
+	
+*/
+	
 }
