@@ -23,9 +23,33 @@ export const fetchRecallStaticsYear = async (params = {}) => {
 };
 
 /**
- * (옵션) 제조사별 리콜 통계 조회 등 추가 함수 필요시 여기에 작성
+ * 월별 리콜 통계 조회
+ * @param {Object} params { startYear, endYear, startMonth, endMonth }
+ * @returns {Promise<Object>} 통계 데이터 (summary, summaryList, groupedRecallStats 등)
  */
-// export const fetchRecallStaticsByMaker = async (params = {}) => { ... }
+export const fetchRecallStaticsMonth = async (params = {}) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/recall_statics_month`, { params });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch recall statics year:', error);
+    throw error;
+  }
+};
+
+/**
+ * 반복 모델 조회
+ * @param {Object} params 
+ */
+export const fetchRepeatedModels = async (params = {}) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/repeatedModels`, { params });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch recall count:', error);
+    throw error;
+  }
+};
 
 export default {
   fetchRecallStaticsYear,

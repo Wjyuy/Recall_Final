@@ -17,13 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.boot.dto.DefectReportSummaryDTO;
 import com.boot.dto.ManufacturerRecallDTO;
+import com.boot.dto.RecallCountDTO;
+import com.boot.service.RecallCountService;
 import com.boot.service.RecallService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequestMapping("/api")
 @RestController
+@RequestMapping("/api")
 public class ReactRecallStaticController {
 	@Autowired
     private RecallService recallService;
@@ -63,7 +65,7 @@ public class ReactRecallStaticController {
 	}
 	
 	@GetMapping("/recall_statics_month")
-    public String recall_statics_month(
+    public Map<String, Object> recall_statics_month(
         @RequestParam(required = false) Integer startYear,
         @RequestParam(required = false) Integer endYear,
         @RequestParam(required = false) Integer startMonth,
@@ -71,6 +73,7 @@ public class ReactRecallStaticController {
         Model model) {
 		
 		log.info("recall_statics_month");
+		log.info("endMonth"+endMonth+"start_month"+startMonth);
         Map<String, Object> params = new HashMap<>();
         params.put("start_year", startYear);
         params.put("start_month", startMonth);
@@ -87,11 +90,29 @@ public class ReactRecallStaticController {
         	    .collect(Collectors.groupingBy(ManufacturerRecallDTO::getCar_manufacturer));
 
         	model.addAttribute("groupedRecallStats", grouped);
-        
-        return "recall_statics_month"; 
+        	
+        	
+    	Map<String, Object> result = new HashMap<>();
+        result.put("monthsummaryList", monthsummaryList);
+        result.put("recallStats", stats);
+        result.put("groupedRecallStats", grouped.entrySet().stream()
+            .map(e -> Map.of("key", e.getKey(), "value", e.getValue()))
+            .collect(Collectors.toList()));
+        return result; 
     }
 	
+	@Autowired
+	private RecallCountService recallCountService;
 	
+	@RequestMapping(value ="/repeatedModels", method =RequestMethod.GET)
+	public Map<String, Object> showRepeatedModels(Model model) {
+		log.info("@#repeatedModels");
+		List<RecallCountDTO> repeatedModels = recallCountService.getRepeatedModels();
+		Map<String, Object> result = new HashMap<>();
+        result.put("repeatedModels", repeatedModels);
+//        log.info("@#result"+result);
+		return result;
+	}
 	
 
 }

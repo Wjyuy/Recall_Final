@@ -19,6 +19,7 @@ import RecallDetail from './pages/RecallDetail';
 import DefectDetailsCheckPage from './pages/DefectDetailsCheckPage';
 import RecallStaticsYearPage from './pages/RecallStaticsYearPage';
 import RecallStaticsMonthPage from './pages/RecallStaticsMonthPage';
+import RecallCount from './pages/RecallCountPage';
 import LoginPage from './pages/LoginPage';
 import JwtTestPage from './pages/JwtTestPage';
 import { fetchTestData } from './services/api';
@@ -77,6 +78,7 @@ function App() {
           <Route path="/recall_statics_year" element={<RecallStaticsYearPage />} />
           <Route path="/recall_statics_Month" element={<RecallStaticsMonthPage />} />
           <Route path="/recall_statics_year/pdf" element={<PdfDownloadPage />} />
+          <Route path="/RecallCountPage" element={<RecallCount />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/jwt-test" element={<JwtTestPage />} />
         </Routes>

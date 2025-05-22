@@ -28,7 +28,7 @@ const menuItems = [
     children: [
       { label: '연도별', link: '/recall_statics_year' },
       { label: '월별', link: '/recall_statics_Month' },
-      { label: '중복모델', link: '/#' },
+      { label: '중복모델', link: '/RecallCountPage' },
     ],
   },
   {
