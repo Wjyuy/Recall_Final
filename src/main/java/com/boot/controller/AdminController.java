@@ -60,12 +60,6 @@ public class AdminController {
 		return "admin/test";
 	}
 	
-	@GetMapping("/admin/secret")
-	@ResponseBody
-	public String secret(@RequestAttribute("adminId") String adminId) {
-		return "Hello 관리자 " + adminId + ", 이 페이지는 보호된 페이지입니다.";
-	}
-	
 
 	@PostMapping("/admin/logout")
 	public ResponseEntity<?> logout(HttpServletResponse response) {

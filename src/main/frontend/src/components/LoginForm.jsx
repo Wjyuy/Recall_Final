@@ -11,7 +11,7 @@ function LoginForm() {
 		e.preventDefault();
 
 		// const res = await fetch("http://localhost:8485/api/admin/login", {
-		const res = await fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/login", {
+		const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
