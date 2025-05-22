@@ -85,21 +85,16 @@ function FaqPage() {
         <div className="container section-title" data-aos="fade-up" style={{ listStyleType: 'none' }}>
           {/* Faq Section */}
           <section id="faq" className="faq section">
-            <div className="container">
+            <div className="container ">
               <div className="row gy-4">
                 <div data-aos="fade-up" data-aos-delay="100">
-                  <div className="content px-xl-5">
+                  <div className="content px-xl-5 detail-widgets-container">
                     <h3><span>자주 묻는 </span><strong>질문들</strong></h3>
                   </div>
                 </div>
 
-                <AnnounceSearch
-                  onSearch={handleSearch}
-                  initialType={pageMaker.cri.type}
-                  initialKeyword={pageMaker.cri.keyword}
-                />
                 <div data-aos="fade-up" data-aos-delay="200">
-                  <div className="faq-container">
+                  <div className="faq-container detail-widgets-container">
                     {faqs.length > 0 ? (
                       faqs.map((item) => (
                         <FaqItem key={item.id} item={item} /> // FaqItem 컴포넌트 사용
@@ -112,15 +107,21 @@ function FaqPage() {
               </div>
             </div>
           </section>{/* /Faq Section */}
-
+          <div className='detail-widgets-container'>
+            <AnnounceSearch
+              onSearch={handleSearch}
+              initialType={pageMaker.cri.type}
+              initialKeyword={pageMaker.cri.keyword}
+            />
+          <div style={{ textAlign: 'right', marginTop: '20px' }}>
+             <Link to="/notice_write" >질문 작성하기</Link>
+          </div>
+          </div>
           {/* Blog Pagination Section (AnnouncePage에서 재사용) */}
           <section id="blog-pagination" className="blog-pagination section">
             <Pagination pageMaker={pageMaker} onPageChange={handlePageChange} />
           </section>{/* /Blog Pagination Section */}
 
-          <div style={{ textAlign: 'right', marginTop: '20px' }}>
-             <Link to="/notice_write" >질문 작성하기</Link>
-          </div>
         </div>
       </section>{/* /Starter Section Section */}
     </main>

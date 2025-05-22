@@ -56,7 +56,7 @@ function DefectPasswordCheck() {
                 <div className="container section-title" data-aos="fade-up">
                     <h2 className="title">비밀번호 확인</h2>
 
-                    <div className="widgets-container">
+                    <div className="widgets-container detail-widgets-container">
                         <div>
                             <div>
                                 <p>결함신고시 등록한 비밀번호를 입력하세요.</p>

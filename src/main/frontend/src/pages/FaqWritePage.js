@@ -31,35 +31,24 @@ function FaqWritePage() {
 
   return (
       <section id="starter-section" className="starter-section section">
-      <div className="container" data-aos="fade-up">
+      <div className="detail-widgets-container" data-aos="fade-up">
         <div className="section-title text-center">
             <h2 className="title">FAQ 작성</h2>
         </div>
 
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
-            <div className="col-lg-8">
               <FormEditor
                   fields={fields}
                   onSubmit={handleFaqSubmit}
                   initialData={initialFaqData} // 처음 렌더링 시에만 사용됨
                   submitButtonText="FAQ 작성하기"
               />
-               <div className="col-md-12 text-center" style={{ marginTop: '20px' }}>
-                    <Link to="/notice" style={{
-                        padding: '10px 20px',
-                        backgroundColor: '#6c757d',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '5px',
-                        textDecoration: 'none',
-                        display: 'inline-block',
-                        verticalAlign: 'middle',
-                        cursor: 'pointer'
-                    }}>목록으로</Link>
-                </div>
-            </div>
-          </div>
+        </div>
+        <button
+            type="button"
+            onClick={() => window.location.href = '/notice'}
+            className='buttons'>목록으로</button>
         </div>
       </div>
     </section>

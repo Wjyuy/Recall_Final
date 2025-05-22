@@ -99,7 +99,7 @@ const handleSearch = useCallback((searchParams) => {
           <div className="section-title text-center">
               <h2 className="title">공지사항</h2>
           </div>
-          <div className="widgets-container">
+          <div className="widgets-container detail-widgets-container">
             <AnnounceSearch
               onSearch={handleSearch}
               initialType={pageMaker.cri.type}
@@ -107,6 +107,7 @@ const handleSearch = useCallback((searchParams) => {
               />
             <AnnounceList announcements={announcements} total={pageMaker.total} />
           </div>
+          <br />
           <Pagination pageMaker={pageMaker} onPageChange={handlePageChange} />
         </div>
     </section>

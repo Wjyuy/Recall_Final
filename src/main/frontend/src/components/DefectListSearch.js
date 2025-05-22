@@ -27,7 +27,6 @@ const DefectListSearch = ({ searchCriteria, onSearchChange, onSearchSubmit }) =>
         onChange={onSearchChange}
       />
 
-      <span>신고일</span>
       <input
         type="date"
         name="reportDate"

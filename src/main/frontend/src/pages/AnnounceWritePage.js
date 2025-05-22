@@ -61,7 +61,7 @@ function AnnounceWritePage() {
 
   return (
     <section id="starter-section" className="starter-section section">
-      <div className="container" data-aos="fade-up">
+      <div className=" detail-widgets-container" data-aos="fade-up">
         <div className="section-title text-center">
             <h2 className="title">공지사항 작성</h2>
         </div>
@@ -70,20 +70,18 @@ function AnnounceWritePage() {
           <section id="announce-write-section" className="announce-write-section section" style={{ padding: '40px 0' }}>
             <div className="container" data-aos="fade-up">
               <div className="row justify-content-center">
-                <div className="col-lg-8">
                   <FormEditor
                       fields={fields}
                       onSubmit={handleAnnounceSubmit}
                       initialData={initialAnnounceData}
                       submitButtonText="공지사항 작성하기"
                   />
-                   <button
-                    type="button"
-                    onClick={() => window.location.href = '/announce'}
-                    className='buttons'>목록으로</button>
-                </div>
               </div>
-            </div>
+                <button
+                type="button"
+                onClick={() => window.location.href = '/announce'}
+                className='buttons'>목록으로</button>
+          </div>
           </section>
         </main>
       </div>

@@ -127,7 +127,7 @@ function DefectReportList() {
                         <h2 className="title">신고 내역</h2>
                     </div>
 
-                    <div className="widgets-container">
+                    <div className="widgets-container detail-widgets-container">
                         <DefectListSearch
                             searchCriteria={{
                                 ...searchCriteria,
@@ -169,6 +169,7 @@ function DefectReportList() {
                             </tbody>
                         </table>
                     </div>
+                    <br/>
 
                     <Pagination pageMaker={pageMaker} onPageChange={handlePageChange} />
 

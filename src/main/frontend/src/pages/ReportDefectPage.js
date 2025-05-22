@@ -139,7 +139,7 @@ function ReportDefectPage() {
             {/* 폼 제출 핸들러 연결 */}
             <form onSubmit={handleSubmit} className="uk-form-stacked">
 
-          <div className="widgets-container" style={{ textAlign: 'center' }}>
+          <div className="widgets-container detail-widgets-container" style={{ textAlign: 'center' }}>
                     <div className="section-title text-center">
                       <h3 className="title">신고자 정보</h3>
                     </div>
@@ -150,7 +150,7 @@ function ReportDefectPage() {
                 </colgroup>
                   <tbody>
                   {/* 신고인 정보 */}
-                  <tr>
+                  <tr className="layer0">
                     <th className="th">신고인<i className="ion-ios7-checkmark-empty"></i></th>
                     <td className="td">
                       <input type="text" id="name" name="reporter_name"
@@ -160,7 +160,7 @@ function ReportDefectPage() {
                     </td>
                   </tr>
                   <tr>
-                    <th className="th">생년월일 (8자리)<i className="ion-ios7-checkmark-empty"></i></th>
+                    <th className="th">생년월일<i className="ion-ios7-checkmark-empty"></i></th>
                     <td className="td">
                       <input id="residentId" name="birth_date"
                              className="uk-input uk-form-width-medium" type="text"
@@ -169,7 +169,7 @@ function ReportDefectPage() {
                     </td>
                   </tr>
                   <tr>
-                    <th className="th">휴대폰번호<i className="ion-ios7-checkmark-empty"></i></th>
+                    <th className="th">휴대번호<i className="ion-ios7-checkmark-empty"></i></th>
                     <td className="td phone">
                       <input type="text" id="cellular_display" maxLength="13"
                              className="uk-input reqed" placeholder="예: 010-1234-5678"
@@ -244,7 +244,8 @@ function ReportDefectPage() {
                 </tbody>
               </table>
                 </div>
-<div className="widgets-container" data-aos="fade-up">
+                <br></br>
+              <div className="widgets-container detail-widgets-container" data-aos="fade-up">
               <div className="section-title text-center">
                 <h3 className="title">자동차 정보</h3>
               </div>

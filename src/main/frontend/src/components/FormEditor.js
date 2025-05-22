@@ -40,7 +40,7 @@ const FormEditor = ({ fields, onSubmit, initialData = {}, submitButtonText = '�
       <div className="row gy-4">
         {/* 관리자 ID 필드 (일반적으로 로그인 정보에서 가져옴) */}
         <div className="col-md-6">
-          <input type="text" className="form-control" placeholder="관리자 ID" value="관리자" readOnly />
+          <input type="text" className="form-control" placeholder="관리자 ID" value="고객" readOnly />
         </div>
         {/* 현재 시간 필드 (백엔드에서 처리하는 것이 일반적) */}
         {showTimeField && (
@@ -67,6 +67,7 @@ const FormEditor = ({ fields, onSubmit, initialData = {}, submitButtonText = '�
                 className="form-control"
                 name={field.name}
                 rows={field.rows || 8}
+                cols={field.cols || 40}
                 placeholder={field.placeholder}
                 value={formData[field.name] || ''}
                 onChange={handleChange}

@@ -517,6 +517,23 @@ margin-left: 20px;
 .table-custom td {
   padding: 6px 8px;
 }
+.detail-widgets-container {
+  width: 80%;
+  max-width: 800px; /* 원하는 최대 너비로 조절 */
+  margin: 0 auto !important;  /* 좌우 자동 마진으로 중앙 정렬 */
+  padding: 20px;
+  /* 추가적으로 필요한 스타일을 여기에 정의할 수 있습니다. */
+  /* 예: box-shadow, border 등 */
+}
+/* 필요하다면 반응형 설정을 위한 미디어 쿼리도 추가할 수 있습니다. */
+@media (max-width: 768px) {
+  .detail-widgets-container {
+    width: 95%; /* 작은 화면에서는 더 넓게 사용 */
+    padding: 15px;
+  }
+  
+}
+
 
 
 

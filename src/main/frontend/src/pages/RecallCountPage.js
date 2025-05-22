@@ -52,7 +52,7 @@ function RecallCountPage() {
           <h2 className="title">중복 리콜 모델 목록</h2>
         </div>
 
-        <div className="widgets-container">
+        <div className="widgets-container detail-widgets-container">
           {repeatedModels && repeatedModels.length > 0 ? (
             <table className="table-custom">
               <thead>

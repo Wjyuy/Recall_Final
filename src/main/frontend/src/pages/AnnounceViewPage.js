@@ -65,7 +65,7 @@ function AnnounceViewPage() {
               <h2 className="title">공지사항</h2>
           </div>
 
-          <div className="announce-detail-page" style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+          <div className="announce-detail-page detail-widgets-container" style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             <h2>{announce.title}</h2>
             <p style={{ color: '#666', fontSize: '0.9em' }}>작성일: {formatDateTime(announce.created_at)}</p>
             <hr style={{ borderTop: '1px solid #eee', margin: '20px 0' }} />

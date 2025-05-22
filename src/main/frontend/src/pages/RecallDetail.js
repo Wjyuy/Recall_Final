@@ -1,6 +1,6 @@
 // src/pages/RecallDetail.js
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useNavigate,useParams, Link } from 'react-router-dom';
 import { fetchRecallDetail } from '../services/recallApiService'; // API 서비스 임포트
 
 function RecallDetail() {
@@ -9,7 +9,11 @@ function RecallDetail() {
     const [similarIds, setSimilarIds] = useState([]); // 유사 리콜 ID를 저장할 상태
     const [loading, setLoading] = useState(true); // 로딩 상태
     const [error, setError] = useState(null); // 에러 상태
+    const navigate = useNavigate();
 
+    const handleGoToList = () => {
+        navigate('/recall_list');
+    };
     useEffect(() => {
         const loadRecallDetail = async () => {
             setLoading(true);
@@ -49,7 +53,7 @@ function RecallDetail() {
                         <h2 className="title">리콜 상세 정보</h2>
                     </div>
 
-                    <div className="widgets-container">
+                    <div className="widgets-container detail-widgets-container" >
                         <table className="table-custom" style={{ width: '100%', margin: '0 auto', borderCollapse: 'collapse' }}>
                             <tbody>
                                 <tr>
@@ -86,33 +90,51 @@ function RecallDetail() {
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
                     {/* 유사 리콜 추천 */}
                     <div style={{ marginTop: '30px' }}>
+                        <div className="section-title text-center">
                         <h3 className="title">유사 리콜 추천</h3>
-                        {similarIds.length > 0 ? (
-                            similarIds.map(sid => (
-                                <p key={sid}><Link to={`/recall_detail/${sid}`}>{sid}번 리콜 보기</Link></p>
+                        </div>
+                        <div style={{ justifyContent: 'center',display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+                            {similarIds.length > 0 ? (
+                                similarIds.map(sid => (
+                                <Link
+                                    key={sid}
+                                    to={`/recall_detail/${sid}`}
+                                    style={{
+                                    display: 'inline-block', // 인라인 블록 요소로 만들어 크기 조절 가능하게
+                                    padding: '8px 15px',     // 패딩으로 버튼처럼 보이게
+                                    backgroundColor: '#f0f0f0', // 연한 회색 배경
+                                    color: '#333',          // 진한 글씨색
+                                    textDecoration: 'none', // 밑줄 제거
+                                    borderRadius: '5px',    // 모서리 둥글게
+                                    border: '1px solid #ddd', // 얇은 테두리
+                                    fontSize: '0.9rem',     // 글씨 크기 조절
+                                    transition: 'background-color 0.3s ease', // 호버 효과
+                                    }}
+                                    onMouseOver={e => e.currentTarget.style.backgroundColor = '#e0e0e0'} // 호버 시 배경색 변경
+                                    onMouseOut={e => e.currentTarget.style.backgroundColor = '#f0f0f0'}  // 호버 아웃 시 원래대로
+                                >
+                                {sid}번 리콜 보기
+                            </Link>
                             ))
                         ) : (
                             <p>유사 리콜이 없습니다.</p>
                         )}
+                        </div>
+                        <button
+                            type="button"
+                            className='buttons'
+                            onClick={handleGoToList} 
+                            style={{
+                                display: 'inline-block',
+                                backgroundColor: '#rgb(108, 117, 125)'
+                            }}
+                            >
+                            목록으로
+                        </button>
                     </div>
 
-                    {/* 목록으로 버튼 */}
-                    <div style={{ marginTop: '30px', textAlign: 'center' }}>
-                        <Link to="/recall_list" className="btn-get-started" style={{
-                            display: 'inline-block',
-                            padding: '10px 20px',
-                            backgroundColor: '#007bff',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '5px',
-                            textDecoration: 'none'
-                        }}>
-                            목록으로
-                        </Link>
                     </div>
 
                 </div>

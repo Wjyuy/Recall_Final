@@ -68,7 +68,7 @@ function DefectDetail() {
                         <h2 className="title">신고 상세 내역</h2>
                     </div>
 
-                    <div className="widgets-container">
+                    <div className="widgets-container detail-widgets-container">
                         {/* JSP에서 <form> 태그는 버튼을 감쌌지만, React에서는 비동기 통신이므로 불필요 */}
                         <table className="table-custom" width="500" border="1" style={{ margin: '0 auto' }}>
                             <tbody>

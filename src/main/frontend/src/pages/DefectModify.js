@@ -109,13 +109,13 @@ function DefectModify() {
         <main id="main">
 
             {/* Starter Section Section */}
-            <section id="starter-section" className="starter-section section" style={{ padding: '40px 0' }}>
+            <section id="starter-section" className="starter-section section" >
                 <div className="container" data-aos="fade-up">
                     <div className="section-title text-center">
                         <h2 className="title">신고 내역 수정</h2>
                     </div>
 
-                    <div className="widgets-container">
+                    <div className="widgets-container detail-widgets-container">
                         {/* React에서는 폼의 상태를 직접 관리하고 제출은 비동기 API 호출로 처리 */}
                         <form onSubmit={handleSubmit}>
                             <input type="hidden" name="id" value={defect.id} /> {/* ID는 숨김 필드로 유지 */}
