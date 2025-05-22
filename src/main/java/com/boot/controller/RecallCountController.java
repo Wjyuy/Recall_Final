@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 //@RequestMapping("/recallCount")
 public class RecallCountController {
 
+	/*
 	@Autowired
 	private RecallCountService service;
 	
@@ -32,4 +33,5 @@ public class RecallCountController {
 		model.addAttribute("repeatedModels", repeatedModels);
 		return "repeatedModels";
 	}
+*/
 }

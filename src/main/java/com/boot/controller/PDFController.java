@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class PDFController {
+/*
     
     @Autowired
     private PdfGenerationService pdfGenerationService;
@@ -199,5 +200,5 @@ public class PDFController {
     	
     	return "pdf/recall_statics_month_summaryList"; 
     }
-	
+*/
 }

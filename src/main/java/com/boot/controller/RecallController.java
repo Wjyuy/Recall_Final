@@ -34,13 +34,10 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class RecallController {
+
+	
 	@Autowired
     private RecallService recallService;
-	
-//	@RequestMapping("/recall_statics")
-//	public String recall_statics(Model model) {
-//		return "recall_statics";
-//	}
 	
 	@RequestMapping(value = "/recall_statics_year", method = {RequestMethod.GET, RequestMethod.POST})
 	public String recall_statics_year( 
@@ -108,28 +105,6 @@ public class RecallController {
         return "recall_statics_month"; 
     }
 	
-/*	
- 	@RequestMapping("/recall_list")
-	public String recall_list(Criteria cri, Model model) throws Exception {
-	    String cntntsId = "0301"; 
-	    List<Defect_DetailsDTO> list = recallService.getProductList(cri, cntntsId);
-	    // 923개의 리콜이 xml 92개로 나눠져 있어서 일단 하드코딩했다
-	    // int total = 923;
-	    // totalcount 값을 알아서 적용하도록 수정
-	    String firstXml = recallService.fetchXmlFromApi(cri, cntntsId);
-	    int total = XmlParserUtil.getTotalCount(firstXml);
-
-	    model.addAttribute("recall_list", list);
-	    model.addAttribute("pageMaker", new PageDTO(total, cri));
-	    
-	    log.info("@#"+cri);
-	    log.info("@#list : "+list);
-	    log.info("@#total : "+total);
-	    log.info("@# : "+new PageDTO(total, cri));
-	    
-		return "recall_list";
-	}
-*/
 	
 	// DB에서 값을 받아오도록 수정
 	@RequestMapping("/recall_list")
@@ -146,19 +121,8 @@ public class RecallController {
 	}
 
 	
-//	//	API -> DB 저장 메서드 (100건 테스트용)
-//	@ResponseBody
-//	@GetMapping("/recall/save")
-//	public String saveToDb() throws Exception {
-//		String cntntsId = "0301";
-//		Criteria cri = new Criteria(1, 100); // 1페이지, 100건
-//		String xml = recallService.fetchXmlFromApi(cri, cntntsId);
-//		List<Defect_DetailsDTO> list = XmlParserUtil.parseToList(xml);
-//		recallService.saveApiDataToDB(list);
-//		return "DB 저장 완료 (" + list.size() + "건)";
-//	}
-//	
-//	//	API -> DB 저장 메서드 (전체)
+
+//	API -> DB 저장 메서드 (전체)
 	@ResponseBody
 	@GetMapping("/recall/saveAll")
 	public String saveAllToDb() throws Exception {
@@ -186,18 +150,8 @@ public class RecallController {
 		System.out.println("totalCount: " + total);
 		return "전체 저장 완료! 총 " + savedCount + "건 저장됨.";
 	}
-//
-////	API 동기화 메서드 (100건 테스트용)
-//	@GetMapping("/recall/sync")
-//	@ResponseBody
-//	public String syncData() throws Exception {
-//		String xml = recallService.fetchXmlFromApi(new Criteria(1, 100), "0301");
-//		List<Defect_DetailsDTO> list = XmlParserUtil.parseToList(xml);
-//		SyncDTO result = recallService.syncApiDataWithDB(list);
-//		return "동기화 완료! " + result.toString();
-//	}
-//	
-////	API 동기화 메서드 (전체)
+
+//	API 동기화 메서드 (전체)
 	@GetMapping("/recall/syncAll")
 	@ResponseBody
 	public String syncAllToDb() throws Exception {
@@ -230,24 +184,6 @@ public class RecallController {
 		return "전체 동기화 완료! 총 insert: " + inserted + ", update: " + updated + ", skip: " + skipped;
 	}
 	
-//	// 테스트용
-//	@GetMapping("/recall/similar/{id}")
-//	@ResponseBody
-//	public List<Integer> getSimilarRecalls(@PathVariable("id") int id) {
-//		return recallService.getSimilarRecallIds(id);
-//	}
-
-//	// 상세 페이지
-//	@GetMapping("/recall_detail_{id}")
-//	public String getRecallDetail(@PathVariable("id") int id, Model model) {
-//		Defect_DetailsDTO recall = recallService.getRecallById(id);
-//		List<Integer> similarIds = recallService.getSimilarRecallIds(id);
-//
-//		model.addAttribute("recall", recall);
-//		model.addAttribute("similarIds", similarIds);
-//		return "recall_detail";
-//	}
-	
 	// CSV 파일로 변환
 	@GetMapping("/recall/export")
 	@ResponseBody
@@ -255,7 +191,6 @@ public class RecallController {
 		try {
 			List<Defect_DetailsDTO> list = recallService.getAllRecalls(); // 전체 불러오기
 
-//			FileWriter writer = new FileWriter("C:/develop/recall-ai-recommend/recall.csv");	//글자가 깨짐
 			OutputStreamWriter writer = new OutputStreamWriter(
 					new FileOutputStream("C:/develop/recall-ai-recommend/recall.csv"),
 					StandardCharsets.UTF_8

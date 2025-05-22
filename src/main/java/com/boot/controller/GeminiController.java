@@ -16,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/chat")
 @Slf4j
 public class GeminiController {
+/*	
+
 	@Autowired
     private GeminiService geminiService; // 인터페이스 타입으로 주입
 
@@ -45,4 +47,5 @@ public class GeminiController {
         return "chat"; // 결과를 보여줄 뷰 이름 반환 (예: chat.jsp) [24, 34, 35]
     }
     
+*/    
 }

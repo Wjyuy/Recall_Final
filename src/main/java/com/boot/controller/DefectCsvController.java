@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DefectCsvController {
 
+	/*
     private final DefectCsvService defectCsvService;
     private final PageService pageService;
    
@@ -152,4 +153,6 @@ public class DefectCsvController {
         defectCsvService.saveDefects(defectList);
         return "저장 완료: " + defectList.size() + "건";
     }
+    
+*/    
 }

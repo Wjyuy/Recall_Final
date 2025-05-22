@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class NoticeController {
-	
+/*	
 	@Autowired
 	private FaqannService service;
 	
@@ -64,4 +64,5 @@ public class NoticeController {
 		
 		return "notice_write";
 	}
+*/
 }
