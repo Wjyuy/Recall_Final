@@ -26,7 +26,7 @@ const MenuItem = ({ item, onNavigate }) => {
     >
       <Link to={item.link || '#'} className={item.children ? 'dropdown-toggle' : ''} onClick={handleClick}>
         <span>{item.label}</span>
-        {item.children && <i className="bi bi-chevron-down toggle-dropdown"></i>}
+        {item.children && <i className="bi toggle-dropdown"></i>}
       </Link>
       {item.children && isDropdownOpen && (
         <ul className="dropdown-menu">

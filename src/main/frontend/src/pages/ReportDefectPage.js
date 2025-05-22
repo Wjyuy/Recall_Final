@@ -128,7 +128,7 @@ function ReportDefectPage() {
   return (
     <main id="main">
     
-      <section id="starter-section" className="starter-section section" style={{ padding: '40px 0' }}>
+      <section id="starter-section" className="starter-section section" >
         <div className="container" data-aos="fade-up">
           <div className="section-title text-center">
             <h2 className="title">정보 입력</h2>
