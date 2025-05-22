@@ -22,7 +22,15 @@ const menuItems = [
       { label: 'FAQ', link: '/notice' },
     ],
   },
-  { label: '리콜통계', link: '/recall_statics_year' },
+  {
+    label: '리콜통계',
+    link: '/recall_statics_year',
+    children: [
+      { label: '연도별', link: '/recall_statics_year' },
+      { label: '월별', link: '/recall_statics_Month' },
+      { label: '중복모델', link: '/#' },
+    ],
+  },
   {
     label: '관리자',
     link: '/jwt-test',
