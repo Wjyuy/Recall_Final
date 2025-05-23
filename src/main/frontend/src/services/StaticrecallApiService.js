@@ -17,7 +17,18 @@ export const fetchRecallStaticsYear = async (params = {}) => {
     const response = await axios.get(`${API_BASE_URL}/recall_statics_year`, { params });
     return response.data;
   } catch (error) {
-    console.error('Failed to fetch recall statics year:', error);
+    // console.error('Failed to fetch recall statics year:', error);
+    
+     // axios 에러 객체는 response가 있을 수 있음
+    if (error.response) {
+      console.error('Failed to fetch recall statics year:', {
+        status: error.response.status,
+        data: error.response.data,
+      });
+    } else {
+      console.error('Failed to fetch recall statics year:', error.message);
+    }
+
     throw error;
   }
 };

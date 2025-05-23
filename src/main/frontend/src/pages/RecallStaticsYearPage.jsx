@@ -287,7 +287,7 @@ const RecallStaticsYearPage = () => {
                   <h2 className="title">제조사별 리콜 대수 비율</h2>
                   <br></br>
                 </div>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={500}>
                   <PieChart>
                   <Pie
                       data={groupedRecallStats.map(entry => ({ name: entry.key, value: entry.value.reduce((sum, recall) => sum + recall.recallCount, 0) }))}
@@ -295,7 +295,7 @@ const RecallStaticsYearPage = () => {
                       nameKey="name"
                       cx="50%"
                       cy="50%"
-                      outerRadius={100}
+                      outerRadius={150}
                       labelLine={false}
                       
                       >

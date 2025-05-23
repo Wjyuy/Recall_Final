@@ -300,13 +300,11 @@
     transition: all 0.3s ease; /* 애니메이션 효과 */
   }
 
-
-
     input:focus, textarea:focus {
-      border-color: #007bff;
+      border-color: #40a297;
       background-color: #fff;
       outline: none;
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      box-shadow: 0 0 5px rgba(25, 64, 59, 0.5);
     }
 
     input {
@@ -320,17 +318,17 @@
     background-color: #f9f9f9; /* 배경색 */
     font-size: 14px; /* 텍스트 크기 */
     color: #333; /* 텍스트 색상 */
-	font-family: 'Helvetica Neue', Arial, sans-serif; /* 깔끔한 폰트 */
-	font-weight: 400; /* 적당한 폰트 두께 */
-	text-align: left; /* 텍스트 정렬 */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 깔끔한 폰트 */
+    font-weight: 400; /* 적당한 폰트 두께 */
+    text-align: left; /* 텍스트 정렬 */
     transition: all 0.3s ease; /* 애니메이션 효과 */
   }
 
   input:focus {
-    border-color: #007bff; /* 포커스 시 테두리 색상 */
+    border-color: #40a297; /* 포커스 시 테두리 색상 */
     background-color: #fff; /* 포커스 시 배경색 */
     outline: none; /* 기본 포커스 아웃라인 제거 */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 포커스 시 그림자 */
+    box-shadow: 0 0 5px rgba(25, 64, 59, 0.5); /* 포커스 시 그림자 */
   }
   
 .buttons{
@@ -650,6 +648,7 @@ margin-left: 20px;
   gap: 10px; /* 자식 요소들 사이에 10px 간격 추가 */
   margin-top: 10px; /* 상단 여백 10px 추가 */
 }
+
 
 
     

@@ -38,7 +38,11 @@ public class ReactRecallStaticController {
 		    HttpSession session) {
 		
 		log.info("@#recall_statics_year");
+		log.info("@#recall_statics_year called with startYear={}, endYear={}", startYear, endYear);
 		Map<String, Object> paramMap = new HashMap<>();
+		
+		
+		
 		if (startYear == null || startYear == 0) {
 			startYear=2000;
 		}
@@ -47,6 +51,8 @@ public class ReactRecallStaticController {
 		}
 		paramMap.put("start_year", startYear);
         paramMap.put("end_year", endYear);
+        
+        try {
         //리콜현황
         DefectReportSummaryDTO summary = recallService.getDefectReportSummary(paramMap);
         List<DefectReportSummaryDTO> summaryList  = recallService.getDefectReportSummaryByYear(paramMap);
@@ -62,6 +68,10 @@ public class ReactRecallStaticController {
             .map(e -> Map.of("key", e.getKey(), "value", e.getValue()))
             .collect(Collectors.toList()));
         return result;
+        } catch (Exception e) {
+            log.error("Error in recall_statics_year: ", e);
+            throw e;  // 혹은 적절한 에러 응답 리턴
+        }
 	}
 	
 	@GetMapping("/recall_statics_month")
@@ -74,6 +84,21 @@ public class ReactRecallStaticController {
 		
 		log.info("recall_statics_month");
 		log.info("endMonth"+endMonth+"start_month"+startMonth);
+		
+		 // 기본값 설정
+	    if (startYear == null || startYear == 0) {
+	        startYear = 2020;
+	    }
+	    if (endYear == null || endYear == 0) {
+	        endYear = 2025;
+	    }
+	    if (startMonth == null || startMonth < 1 || startMonth > 12) {
+	        startMonth = 1;
+	    }
+	    if (endMonth == null || endMonth < 1 || endMonth > 12) {
+	        endMonth = 12;
+	    }
+		
         Map<String, Object> params = new HashMap<>();
         params.put("start_year", startYear);
         params.put("start_month", startMonth);
