@@ -85,7 +85,7 @@ const RecallStaticsYearPage = () => {
               ))}
             </select>
           </div>
-          <input type="submit" value="조회" className="btn-get-started" />
+          <input type="submit" value="조회" className="gray-button-round" />
         </form>
         {loading && <div>로딩 중...</div>}
         {error && <div style={{ color: 'red' }}>{error}</div>}
@@ -94,6 +94,7 @@ const RecallStaticsYearPage = () => {
             <div className="text-center">
               <h2 className="title">결함 신고 요약 통계{startYear && endYear ? `(${startYear} ~ ${endYear})` : '(2000 ~ 2025 전체)'}</h2>
             </div>
+            <div style={{ width: '100%', overflowX: 'auto' }}>
             <table className="table-summary" style={{ marginBottom: 32 }}>
               <thead>
                 <tr>
@@ -118,6 +119,7 @@ const RecallStaticsYearPage = () => {
                 </tr>
               </tbody>
             </table>
+            </div>
           </section>
         )}
         {summaryList.length > 0 && (
@@ -127,12 +129,13 @@ const RecallStaticsYearPage = () => {
               const el = document.getElementById('content1');
               if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
               e.target.textContent = el.style.display === 'block' ? '자세히 보기 -' : '자세히 보기 +';
-            }} className="btn-get-started" style={{ marginBottom: 16 }}>자세히 보기 +</button>
+            }} className="gray-button-round" style={{ marginBottom: 16 }}>자세히 보기 +</button>
             <div id="content1" style={{ display: 'none' }}>
               
               <div className="text-center">
                 <h2 className="title">연도별 리콜 현황</h2>
               </div>
+              <div style={{ width: '100%', overflowX: 'auto' }}>
               <table className="table-summary" style={{ marginBottom: 32 }}>
                 <thead>
                   <tr>
@@ -159,6 +162,7 @@ const RecallStaticsYearPage = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
               <div className="text-center">
                 <h2 className="title">연도별 리콜 차종</h2>
               </div>
@@ -224,7 +228,7 @@ const RecallStaticsYearPage = () => {
               const el = document.getElementById('content2');
               if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
               e.target.textContent = el.style.display === 'block' ? '자세히 보기 -' : '자세히 보기 +';
-            }} className="btn-get-started" style={{ marginBottom: 16 }}>자세히 보기 +</button>
+            }} className="gray-button-round" style={{ marginBottom: 16 }}>자세히 보기 +</button>
 
               <div id="content2" style={{ display: 'none' }}>
                 <div className="text-center">
@@ -281,8 +285,9 @@ const RecallStaticsYearPage = () => {
               <section>
                 <div className="text-center">
                   <h2 className="title">제조사별 리콜 대수 비율</h2>
+                  <br></br>
                 </div>
-              <ResponsiveContainer width="100%" height={320}>
+              <ResponsiveContainer width="100%" height={400}>
                   <PieChart>
                   <Pie
                       data={groupedRecallStats.map(entry => ({ name: entry.key, value: entry.value.reduce((sum, recall) => sum + recall.recallCount, 0) }))}
@@ -290,8 +295,9 @@ const RecallStaticsYearPage = () => {
                       nameKey="name"
                       cx="50%"
                       cy="50%"
-                      outerRadius={120}
-                      label
+                      outerRadius={100}
+                      labelLine={false}
+                      
                       >
                       {groupedRecallStats.map((entry, idx) => (
                           <Cell key={`cell-${idx}`} fill={["#3D8D7A", "#B3D8A8", "#FBFFE4", "#A3D1C6", "#BEE4D0", "#b7dcd8", "#80c1ba"][idx % 7]} />

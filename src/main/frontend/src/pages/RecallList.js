@@ -173,9 +173,10 @@ function RecallList() {
                         </div>
                     </div>
 
-                    <div className="download-btn-group">
+                    <div className='center-group-container'>
                         <button
                             id="downloadCsvBtn"
+                            className='round-button'
                             onClick={handleDownloadCsv}
                         >
                             CSV 전체 다운로드
@@ -183,6 +184,7 @@ function RecallList() {
                         <button
                             id="excelDownloadBtn"
                             onClick={handleDownloadExcel}
+                            className='round-button'
                         >
                             엑셀 전체 다운로드
                         </button>

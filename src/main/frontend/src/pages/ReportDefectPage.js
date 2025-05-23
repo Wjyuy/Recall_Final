@@ -192,8 +192,8 @@ function ReportDefectPage() {
                       <p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <input id="zipcode" name="zipcode" className="uk-input uk-form-width-medium reqed" title="주소" type="text" readOnly value={formData.zipcode || ''}/>
-                        <button type="button" id="zipcodeBtn" onClick={daumPostcode} className="uk-button uk-button-secondary">
-                          우편번호
+                        <button type="button" id="zipcodeBtn" onClick={daumPostcode} className="round-button">
+                          <i class="bi bi-mailbox2"></i>
                         </button>
                         </div>
                       </p>

@@ -39,7 +39,7 @@ function LoginForm() {
 					<div style={{ justifyContent: 'center',display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
 					<input type="text" value={id} onChange={(e) => setId(e.target.value)} placeholder="ID"/>
 					<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-					<button type="submit">로그인</button>
+					<button className="round-button" type="submit">로그인</button>
 					</div>
 				</form>
 				{error && <p style={{ color: "red" }}>{error}</p>}
