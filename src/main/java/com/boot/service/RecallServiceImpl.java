@@ -18,6 +18,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -309,6 +314,49 @@ public class RecallServiceImpl implements RecallService{
             return "\"" + cleanedText + "\"";
         }
         return cleanedText.trim();
+    }
+
+    @Override
+    public byte[] generateExcelReport() throws IOException {
+        // 워크북과 시트 생성
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Recall List");
+
+        // 헤더 행 생성
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("ID");
+        headerRow.createCell(1).setCellValue("Product Name");
+        headerRow.createCell(2).setCellValue("Manufacturer");
+        headerRow.createCell(3).setCellValue("Model Name");
+        headerRow.createCell(4).setCellValue("Recall Type");
+        headerRow.createCell(5).setCellValue("Additional Info");
+
+        // DB에서 전체 recall 리스트 불러오기
+        List<Defect_DetailsDTO> recallList = getAllRecalls();
+
+        // 데이터 행 생성
+        int rowNum = 1;
+        for (Defect_DetailsDTO dto : recallList) {
+            Row row = sheet.createRow(rowNum++);
+            row.createCell(0).setCellValue(dto.getId());
+            row.createCell(1).setCellValue(dto.getProduct_name() != null ? dto.getProduct_name() : "");
+            row.createCell(2).setCellValue(dto.getManufacturer() != null ? dto.getManufacturer() : "");
+            row.createCell(3).setCellValue(dto.getModel_name() != null ? dto.getModel_name() : "");
+            row.createCell(4).setCellValue(dto.getRecall_type() != null ? dto.getRecall_type() : "");
+            row.createCell(5).setCellValue(dto.getAdditional_info() != null ? dto.getAdditional_info() : "");
+        }
+
+        // 컬럼 너비 자동 조절
+        for (int i = 0; i <= 5; i++) {
+            sheet.autoSizeColumn(i);
+        }
+
+        // 바이트 배열로 변환
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        workbook.write(bos);
+        workbook.close();
+
+        return bos.toByteArray();
     }
 
 	

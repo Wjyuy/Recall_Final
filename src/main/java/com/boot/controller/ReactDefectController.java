@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus; // ResponseEntity 사용을 위해 추가
 import org.springframework.http.ResponseEntity; // ResponseEntity 사용을 위해 추가
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin; // CORS 설정을 위해 추가
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,23 +17,18 @@ import org.springframework.web.bind.annotation.PostMapping; // POST 요청 처�
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody; // JSON 요청 바디를 받기 위해 추가
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.boot.dto.AnnounceDTO;
 import com.boot.dto.Criteria;
 import com.boot.dto.DefectListDTO;
 import com.boot.dto.Defect_DetailsDTO;
 import com.boot.dto.Defect_ReportsDTO; // DTO 임포트 확인
 import com.boot.dto.PageDTO;
-import com.boot.dto.SyncDTO;
 import com.boot.service.DefactService;
 import com.boot.service.DefectListService;
 import com.boot.service.PageService;
 import com.boot.service.RecallService;
-import com.boot.service.RecallServiceImpl.XmlParserUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -317,20 +311,20 @@ public class ReactDefectController {
         }
     }
 
-//    // 엑셀 전체 다운로드 API
-//    @GetMapping("/recall/downloadExcel")
-//    public ResponseEntity<byte[]> downloadRecallExcel() {
-//        try {
-//            byte[] excelBytes = recallService.generateExcelReport(); // 서비스에서 엑셀 데이터 생성
-//            return ResponseEntity.ok()
-//                    .header("Content-Disposition", "attachment; filename=\"recall_list.xlsx\"")
-//                    .contentType(org.springframework.http.MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
-//                    .body(excelBytes);
-//        } catch (IOException e) {
-//            log.error("@# 엑셀 파일 생성 또는 다운로드 중 오류 발생: {}", e.getMessage(), e);
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    // 엑셀 전체 다운로드 API
+    @GetMapping("/recall/downloadExcel")
+    public ResponseEntity<byte[]> downloadRecallExcel() {
+        try {
+            byte[] excelBytes = recallService.generateExcelReport(); // 서비스에서 엑셀 데이터 생성
+            return ResponseEntity.ok()
+                    .header("Content-Disposition", "attachment; filename=\"recall_list.xlsx\"")
+                    .contentType(org.springframework.http.MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+                    .body(excelBytes);
+        } catch (IOException e) {
+            log.error("@# 엑셀 파일 생성 또는 다운로드 중 오류 발생: {}", e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
   
 /*    
     

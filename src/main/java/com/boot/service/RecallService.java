@@ -30,8 +30,11 @@ public interface RecallService {
 	List<Defect_DetailsDTO> getAllRecallByCri(Criteria cri); // DB의 recall 모두 cri 기반 select
 	int getRecallTotalCount(Criteria cri);    
 	
-	//react용
+	//react용 csv 다운 
 	public byte[] generateCsvReport() throws IOException;
+	
+	//react용 excel 다운 
+	public byte[] generateExcelReport() throws IOException;
 
 
 }
