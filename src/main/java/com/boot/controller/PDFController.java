@@ -13,14 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired; // @Autowired 어노테이션 사용 [21, 24, 27, 28, 30]
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller; // @Controller 어노테이션 사용 [18-20]
 import org.springframework.ui.Model; // Model 객체 사용 (뷰에 데이터 전달) [24, 34]
 import org.springframework.web.bind.annotation.GetMapping; // @GetMapping 어노테이션 사용 [22, 24]
 import org.springframework.web.bind.annotation.PostMapping; // @PostMapping 어노테이션 사용 [22, 24]
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam; // @RequestParam 어노테이션 사용 [24]
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.boot.dto.ChatRequest;
 import com.boot.dto.DefectReportSummaryDTO;
 import com.boot.dto.ManufacturerRecallDTO;
 import com.boot.service.GeminiService;
@@ -199,6 +202,24 @@ public class PDFController {
     	model.addAttribute("answer", geminiAnswer);
     	
     	return "pdf/recall_statics_month_summaryList"; 
+    }
+    
+    @PostMapping("/askchatbot")
+    public ResponseEntity<String> askChatbot(@RequestBody ChatRequest request) {
+        // ⭐️ 사용자 질문에 프롬프트(페르소나) 추가
+        String userQuestion = request.getQuestion();
+        String predefinedPrompt = "당신은 자동차 결함 및 리콜 전문가 챗봇입니다. " +
+                                  "사용자의 질문에 대해 **오직 자동차 결함 및 리콜과 관련된 내용만** 답변해야 합니다. " +
+                                  "관련 없는 질문에는 '저는 자동차 결함 및 리콜에 대해서만 답변할 수 있습니다.'라고 답해주세요. " +
+                                  "하지만 고마워,감사합니다 등의 인사가 포함되었을때는 '도움이 되어서 다행입니다! 추가 질문 있으시면 부담없이 물어보세요 😊'라고 답해주세요." +
+                                  "질문: ";
+        
+        String fullQuestion = predefinedPrompt + userQuestion;
+        
+        System.out.println("Gemini에 보낼 전체 질문: " + fullQuestion); // 디버깅 용도
+
+        String geminiAnswer = geminiService.askGemini(fullQuestion);
+        return ResponseEntity.ok(geminiAnswer);
     }
 
 }

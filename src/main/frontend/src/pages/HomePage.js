@@ -12,7 +12,7 @@ function HomePage() {
       <section id="starter-section" className="starter-section section" >
         <div className="container" data-aos="fade-up">
           <div className="section-title text-center">
-            <h2 className="title">차량 리콜 및 결함 신고의 모든 것</h2>
+            <h2 className="title">RECALL-CENTER</h2>
           </div>
 
           <div className="widgets-container detail-widgets-container" >
@@ -20,7 +20,7 @@ function HomePage() {
               <h3>주요 서비스</h3>
               <div class="card-grid">
                   <a href="/recall_list" class="feature-card">
-                      <i class="icon bi-car"></i> <h4>리콜 정보</h4>
+                      <i class="icon bi-car-front"></i> <h4>리콜 정보</h4>
                       <p>최신 차량 리콜 정보를 확인하세요.</p>
                   </a>
                   <a href="/defect_list" class="feature-card">

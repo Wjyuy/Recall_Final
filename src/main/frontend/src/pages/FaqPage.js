@@ -113,8 +113,8 @@ function FaqPage() {
               initialType={pageMaker.cri.type}
               initialKeyword={pageMaker.cri.keyword}
             />
-          <div style={{ textAlign: 'right', marginTop: '20px' }}>
-             <Link to="/notice_write" >질문 작성하기</Link>
+          <div style={{ textAlign: 'right', marginTop: '20px',color: '#40a297' }}>
+             <Link style={{ color: '#40a297',textdecoration: 'none' }} to="/notice_write" >질문 작성하기</Link>
           </div>
           </div>
           {/* Blog Pagination Section (AnnouncePage에서 재사용) */}

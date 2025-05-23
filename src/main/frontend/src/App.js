@@ -1,12 +1,15 @@
-// App.js (일부 수정)
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import FloatingButton from './components/FloatingButton'; // 플로팅 버튼 
+import ChatbotPopup from './components/ChatbotPopup'; // 챗봇 팝업 
+
 import MainLayout from './layout/MainLayout';
 import HomePage from './pages/HomePage';
 import UserProfilePage from './pages/UserProfilePage';
-import AnnouncePage from './pages/AnnouncePage'; // AnnouncePage import
-import AnnounceViewPage from './pages/AnnounceViewPage'; // AnnounceViewPage import
-import FaqPage from './pages/FaqPage'; // FaqPage import
+import AnnouncePage from './pages/AnnouncePage'; 
+import AnnounceViewPage from './pages/AnnounceViewPage';
+import FaqPage from './pages/FaqPage';
 import FaqWritePage from './pages/FaqWritePage';
 import AnnounceWritePage from './pages/AnnounceWritePage';
 import ReportDefectPage from './pages/ReportDefectPage';
@@ -46,6 +49,11 @@ function PdfDownloadPage() {
 
 function App() {
   const [backendData, setBackendData] = useState(null);
+  
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false); // 챗봇 
+  const handleChatbotToggle = () => {
+    setIsChatbotOpen((prev) => !prev);
+  };
 
   useEffect(() => {
     const loadTestData = async () => {
@@ -58,33 +66,43 @@ function App() {
 
   return (
     <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/profile" element={<UserProfilePage />} />
-          <Route path="/announce" element={<AnnouncePage />} />
-          <Route path="/announce_view/:id" element={<AnnounceViewPage />} />
-          <Route path="/notice" element={<FaqPage />} />
-          <Route path="/notice_write" element={<FaqWritePage />} />
-          <Route path="/announce_write" element={<AnnounceWritePage />} />
-          <Route path="/defect_reports" element={<ReportDefectPage />} />
-          <Route path="/defect_list" element={<DefectReportListPage />} />
-          <Route path="/defect_detail/:id" element={<DefectDetail />} />
-          <Route path="/defect_pwcheck/:id" element={<DefectPasswordCheck />} />
-          <Route path="/defect_modify/:id" element={<DefectModify />} />
-          <Route path="/recall_list" element={<RecallList />} />
-          <Route path="/recall_detail/:id" element={<RecallDetail />} />
-          <Route path="/defect_details_check" element={<DefectDetailsCheckPage />} />
-          <Route path="/recall_statics_year" element={<RecallStaticsYearPage />} />
-          <Route path="/recall_statics_Month" element={<RecallStaticsMonthPage />} />
-          <Route path="/recall_statics_year/pdf" element={<PdfDownloadPage />} />
-          <Route path="/RecallCountPage" element={<RecallCount />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/jwt-test" element={<JwtTestPage />} />
-        </Routes>
+      <>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<UserProfilePage />} />
+            <Route path="/announce" element={<AnnouncePage />} />
+            <Route path="/announce_view/:id" element={<AnnounceViewPage />} />
+            <Route path="/notice" element={<FaqPage />} />
+            <Route path="/notice_write" element={<FaqWritePage />} />
+            <Route path="/announce_write" element={<AnnounceWritePage />} />
+            <Route path="/defect_reports" element={<ReportDefectPage />} />
+            <Route path="/defect_list" element={<DefectReportListPage />} />
+            <Route path="/defect_detail/:id" element={<DefectDetail />} />
+            <Route path="/defect_pwcheck/:id" element={<DefectPasswordCheck />} />
+            <Route path="/defect_modify/:id" element={<DefectModify />} />
+            <Route path="/recall_list" element={<RecallList />} />
+            <Route path="/recall_detail/:id" element={<RecallDetail />} />
+            <Route path="/defect_details_check" element={<DefectDetailsCheckPage />} />
+            <Route path="/recall_statics_year" element={<RecallStaticsYearPage />} />
+            <Route path="/recall_statics_Month" element={<RecallStaticsMonthPage />} />
+            <Route path="/recall_statics_year/pdf" element={<PdfDownloadPage />} />
+            <Route path="/RecallCountPage" element={<RecallCount />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/jwt-test" element={<JwtTestPage />} />
+          </Routes>
+        </MainLayout>
 
-       
-      </MainLayout>
+        <FloatingButton type="top" style={{ bottom: '80px' }} /> {/* 맨 위로 버튼 */}
+        <FloatingButton
+          type="chatbot"
+          onClick={handleChatbotToggle}
+        />
+        <ChatbotPopup
+          isOpen={isChatbotOpen}
+          onClose={handleChatbotToggle}
+        />
+      </>
     </Router>
   );
 }
