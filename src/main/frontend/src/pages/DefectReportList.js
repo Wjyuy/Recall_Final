@@ -140,6 +140,7 @@ function DefectReportList() {
                             onSearchSubmit={handleSearchSubmit}
                         />
 
+                    <div style={{ width: '100%', overflowX: 'auto' }}>
                         <table className="table-custom">
                             <thead>
                                 <tr>
@@ -168,6 +169,7 @@ function DefectReportList() {
                                 )}
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <br/>
 
