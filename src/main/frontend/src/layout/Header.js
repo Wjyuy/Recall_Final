@@ -44,7 +44,7 @@ const menuItems = [
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(55); // 기본값 55
+  const [headerHeight, setHeaderHeight] = useState(50); // 기본값 55
   const headerRef = useRef(null);
 
   // 모바일 메뉴 토글
@@ -63,25 +63,6 @@ function Header() {
     }
   }, []);
 
-  useEffect(() => {
-    function handleResize() {
-      const btn = document.getElementById('mobileMenuBtn');
-      if (!btn) return;
-      if (window.innerWidth <= 991) {
-        btn.style.display = 'block';
-      } else {
-        btn.style.display = 'none';
-      }
-      // 헤더 높이 재계산
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize(); // mount 시 1회
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <header ref={headerRef} style={{ backgroundColor: '#333', color: 'white', padding: '10px', display: 'flex', alignItems: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000 }}>
       <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -89,23 +70,22 @@ function Header() {
       </Link>
 
       {/* 데스크탑 메뉴 */}
-      <nav id="navmenu" className="navmenu" style={{ marginLeft: 'auto', display: mobileMenuOpen ? 'none' : 'block' }}>
+      <nav id="navmenu" className="navmenu" style={{ marginLeft: 'auto', display: mobileMenuOpen ? 'none' : undefined, position: 'relative' }}>
         <ul style={{ display: 'flex', gap: 0, margin: 0, padding: 0, listStyle: 'none' }}>
           {menuItems.map((item, index) => (
             <MenuItem key={index} item={item} />
           ))}
         </ul>
-        {/* 모바일 메뉴 토글 버튼 - 화면이 축소(991px 이하)일 때만 보이게 */}
+        {/* 모바일 메뉴 토글 버튼 - CSS 미디어 쿼리로 제어, position: fixed로 헤더 우측 상단에 고정 */}
         <i
           className="mobile-nav-toggle d-xl-none bi bi-list"
           style={{
             fontSize: 28,
             marginLeft: 16,
             cursor: 'pointer',
-            display: 'none', // 기본은 숨김
-            position: 'absolute',
+            position: 'absolute', // fixed → absolute
             right: 20,
-            top: 10,
+            top: 10, // headerHeight → 10
             zIndex: 2100,
           }}
           onClick={handleMobileMenuToggle}
@@ -119,7 +99,7 @@ function Header() {
           className="mobile-nav"
           style={{
             position: 'fixed',
-            top: headerHeight, // 동적으로 측정된 헤더 높이만큼 아래에서 시작
+            top: 0, // headerHeight → 0 (헤더와 바로 붙게)
             left: 0,
             width: '100%',
             background: '#222',
@@ -153,6 +133,17 @@ function Header() {
           </ul>
         </nav>
       )}
+      {/* 반응형 햄버거/네비게이션 CSS */}
+      <style>{`
+        @media (max-width: 1199px) {
+          .navmenu > ul { display: none !important; }
+          .mobile-nav-toggle { display: block !important; position: fixed !important; right: 20px !important; top: 10px !important; }
+        }
+        @media (min-width: 1200px) {
+          .navmenu > ul { display: flex !important; }
+          .mobile-nav-toggle { display: none !important; }
+        }
+      `}</style>
     </header>
   );
 }
