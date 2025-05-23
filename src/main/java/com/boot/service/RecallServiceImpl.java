@@ -24,6 +24,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -49,6 +50,9 @@ public class RecallServiceImpl implements RecallService{
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	@Value("${mybatis.config.dbType}")
+    private String dbType;
 	
 	@Override
 	public List<Defect_DetailsDTO> getProductList(Criteria cri, String cntntsId) throws Exception {
@@ -160,6 +164,14 @@ public class RecallServiceImpl implements RecallService{
 	
 	@Override
 	public List<DefectReportSummaryDTO> getDefectReportSummaryByYear(Map<String, Object> paramMap) {
+		
+		safePut(paramMap, "start_year");
+	    safePut(paramMap, "end_year");
+		
+		if (!paramMap.containsKey("dbType")) {
+	        paramMap.put("dbType", dbType);
+	    }//분기처리용
+		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
 	    return dao.getDefectReportSummaryByYear(paramMap);
 	}
@@ -173,8 +185,27 @@ public class RecallServiceImpl implements RecallService{
 	@Override
 	public List<DefectReportSummaryDTO> getDefectReportSummaryByMonth(Map<String, Object> paramMap) {
 		log.info("paramMap =>"+paramMap);
+		
+		// null-safe 처리
+	    safePut(paramMap, "start_year");
+	    safePut(paramMap, "start_month");
+	    safePut(paramMap, "end_year");
+	    safePut(paramMap, "end_month");
+		
+		
+		if (!paramMap.containsKey("dbType")) {
+	        paramMap.put("dbType", dbType);
+	    } //분기처리용
+		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
 		return dao.getDefectReportSummaryByMonth(paramMap);
+	}
+	
+	private void safePut(Map<String, Object> map, String key) {
+	    Object val = map.get(key);
+	    if (val == null) {
+	        map.put(key, "");
+	    }
 	}
 
 	@Override
