@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-function ApiSyncButton() {
-	const [result, setResult] = useState(null);
+function ApiSyncButton({onResultUpdate}) {
 	const [loading, setLoading] = useState(false);
 
 	const handleSync = async () => {
 		setLoading(true);
-		setResult(null);
+		onResultUpdate(null); // ⭐️ 버튼 클릭 시 부모의 결과 상태를 초기화
 		const token = localStorage.getItem("jwt_token");
 
 		try {
@@ -18,10 +17,10 @@ function ApiSyncButton() {
 				}
 			});
 			const data = await res.json();
-			setResult(`✅ ${data.message} (insert: ${data.inserted}, update: ${data.updated}, skip: ${data.skipped})`);
+			onResultUpdate(`✅ ${data.message} (insert: ${data.inserted}, update: ${data.updated}, skip: ${data.skipped})`);
 		} catch (err) {
 			console.error(err);
-			setResult("❌ 동기화 실패");
+			onResultUpdate("❌ 동기화 실패");
 		} finally {
 			setLoading(false);
 		}
@@ -32,7 +31,6 @@ function ApiSyncButton() {
 			<button className="gray-button" onClick={handleSync} disabled={loading}>
 				{loading ? "동기화 중..." : "API 동기화"}
 			</button>
-			{result && <p>{result}</p>}
 		</div>
 	);
 }

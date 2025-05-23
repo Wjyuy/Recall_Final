@@ -6,6 +6,8 @@ import ApiSyncButton from "../components/ApiSyncButton";
 function JwtTestPage() {
 	const [adminName, setUserName] = useState('관리자');
 	const [message, setMessage] = useState(`KH 리콜정보 관리자 시스템에 오신 것을 환영합니다. ${adminName} 님`);
+	const [apiSaveResult, setApiSaveResult] = useState(null); 
+    const [apiSyncResult, setApiSyncResult] = useState(null); 
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -44,11 +46,14 @@ function JwtTestPage() {
 					<h2 className="title">관리자 페이지</h2>
 				</div>
 				<div className="widgets-container detail-widgets-container">
+				{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
+				{apiSaveResult && <p style={{ textAlign: 'center', marginTop: '10px' }}>{apiSaveResult}</p>}
+				{apiSyncResult && <p style={{ textAlign: 'center', marginTop: '5px' }}>{apiSyncResult}</p>} 
 				<div style={{ justifyContent: 'center',display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
-					{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
 
-					<ApiSaveButton />
-					<ApiSyncButton />
+					
+					<ApiSaveButton onResultUpdate={setApiSaveResult} />
+					<ApiSyncButton onResultUpdate={setApiSyncResult} />
 					<LogoutButton />
 					</div>
 				</div>
