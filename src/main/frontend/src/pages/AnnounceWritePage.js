@@ -20,7 +20,7 @@ function AnnounceWritePage() {
 	}
 
 	// fetch("http://localhost:8485/api/admin/test-auth", {
-	fetch("${process.env.REACT_APP_API_BASE_URL}/api/admin/test-auth", {
+	fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/test-auth`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json"
@@ -31,7 +31,7 @@ function AnnounceWritePage() {
        throw new Error("인증 실패");
 		})
 		.catch(err => {
-			alert("접근 권한이 없습니다. 다시 로그인해주세요.");
+			alert("접근 권한이 없습니다. 로그아웃 후 다시 로그인해주세요.");
 			navigate("/login");
 		});
   }, [navigate]);

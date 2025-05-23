@@ -23,8 +23,8 @@ public class JwtInterceptor implements HandlerInterceptor {
 
 		if (authHeader != null && authHeader.startsWith("Bearer ")) {
 			String token = authHeader.substring(7); // "Bearer " 이후만 잘라냄
-
 			String adminId = JwtUtil.validateToken(token);
+			
 			if (adminId != null) {
 				request.setAttribute("adminId", adminId);
 				
