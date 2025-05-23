@@ -10,6 +10,7 @@ const AnnounceList = ({ announcements = [], total = 0 }) => {
   }
 
   return (
+    <div style={{ width: '100%', overflowX: 'auto' }}>
     <table className="table-custom">
       <thead>
         <tr>
@@ -19,15 +20,49 @@ const AnnounceList = ({ announcements = [], total = 0 }) => {
         </tr>
       </thead>
       <tbody>
-        {announcements.map(({ id, title, created_at }) => (
-          <tr key={id} onClick={() => navigate(`/announce_view/${id}?total=${total}`)}>
-            <td>{id}</td>
-            <td>{title}</td>
-            <td>{formatDateTime(created_at)}</td>
-          </tr>
-        ))}
+        {announcements.length > 0 ? ( // 👈 데이터가 있는지 확인
+  announcements.map(({ id, title, created_at }) => (
+    <tr key={id} onClick={() => navigate(`/announce_view/${id}?total=${total}`)} style={{ cursor: 'pointer' }}>
+      {/* ID (최대 너비 80px) */}
+      <td style={{
+        maxWidth: 80, // 👈 최대 너비 설정
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap'
+      }}>
+        {id}
+      </td>
+      {/* 제목 (최대 너비 300px 또는 필요에 따라 조절) */}
+      <td style={{
+        maxWidth: 300, // 👈 최대 너비 설정
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap'
+      }}>
+        {title}
+      </td>
+      {/* 날짜 (최대 너비 150px 또는 필요에 따라 조절) */}
+      <td style={{
+        maxWidth: 150, // 👈 최대 너비 설정
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap'
+      }}>
+        {formatDateTime(created_at)}
+      </td>
+    </tr>
+  ))
+) : (
+  // 👈 데이터가 없을 경우
+  <tr>
+    <td colSpan="3" style={{ textAlign: 'center', padding: '20px' }}>
+      공지사항 내역이 없습니다.
+    </td>
+  </tr>
+)}
       </tbody>
     </table>
+    </div>
   );
 };
 
