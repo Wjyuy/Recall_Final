@@ -94,6 +94,35 @@
             </choose>
         </where>
     </sql>
+    
+      <select id="getdefect_reports_count" resultType="com.boot.dto.DefectReportSummaryDTO" parameterType="map">
+<!--		SELECT COUNT(*) -->
+<!--		FROM defect_reports-->
+<!--		<include refid="yearRange"></include>-->
+		SELECT 
+		  '계' AS label,
+		  COUNT(DISTINCT CASE 
+		      WHEN car_manufacturer IN ('Hyundai', 'Kia', 'Genesis', 'Renault Samsung') 
+		      THEN car_model 
+		  END) AS domesticModelCount,
+		  COUNT(CASE 
+		      WHEN car_manufacturer IN ('Hyundai', 'Kia', 'Genesis', 'Renault Samsung') 
+		      THEN 1 
+		  END) AS domesticCount,
+		  COUNT(DISTINCT CASE 
+		      WHEN car_manufacturer NOT IN ('Hyundai', 'Kia', 'Genesis', 'Renault Samsung') 
+		      THEN car_model 
+		  END) AS importedModelCount,
+		  COUNT(CASE 
+		      WHEN car_manufacturer NOT IN ('Hyundai', 'Kia', 'Genesis', 'Renault Samsung') 
+		      THEN 1 
+		  END) AS importedCount,
+		  COUNT(DISTINCT car_model) AS totalModelCount,
+		  COUNT(*) AS totalCount
+		FROM defect_reports
+		<include refid="yearRange"></include>
+    </select>
+
 
     <!-- 예시: getDefectReportSummaryByMonth -->
     <select id="getDefectReportSummaryByMonth" resultType="com.boot.dto.DefectReportSummaryDTO">
