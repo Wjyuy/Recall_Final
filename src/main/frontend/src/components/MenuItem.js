@@ -64,19 +64,22 @@ const MenuItem = ({ item, onNavigate, isMobileMenuOpen }) => {
   };
 
   // 메뉴 클릭 시 동작 정의
-  const handleClick = (e) => {
-    // 자식 메뉴가 있는 경우에만 드롭다운 토글 로직 적용
+const handleClick = (e) => {
     if (item.children) {
-      // ⭐️ 모바일 메뉴가 열려있을 때만 기본 Link 동작 방지 및 드롭다운 토글
+      // 자식 메뉴가 있는 경우 (모바일에서만 토글)
       if (isMobileMenuOpen) {
         e.preventDefault(); // 중요: Link의 페이지 이동 기본 동작 방지
         setIsDropdownOpen((prev) => !prev); // 드롭다운 열림/닫힘 상태 토글
       }
-      // 데스크탑에서는 hover로 열리므로, 클릭 시에는 Link가 작동하도록 허용
-      // (만약 데스크탑에서도 클릭으로 토글하고 싶다면 else if (item.children) e.preventDefault(); setIsDropdownOpen... 로직을 추가)
+    } else {
+      // ⭐️ 자식 메뉴가 없는 경우 (일반 메뉴 아이템)
+      // 모바일 메뉴가 열려있다면 onNavigate 호출 (메뉴 닫기)
+      if (isMobileMenuOpen) {
+        onNavigate(); // onNavigate 함수를 호출하여 모바일 메뉴를 닫습니다.
+      }
+      // 데스크탑에서는 Link의 기본 동작에 맡김
     }
   };
-
   return (
     <li
       className={`nav-item${item.children ? ' dropdown' : ''}`}

@@ -124,10 +124,17 @@
 /* 모바일 환경에서의 조정 (선택 사항) */
 @media (max-width: 768px) {
   .chatbot-popup {
-    width: 90%; /* 모바일에서는 너비를 더 크게 */
-    height: 70%; /* 높이도 조정 */
-    right: 5%;
-    bottom: 70px; /* 플로팅 버튼과 간격 고려 */
+    width: 90%;
+    height: 70%;
+    /* ⭐️ 모바일에서는 드래그 위치(left/top)를 무효화하고 CSS로 다시 고정 */
+    left: unset !important; /* JS 인라인 스타일 무효화 */
+    top: unset !important;  /* JS 인라인 스타일 무효화 */
+    right: 5%; /* 모바일에서 원하는 오른쪽 위치 */
+    bottom: 150px; /* 모바일에서 원하는 아래쪽 위치 */
+    transform: none !important; /* 드래그 때문에 생긴 transform을 무효화 */
     border-radius: 15px;
+  }
+  .chatbot-header {
+      cursor: default !important; /* 모바일에서는 드래그 커서 비활성화 */
   }
 }
