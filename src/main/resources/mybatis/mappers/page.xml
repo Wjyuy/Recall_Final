@@ -27,8 +27,11 @@
 <!--		<if test='reportDate != null and reportDate !=""'>-->
 <!--	    and report_date = #{reportDate}::DATE-->
 <!--		</if>-->
-		<if test='reportDate != null and reportDate !=""'>
-			and DATE(report_date)= #{reportDate}
+<!--		<if test='reportDate != null and reportDate !=""'>-->
+<!--			and DATE(report_date)= #{reportDate}-->
+<!--		</if>-->
+		<if test='reportDate != null and reportDate != ""'>
+	    and DATE(report_date) = CAST(#{reportDate} AS DATE)
 		</if>
 		</where>	
 				
