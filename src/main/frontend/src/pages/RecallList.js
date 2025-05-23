@@ -135,40 +135,42 @@ function RecallList() {
                             onSearchSubmit={handleSearchSubmit}
                         />
 
-                        <table className="table-custom">
-                            <thead>
-                                <tr>
-                                    <th>리콜 ID</th>
-                                    <th>제품명</th>
-                                    <th>제조사</th>
-                                    <th>제조기간</th>
-                                    <th>기타정보</th>
-                                    <th>모델명</th>
-                                    <th>리콜유형</th>
-                                    <th>연락처</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {recallList.length > 0 ? (
-                                    recallList.map(item => (
-                                        <tr key={item.id} onClick={() => handleRowClick(item.id)} style={{ cursor: 'pointer' }}>
-                                            <td>{item.id}</td>
-                                            <td>{item.product_name}</td>
-                                            <td>{item.manufacturer}</td>
-                                            <td>{item.manufacturing_period}</td> 
-                                            <td>{item.additional_info}</td>
-                                            <td>{item.model_name}</td>
-                                            <td>{item.recall_type}</td>
-                                            <td>{item.contact_info}</td>
-                                        </tr>
-                                    ))
-                                ) : (
+                        <div style={{ width: '100%', overflowX: 'auto' }}>
+                            <table className="table-custom">
+                                <thead>
                                     <tr>
-                                        <td colSpan="8" style={{ textAlign: 'center', padding: '20px' }}>리콜 내역이 없습니다.</td>
+                                        <th>리콜 ID</th>
+                                        <th>제품명</th>
+                                        <th>제조사</th>
+                                        <th>제조기간</th>
+                                        <th>기타정보</th>
+                                        <th>모델명</th>
+                                        <th>리콜유형</th>
+                                        <th>연락처</th>
                                     </tr>
-                                )}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {recallList.length > 0 ? (
+                                        recallList.map(item => (
+                                            <tr key={item.id} onClick={() => handleRowClick(item.id)} style={{ cursor: 'pointer' }}>
+                                                <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.id}</td>
+                                                <td style={{ maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.product_name}</td>
+                                                <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.manufacturer}</td>
+                                                <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.manufacturing_period}</td> 
+                                                <td style={{ maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.additional_info}</td>
+                                                <td style={{ maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.model_name}</td>
+                                                <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.recall_type}</td>
+                                                <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.contact_info}</td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="8" style={{ textAlign: 'center', padding: '20px' }}>리콜 내역이 없습니다.</td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div className="download-btn-group">

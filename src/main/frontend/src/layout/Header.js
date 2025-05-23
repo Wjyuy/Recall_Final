@@ -1,5 +1,5 @@
 // layout/Header.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import MenuItem from '../components/MenuItem'; // MenuItem 컴포넌트 import
 
@@ -8,9 +8,9 @@ const menuItems = [
   { label: '리콜정보', link: '/recall_list' },
   {
     label: '결함신고',
-    link: '/defect_reports',
+    link: '/defect_list',
     children: [
-      { label: '결함신고', link: '/defect_reports' },
+      { label: '결함신고하기', link: '/defect_reports' },
       { label: '신고내역조회', link: '/defect_list' },
     ],
   },
@@ -44,6 +44,8 @@ const menuItems = [
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(55); // 기본값 55
+  const headerRef = useRef(null);
 
   // 모바일 메뉴 토글
   const handleMobileMenuToggle = () => {
@@ -55,6 +57,12 @@ function Header() {
     setMobileMenuOpen(false);
   };
 
+  useLayoutEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, []);
+
   useEffect(() => {
     function handleResize() {
       const btn = document.getElementById('mobileMenuBtn');
@@ -64,6 +72,10 @@ function Header() {
       } else {
         btn.style.display = 'none';
       }
+      // 헤더 높이 재계산
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
     }
     window.addEventListener('resize', handleResize);
     handleResize(); // mount 시 1회
@@ -71,7 +83,7 @@ function Header() {
   }, []);
 
   return (
-    <header style={{ backgroundColor: '#333', color: 'white', padding: '10px', display: 'flex', alignItems: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000 }}>
+    <header ref={headerRef} style={{ backgroundColor: '#333', color: 'white', padding: '10px', display: 'flex', alignItems: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000 }}>
       <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
         <h1 style={{ margin: 0 , color: 'white'}}>Recall center</h1>
       </Link>
@@ -107,12 +119,12 @@ function Header() {
           className="mobile-nav"
           style={{
             position: 'fixed',
-            top: 60,
+            top: headerHeight, // 동적으로 측정된 헤더 높이만큼 아래에서 시작
             left: 0,
             width: '100%',
             background: '#222',
             zIndex: 2000,
-            padding: '20px 0',
+            padding: '0 0 20px 0',
           }}
         >
           {/* 닫기 버튼: 햄버거와 동일한 위치(우측 상단) */}

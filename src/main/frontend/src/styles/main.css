@@ -37,14 +37,15 @@
   --nav-dropdown-hover-color: #008374; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 /*주연추가 커스텀한 스타일들 다 붙여넣음*/
-.div_page ul {
+/* .div_page ul {
   display: flex;
-  justify-content: center; /* 가운데 정렬 */
+  justify-content: center;
   align-items: center;
   padding: 0;
   margin: 0;
   list-style: none;
-}
+} 
+*/
 .table-custom {
     width: 100%;
     border-collapse: collapse;
@@ -2811,7 +2812,7 @@ section,
 --------------------------------------------------------------*/
 .blog-pagination {
   padding-top: 0;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  /* color: color-mix(in srgb, var(--default-color), transparent 40%); */
 }
 
 .blog-pagination ul {
@@ -2823,12 +2824,12 @@ section,
 
 .blog-pagination li {
   margin: 0 5px;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 
 .blog-pagination li a {
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  padding: 7px 16px;
+  /* color: color-mix(in srgb, var(--default-color), transparent 40%); */
+  /* padding: 7px 16px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2836,8 +2837,8 @@ section,
 
 .blog-pagination li a.active,
 .blog-pagination li a:hover {
-  background: var(--accent-color);
-  color: var(--contrast-color);
+  /* background: var(--accent-color); */
+  /* color: var(--contrast-color); */
 }
 
 .blog-pagination li a.active a,
