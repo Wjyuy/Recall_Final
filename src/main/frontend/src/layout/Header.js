@@ -125,7 +125,7 @@ function Header() {
                 background: 'none',
                 border: 'none',
                 color: '#fff',
-                fontSize: 28,
+                fontSize: 30,
                 cursor: 'pointer',
                 zIndex: 2100,
               }}

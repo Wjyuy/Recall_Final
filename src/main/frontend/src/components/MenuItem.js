@@ -38,7 +38,8 @@ const MenuItem = ({ item, onNavigate, isMobileMenuOpen }) => {
         boxShadow: 'none', // 그림자 제거
         borderRadius: '0', // 둥근 모서리 제거
         paddingLeft: '20px', // 들여쓰기 효과
-        marginTop: '5px',    // 부모 메뉴 아이템과의 간격
+       
+        // marginTop: 'px',    // 부모 메뉴 아이템과의 간격
       };
     }
     // ⭐️ 데스크탑 메뉴일 때의 스타일
@@ -49,7 +50,7 @@ const MenuItem = ({ item, onNavigate, isMobileMenuOpen }) => {
         backgroundColor: '#444',
         minWidth: '160px',
         boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
-        top: 'calc(100% + 5px)', // 부모 li 아래에 위치
+        top: 'calc(100%)', // 부모 li 아래에 위치
         left: '0', // 기본적으로 왼쪽에서 시작
       };
 
@@ -73,19 +74,6 @@ const MenuItem = ({ item, onNavigate, isMobileMenuOpen }) => {
       }
       // 데스크탑에서는 hover로 열리므로, 클릭 시에는 Link가 작동하도록 허용
       // (만약 데스크탑에서도 클릭으로 토글하고 싶다면 else if (item.children) e.preventDefault(); setIsDropdownOpen... 로직을 추가)
-    }
-
-    // 메뉴 클릭 시 상위 컴포넌트의 onNavigate 호출 (예: 모바일 메뉴 닫기)
-    // 드롭다운 토글과 별개로 항상 호출되도록 여기에 유지
-    if (onNavigate) {
-      // 드롭다운이 열렸거나 닫힐 때만 onNavigate를 호출 (선택 사항)
-      // 현재는 Link가 동작하는 경우에도 호출됨
-      // if (!item.children || (item.children && !isDropdownOpen)) { // 드롭다운이 없는 메뉴이거나, 드롭다운이 닫히는 경우
-      //   onNavigate();
-      // }
-      // 여기서는 드롭다운 메뉴 항목 클릭 시 전체 모바일 메뉴가 닫히도록 하는 것이 일반적이므로,
-      // 최종 자식 메뉴 아이템 클릭 시에만 onNavigate를 호출하는 것이 좋습니다.
-      // 그렇지 않으면 드롭다운을 열 때마다 모바일 메뉴가 닫힐 수 있습니다.
     }
   };
 
@@ -115,7 +103,7 @@ const MenuItem = ({ item, onNavigate, isMobileMenuOpen }) => {
         {item.children && (
           <i
             className={`bi ${isDropdownOpen && isMobileMenuOpen ? 'bi-chevron-up' : 'bi-chevron-down'}`}
-            style={{ marginLeft: '5px', fontSize: '0.8em', float: 'right' }}
+            style={{ marginLeft: '5px', fontSize: '0.8em', float: 'right' ,marginTop: '5px'}}
           ></i>
         )}
       </Link>
