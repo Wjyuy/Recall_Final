@@ -24,6 +24,9 @@
 			or reporter_name like concat('%',#{keyword},'%')
 			) 
 		</if>
+<!--		<if test='reportDate != null and reportDate !=""'>-->
+<!--	    and report_date = #{reportDate}::DATE-->
+<!--		</if>-->
 		<if test='reportDate != null and reportDate !=""'>
 			and DATE(report_date)= #{reportDate}
 		</if>
