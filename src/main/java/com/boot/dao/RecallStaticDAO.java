@@ -16,6 +16,7 @@ public interface RecallStaticDAO {
 	DefectReportSummaryDTO getdefect_reports_count(Map<String, Object> paramMap);
 	public List<DefectReportSummaryDTO> getDefectReportSummaryByYear(Map<String, Object> paramMap);
 	List<ManufacturerRecallDTO> getYearlyRecallStats(@Param("startYear") int startYear, @Param("endYear") int endYear);
+//	List<ManufacturerRecallDTO> getYearlyRecallStats(Map<String, Object> paramMap);
 	List<DefectReportSummaryDTO> getDefectReportSummaryByMonth(Map<String, Object> paramMap);
 	List<ManufacturerRecallDTO> getYearlyRecallStatsByMonth(Map<String, Object> paramMap);
 	

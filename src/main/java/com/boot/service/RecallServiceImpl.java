@@ -55,8 +55,8 @@ public class RecallServiceImpl implements RecallService{
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Value("${mybatis.config.dbType}")
-    private String dbType;
+//	@Value("${mybatis.config.dbType}")
+//    private String dbType;
 	
 	@Override
 	public List<Defect_DetailsDTO> getProductList(Criteria cri, String cntntsId) throws Exception {
@@ -172,9 +172,9 @@ public class RecallServiceImpl implements RecallService{
 		safePut(paramMap, "start_year");
 	    safePut(paramMap, "end_year");
 		
-		if (!paramMap.containsKey("dbType")) {
-	        paramMap.put("dbType", dbType);
-	    }//분기처리용
+//		if (!paramMap.containsKey("dbType")) {
+//	        paramMap.put("dbType", dbType);
+//	    }//분기처리용
 		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
 	    return dao.getDefectReportSummaryByYear(paramMap);
@@ -187,14 +187,15 @@ public class RecallServiceImpl implements RecallService{
 		    paramMap.put("startYear", startYear);
 		    paramMap.put("endYear", endYear);
 
-		    // dbType 넣기
-		    if (!paramMap.containsKey("dbType")) {
-		        paramMap.put("dbType", dbType);
-		    }
+//		    // dbType 넣기
+//		    if (!paramMap.containsKey("dbType")) {
+//		        paramMap.put("dbType", dbType);
+//		    }
 		
 		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
         return dao.getYearlyRecallStats(startYear, endYear);
+//		return dao.getYearlyRecallStats(paramMap);
     }
 
 	@Override
@@ -208,9 +209,9 @@ public class RecallServiceImpl implements RecallService{
 	    safePut(paramMap, "end_month");
 		
 		
-		if (!paramMap.containsKey("dbType")) {
-	        paramMap.put("dbType", dbType);
-	    } //분기처리용
+//		if (!paramMap.containsKey("dbType")) {
+//	        paramMap.put("dbType", dbType);
+//	    } //분기처리용
 		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
 		return dao.getDefectReportSummaryByMonth(paramMap);
@@ -227,9 +228,9 @@ public class RecallServiceImpl implements RecallService{
 	public List<ManufacturerRecallDTO> getYearlyRecallStatsByMonth(Map<String, Object> paramMap) {
 		log.info("paramMap =>"+paramMap);
 		
-		if (!paramMap.containsKey("dbType")) {
-	        paramMap.put("dbType", dbType);
-	    }
+//		if (!paramMap.containsKey("dbType")) {
+//	        paramMap.put("dbType", dbType);
+//	    }
 		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
 		return dao.getYearlyRecallStatsByMonth(paramMap);
