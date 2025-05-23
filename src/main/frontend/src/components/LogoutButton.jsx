@@ -11,7 +11,7 @@ function LogoutButton() {
 	};
 
 	return (
-		<button onClick={handleLogout} style={{ marginTop: "20px" }}>
+		<button className="gray-button" onClick={handleLogout} >
 			로그아웃
 		</button>
 	);

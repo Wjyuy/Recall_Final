@@ -154,6 +154,7 @@
 		}
 
 		.faqann-form input[type=text],
+		.faqann-form input[type=password],
 		.faqann-form input[type=email],
 		.faqann-form textarea {
 		  font-size: 14px;
@@ -175,15 +176,6 @@
 		.faqann-form input[type=email]::placeholder,
 		.faqann-form textarea::placeholder {
 		  color: color-mix(in srgb, var(--default-color), transparent 70%);
-		}
-
-		.faqann-form button[type=submit] {
-		  color: var(--contrast-color);
-		  background: var(--accent-color);
-		  border: 0;
-		  padding: 10px 30px;
-		  transition: 0.4s;
-		  border-radius: 50px;
 		}
 
 		.faqann-form button[type=submit]:hover {
@@ -292,7 +284,7 @@
   }
 
   input,select,textarea {
-    height: 38px;
+    /* height: 38px; */
     line-height: 38px;
     vertical-align: middle;
     box-sizing: border-box;
@@ -508,7 +500,17 @@ margin-left: 20px;
 .table-custom td input[type="text"],
 .table-custom td input[type="date"],
 .table-custom td input[type="password"],
-.table-custom td textarea {
+.table-custom td select
+ {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  font-size: 1rem;
+  padding: 8px 10px;
+}
+
+.table-custom td textarea
+ {
   width: 100%;
   box-sizing: border-box;
   min-width: 0;
@@ -535,7 +537,24 @@ margin-left: 20px;
   
 }
 
+/* MyComponent.css 또는 styles.css 파일에 추가 */
+.gray-button {
+  display: inline-block; /* 따옴표 제거 */
+  padding: 8px 15px;     /* 따옴표 제거 */
+  background-color: #f0f0f0; /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  color: #333;           /* 따옴표 제거 */
+  text-decoration: none; /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  border-radius: 5px;    /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  border: 1px solid #ddd; /* 따옴표 제거 */
+  font-size: 0.9rem;     /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  transition: background-color 0.3s ease; /* 따옴표 제거 */
+  cursor: pointer; /* 버튼처럼 보이게 하려면 커서 추가 */
+}
 
+/* (선택 사항) 호버 효과 추가 */
+.gray-button:hover {
+  background-color: #e0e0e0; /* 호버 시 색상 변경 */
+}
 
 
 

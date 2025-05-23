@@ -28,8 +28,8 @@ function ApiSyncButton() {
 	};
 
 	return (
-		<div style={{ marginBottom: "20px" }}>
-			<button onClick={handleSync} disabled={loading}>
+		<div>
+			<button className="gray-button" onClick={handleSync} disabled={loading}>
 				{loading ? "동기화 중..." : "API 동기화"}
 			</button>
 			{result && <p>{result}</p>}

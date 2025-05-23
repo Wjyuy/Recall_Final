@@ -28,8 +28,8 @@ function ApiSaveButton() {
 	};
 
 	return (
-		<div style={{ marginBottom: "20px" }}>
-			<button onClick={handleSave} disabled={loading}>
+		<div >
+			<button className="gray-button" onClick={handleSave} disabled={loading}>
 				{loading ? "저장 중..." : "API 저장"}
 			</button>
 			{result && <p>{result}</p>}

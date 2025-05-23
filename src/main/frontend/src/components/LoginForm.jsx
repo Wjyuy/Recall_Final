@@ -32,15 +32,19 @@ function LoginForm() {
 	};
 
 	return (
-		<div>
-			<h2>관리자 로그인</h2>
-			<form onSubmit={handleLogin}>
-				<input type="text" value={id} onChange={(e) => setId(e.target.value)} placeholder="ID" />
-				<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-				<button type="submit">로그인</button>
-			</form>
-			{error && <p style={{ color: "red" }}>{error}</p>}
-		</div>
+		<section id="starter-section" className="starter-section section">
+			
+			<div className="container" data-aos="fade-up">
+				<form onSubmit={handleLogin} >
+					<div style={{ justifyContent: 'center',display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+					<input type="text" value={id} onChange={(e) => setId(e.target.value)} placeholder="ID"/>
+					<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+					<button type="submit">로그인</button>
+					</div>
+				</form>
+				{error && <p style={{ color: "red" }}>{error}</p>}
+			</div>
+		</section>
 	);
 }
 

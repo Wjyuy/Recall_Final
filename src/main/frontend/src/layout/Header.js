@@ -10,8 +10,8 @@ const menuItems = [
     label: '결함신고',
     link: '/defect_list',
     children: [
-      { label: '결함신고하기', link: '/defect_reports' },
       { label: '신고내역조회', link: '/defect_list' },
+      { label: '결함신고하기', link: '/defect_reports' },
     ],
   },
   {

@@ -4,7 +4,8 @@ import ApiSaveButton from "../components/ApiSaveButton";
 import ApiSyncButton from "../components/ApiSyncButton";
 
 function JwtTestPage() {
-	const [message, setMessage] = useState("뭔가를 넣어 놨습니다. 화이팅.");
+	const [adminName, setUserName] = useState('관리자');
+	const [message, setMessage] = useState(`KH 리콜정보 관리자 시스템에 오신 것을 환영합니다. ${adminName} 님`);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -30,7 +31,6 @@ function JwtTestPage() {
 			})
 			.catch(err => {
 				console.error(err);
-				setError("접근 권한이 없습니다.");
 				// setTimeout(() => {
 				// 	window.location.href = "/login";
 				// }, 1500);
@@ -43,13 +43,14 @@ function JwtTestPage() {
 				<div className="section-title text-center">
 					<h2 className="title">관리자 페이지</h2>
 				</div>
-				<div style={{ padding: "40px" }}>
+				<div className="widgets-container detail-widgets-container">
+				<div style={{ justifyContent: 'center',display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
 					{error ? <p style={{ color: "red" }}>{error}</p> : <p>{message}</p>}
 
 					<ApiSaveButton />
 					<ApiSyncButton />
 					<LogoutButton />
-
+					</div>
 				</div>
 			</div>
 		</section>

@@ -136,9 +136,35 @@ const DefectDetailsCheckPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccessMsg('');
+    // 모든 필드 유효성 검사
+    const requiredFields = [
+      { key: 'id', label: 'ID' },
+      { key: 'product_name1', label: '리콜정보' },
+      { key: 'product_name', label: '리콜명' },
+      { key: 'manufacturer', label: '제조사' },
+      { key: 'start_date', label: '시작일' },
+      { key: 'end_date', label: '종료일' },
+      { key: 'model_name', label: '모델명' },
+      { key: 'recall_type', label: '리콜 형식' },
+      { key: 'company_select', label: '회사' },
+      { key: 'contact_number', label: '대표번호' },
+      { key: 'additional_info', label: '상세 결함' },
+    ];
+    const emptyField = requiredFields.find(f => !form[f.key] || String(form[f.key]).trim() === '');
+    if (emptyField) {
+      alert(`필수 입력값을 모두 입력해 주세요. (누락: ${emptyField.label})`);
+      return;
+    }
     try {
       const result = await saveDefectDetails(form);
-      setSuccessMsg(result === 'success' ? '검수 완료! (DB 저장 성공)' : '저장 실패: ' + result);
+      if (result === 'success') {
+        setSuccessMsg('검수 완료! (DB 저장 성공)');
+        setTimeout(() => {
+          navigate('/recall_list'); // 저장 성공 후 1초 뒤에 리스트 페이지 등으로 이동
+        }, 1000);
+      } else {
+        setSuccessMsg('저장 실패: ' + result);
+      }
     } catch (err) {
       setSuccessMsg('저장 중 오류가 발생했습니다.');
     }
@@ -150,22 +176,28 @@ const DefectDetailsCheckPage = () => {
         <div className="section-title text-center">
             <h2 className="title">신고 검수</h2>
         </div>
+
         <form onSubmit={handleSubmit} className="uk-form-stacked">
-          <table className="uk-table table-form" style={{ marginBottom: 32 }}>
+          <div className="widgets-container detail-widgets-container" style={{ textAlign: 'center' }}>
+            
+          <table className="table-custom">
             <tbody>
               <tr>
                 <th className="th">아이디</th>
                 <td className="td">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <input type="text" name="id" value={form.id} onChange={handleChange} placeholder="아이디를 입력하세요" className="uk-input uk-form-width-medium" />
-                  <button type="button" onClick={handleSearchDefect} style={{ marginLeft: 8 }} disabled={searchLoading}>
+                  <button type="button" onClick={handleSearchDefect} disabled={searchLoading}>
                     {searchLoading ? '검색 중...' : '검색'}
                   </button>
+                  </div>
                   {searchError && <span style={{ color: 'red', marginLeft: 8 }}>{searchError}</span>}
                 </td>
               </tr>
               <tr>
                 <th className="th">리콜정보</th>
                 <td className="td">
+                  
                   <select name="product_name1" value={form.product_name1} onChange={handleChange} className="uk-select">
                     <option value="">선택</option>
                     <option value="볼보">볼보</option>
@@ -174,7 +206,8 @@ const DefectDetailsCheckPage = () => {
                     <option value="볼보트럭">볼보트럭</option>
                     <option value="현대자동차">현대자동차</option>
                   </select>
-                  <input name="product_name" value={form.product_name} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={7} placeholder="예)계기판 관련 리콜" style={{ marginLeft: 8 }} />
+
+                  <input name="product_name" value={form.product_name} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={7} placeholder="예)계기판 관련 리콜" style={{ marginTop: 5 }}/>
                 </td>
               </tr>
               <tr>
@@ -188,7 +221,7 @@ const DefectDetailsCheckPage = () => {
                 <td className="td">
                   <input name="start_date" value={form.start_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" />
                   ~
-                  <input name="end_date" value={form.end_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" style={{ marginLeft: 8 }} />
+                  <input name="end_date" value={form.end_date} onChange={handleDateChange} className="uk-input uk-form-width-small" type="date" />
                   <span style={{ marginLeft: 10, fontWeight: 'bold' }}>{form.manufacturing_period}</span>
                   <input type="hidden" name="manufacturing_period" value={form.manufacturing_period} />
                 </td>
@@ -208,6 +241,7 @@ const DefectDetailsCheckPage = () => {
               <tr>
                 <th className="th">회사(대표번호)</th>
                 <td className="td">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <select name="company_select" value={form.company_select} onChange={handleCompanyChange} className="uk-select">
                     <option value="">회사 선택</option>
                     <option value="[볼보자동차]">[볼보자동차]</option>
@@ -216,7 +250,8 @@ const DefectDetailsCheckPage = () => {
                     <option value="[볼보트럭]">[볼보트럭]</option>
                     <option value="[현대자동차]">[현대자동차]</option>
                   </select>
-                  <input name="contact_number" value={form.contact_number} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={20} placeholder="예)볼보자동차 대표번호 1588-1777" style={{ marginLeft: 8 }} />
+                  <input name="contact_number" value={form.contact_number} onChange={handleChange} className="uk-input uk-form-width-medium" type="text" maxLength={20} placeholder="예)볼보자동차 대표번호 1588-1777"/>
+                  </div>
                   <input type="hidden" name="contact_info" value={form.contact_info} />
                 </td>
               </tr>
@@ -229,11 +264,12 @@ const DefectDetailsCheckPage = () => {
             </tbody>
           </table>
           <div style={{ textAlign: 'center' }}>
-            <button type="submit" style={{ padding: '10px 32px', fontSize: 16, borderRadius: 5, backgroundColor: '#00796b', color: 'white', border: 'none' }}>
-              검수 완료
+            <button type="submit" style={{ marginTop: '10px' }}>
+              검수 완료!
             </button>
           </div>
           {successMsg && <div style={{ color: 'green', textAlign: 'center', marginTop: 16 }}>{successMsg}</div>}
+        </div>
         </form>
       </div>
     </section>
