@@ -11,6 +11,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -178,6 +179,17 @@ public class RecallServiceImpl implements RecallService{
 
 	@Override
     public List<ManufacturerRecallDTO> getYearlyRecallStats(int startYear, int endYear) {
+		
+		 Map<String, Object> paramMap = new HashMap<>();
+		    paramMap.put("startYear", startYear);
+		    paramMap.put("endYear", endYear);
+
+		    // dbType 넣기
+		    if (!paramMap.containsKey("dbType")) {
+		        paramMap.put("dbType", dbType);
+		    }
+		
+		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
         return dao.getYearlyRecallStats(startYear, endYear);
     }
@@ -211,6 +223,11 @@ public class RecallServiceImpl implements RecallService{
 	@Override
 	public List<ManufacturerRecallDTO> getYearlyRecallStatsByMonth(Map<String, Object> paramMap) {
 		log.info("paramMap =>"+paramMap);
+		
+		if (!paramMap.containsKey("dbType")) {
+	        paramMap.put("dbType", dbType);
+	    }
+		
 		RecallStaticDAO dao = sqlSession.getMapper(RecallStaticDAO.class);
 		return dao.getYearlyRecallStatsByMonth(paramMap);
 	}
