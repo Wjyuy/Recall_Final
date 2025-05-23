@@ -74,6 +74,21 @@ public class ReactRecallStaticController {
 		
 		log.info("recall_statics_month");
 		log.info("endMonth"+endMonth+"start_month"+startMonth);
+		
+		 // 기본값 설정
+	    if (startYear == null || startYear == 0) {
+	        startYear = 2020;
+	    }
+	    if (endYear == null || endYear == 0) {
+	        endYear = 2025;
+	    }
+	    if (startMonth == null || startMonth < 1 || startMonth > 12) {
+	        startMonth = 1;
+	    }
+	    if (endMonth == null || endMonth < 1 || endMonth > 12) {
+	        endMonth = 12;
+	    }
+		
         Map<String, Object> params = new HashMap<>();
         params.put("start_year", startYear);
         params.put("start_month", startMonth);
