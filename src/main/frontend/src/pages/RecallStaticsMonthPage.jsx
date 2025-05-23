@@ -123,6 +123,7 @@ const RecallStaticsYearPage = () => {
                   }
                 </h2>
               </div>
+              <div style={{ width: '100%', overflowX: 'auto' }}>
               <table className="table-summary">
                 <thead>
                   <tr>
@@ -154,6 +155,7 @@ const RecallStaticsYearPage = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
 
               
               
@@ -293,7 +295,7 @@ const RecallStaticsYearPage = () => {
                   <div className="text-center">
                     <h2 className="title">제조사별 리콜 대수 비율</h2>
                   </div>
-                  <ResponsiveContainer width="100%" height={320}>
+                  <ResponsiveContainer width="100%" height={400}>
                     <PieChart>
                       <Pie
                         data={groupedRecallStats.map(entry => ({ name: entry.key, value: entry.value.reduce((sum, recall) => sum + recall.recallCount, 0) }))}
@@ -301,8 +303,8 @@ const RecallStaticsYearPage = () => {
                         nameKey="name"
                         cx="50%"
                         cy="50%"
-                        outerRadius={120}
-                        label
+                        outerRadius={100}
+                        
                       >
                         {groupedRecallStats.map((entry, idx) => (
                           <Cell key={`cell-${idx}`} fill={["#3D8D7A", "#B3D8A8", "#FBFFE4", "#A3D1C6", "#BEE4D0", "#b7dcd8", "#80c1ba"][idx % 7]} />
