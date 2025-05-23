@@ -95,7 +95,7 @@ function RecallDetail() {
                         <div className="section-title text-center">
                         <h3 className="title">유사 리콜 추천</h3>
                         </div>
-                        <div style={{ justifyContent: 'center',display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+                        <div className='center-group-container'>
                             {similarIds.length > 0 ? (
                                 similarIds.map(sid => (
                                 <Link
@@ -124,11 +124,10 @@ function RecallDetail() {
                         </div>
                         <button
                             type="button"
-                            className='buttons'
+                            className='round-button'
                             onClick={handleGoToList} 
                             style={{
-                                display: 'inline-block',
-                                backgroundColor: '#rgb(108, 117, 125)'
+                                marginTop: '20px'
                             }}
                             >
                             목록으로
