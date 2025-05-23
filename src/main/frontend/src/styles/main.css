@@ -643,7 +643,13 @@ margin-left: 20px;
   background: #005f52; /* 호버 시 색상 약간 어둡게 */
 }
 
-
+.center-group-container {
+  display: flex; /* Flexbox 레이아웃 적용 */
+  justify-content: center; /* 주축(가로)을 기준으로 가운데 정렬 */
+  flex-wrap: wrap; /* 요소들이 컨테이너를 넘어갈 경우 줄바꿈 */
+  gap: 10px; /* 자식 요소들 사이에 10px 간격 추가 */
+  margin-top: 10px; /* 상단 여백 10px 추가 */
+}
 
 
     

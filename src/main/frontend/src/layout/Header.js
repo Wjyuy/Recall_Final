@@ -71,7 +71,7 @@ function Header() {
 
       {/* 데스크탑 메뉴 */}
       <nav id="navmenu" className="navmenu" style={{ marginLeft: 'auto', display: mobileMenuOpen ? 'none' : undefined, position: 'relative' }}>
-        <ul style={{ display: 'flex', gap: 0, margin: 0, padding: 0, listStyle: 'none' }}>
+        <ul style={{ paddingRight: 30, display: 'flex', gap: 0, margin: 0, padding: 0, listStyle: 'none' }}>
           {menuItems.map((item, index) => (
             <MenuItem key={index} item={item} />
           ))}
@@ -83,9 +83,9 @@ function Header() {
             fontSize: 28,
             marginLeft: 16,
             cursor: 'pointer',
-            position: 'absolute', // fixed → absolute
+            position: 'absolute',
             right: 20,
-            top: 10, // headerHeight → 10
+            top: 10,
             zIndex: 2100,
           }}
           onClick={handleMobileMenuToggle}
