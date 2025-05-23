@@ -399,11 +399,6 @@ margin-left: 20px;
 	  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
 	}
 
-	.year-form .inline-group {
-	  display: inline-block;
-	  margin: 0 10px;
-	}
-
 	.year-form label {
 	  font-weight: bold;
 	  margin-right: 5px;
@@ -415,11 +410,6 @@ margin-left: 20px;
 	  border: 1px solid #ccc;
 	  min-width: 100px;
 	  font-size: 14px;
-	}
-
-	.year-form input[type="submit"] {
-	  margin-left: 20px;
-	  padding: 6px 14px;
 	}
 
 	.table-summary {
@@ -539,13 +529,14 @@ margin-left: 20px;
 
 /* MyComponent.css 또는 styles.css 파일에 추가 */
 .gray-button {
+  font-family: var(--heading-font);
   display: inline-block; /* 따옴표 제거 */
   padding: 8px 15px;     /* 따옴표 제거 */
   background-color: #f0f0f0; /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
   color: #333;           /* 따옴표 제거 */
   text-decoration: none; /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
   border-radius: 5px;    /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
-  border: 1px solid #ddd; /* 따옴표 제거 */
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 90%);
   font-size: 0.9rem;     /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
   transition: background-color 0.3s ease; /* 따옴표 제거 */
   cursor: pointer; /* 버튼처럼 보이게 하려면 커서 추가 */
@@ -555,6 +546,103 @@ margin-left: 20px;
 .gray-button:hover {
   background-color: #e0e0e0; /* 호버 시 색상 변경 */
 }
+
+/* MyComponent.css 또는 styles.css 파일에 추가 */
+.gray-button-round {
+  font-family: var(--heading-font);
+  display: inline-block; /* 따옴표 제거 */
+  padding: 8px 15px;     /* 따옴표 제거 */
+  background-color: #f0f0f0; /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  color: #333;           /* 따옴표 제거 */
+  text-decoration: none; /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  border-radius: 50px;
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  font-size: 0.9rem;     /* 카멜 케이스 -> 케밥 케이스, 따옴표 제거 */
+  transition: background-color 0.3s ease; /* 따옴표 제거 */
+  cursor: pointer; /* 버튼처럼 보이게 하려면 커서 추가 */
+  text-align: center;
+}
+
+/* (선택 사항) 호버 효과 추가 */
+.gray-button-round:hover {
+  background-color: #e0e0e0; /* 호버 시 색상 변경 */
+}
+
+/* 서치 디자인 */
+/* src/components/RecallListSearch.css */
+
+/* 검색 폼 컨테이너 */
+.recall-search-form {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 검색 유형 선택 (select 박스) */
+.recall-search-form .search-type-select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-width: 120px;
+  flex-shrink: 0; /* flex-wrap 시 줄어들지 않도록 */
+}
+
+/* 검색어 입력 필드 */
+.recall-search-form .search-keyword-input {
+  flex-grow: 1; /* 남은 공간을 채우도록 확장 */
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* 검색 버튼 */
+.recall-search-form .search-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background: #00796b; /* 주색상 (초록 계열) */
+  color: #fff; /* 흰색 글씨 */
+  cursor: pointer;
+  transition: background 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.recall-search-form .search-button:hover {
+  background: #005f52; /* 호버 시 색상 약간 어둡게 */
+}
+
+/* --- 모바일 대응 (반응형) --- */
+@media (max-width: 600px) {
+  .recall-search-form {
+    flex-direction: column !important; /* 세로로 쌓이도록 */
+    align-items: stretch !important; /* 가로 폭 전체 사용 */
+    gap: 8px !important; /* 요소 간 간격 조절 */
+  }
+
+  .recall-search-form .search-type-select,
+  .recall-search-form .search-keyword-input,
+  .recall-search-form .search-button {
+    width: 100% !important; /* 모바일에서 전체 폭 사용 */
+  }
+}
+
+
+/* 라운드 버튼 */
+.round-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background: #00796b; /* 주색상 (초록 계열) */
+  color: #fff; /* 흰색 글씨 */
+  cursor: pointer;
+  transition: background 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.round-button:hover {
+  background: #005f52; /* 호버 시 색상 약간 어둡게 */
+}
+
 
 
 
@@ -1421,6 +1509,7 @@ section,
 .hero .container {
   position: relative;
   z-index: 3;
+  
 }
 
 .hero h2 {
@@ -3207,6 +3296,7 @@ section,
   padding: 30px;
   margin: 60px 0 30px 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .widget-title {

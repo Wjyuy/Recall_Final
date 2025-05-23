@@ -111,12 +111,12 @@ function Header() {
           <button
             style={{
               position: 'absolute',
-              top: 10,
-              right: 20,
+              top: 5,
+              right: 15,
               background: 'none',
               border: 'none',
               color: '#fff',
-              fontSize: 28, // 햄버거와 동일
+              fontSize: 28, 
               cursor: 'pointer',
               zIndex: 2100,
               marginLeft: 16,
@@ -126,7 +126,13 @@ function Header() {
           >
             <i className="bi bi-x"></i>
           </button>
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+            <div style={{ backgroundColor: '#333', color: 'white', padding: '10px', display: 'flex', alignItems: 'center',  top: 0, left: 0, width: '100%'}}>
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <h1 style={{ margin: 0 , color: 'white'}}>Recall center</h1>
+            </Link>
+            </div>
+            
+          <ul style={{ listStyle: 'none', margin: 10, padding: 0 }}>
             {menuItems.map((item, index) => (
               <MenuItem key={index} item={item} onNavigate={() => setMobileMenuOpen(false)} />
             ))}

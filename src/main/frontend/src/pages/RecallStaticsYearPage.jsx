@@ -85,7 +85,7 @@ const RecallStaticsYearPage = () => {
               ))}
             </select>
           </div>
-          <input type="submit" value="조회" className="btn-get-started" />
+          <input type="submit" value="조회" className="gray-button-round" />
         </form>
         {loading && <div>로딩 중...</div>}
         {error && <div style={{ color: 'red' }}>{error}</div>}
@@ -127,7 +127,7 @@ const RecallStaticsYearPage = () => {
               const el = document.getElementById('content1');
               if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
               e.target.textContent = el.style.display === 'block' ? '자세히 보기 -' : '자세히 보기 +';
-            }} className="btn-get-started" style={{ marginBottom: 16 }}>자세히 보기 +</button>
+            }} className="gray-button-round" style={{ marginBottom: 16 }}>자세히 보기 +</button>
             <div id="content1" style={{ display: 'none' }}>
               
               <div className="text-center">
@@ -224,7 +224,7 @@ const RecallStaticsYearPage = () => {
               const el = document.getElementById('content2');
               if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
               e.target.textContent = el.style.display === 'block' ? '자세히 보기 -' : '자세히 보기 +';
-            }} className="btn-get-started" style={{ marginBottom: 16 }}>자세히 보기 +</button>
+            }} className="gray-button-round" style={{ marginBottom: 16 }}>자세히 보기 +</button>
 
               <div id="content2" style={{ display: 'none' }}>
                 <div className="text-center">

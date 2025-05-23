@@ -34,7 +34,7 @@ const PdfDownloadButton = ({ pdfBaseUrl, startYear, endYear, startMonth, endMont
 
   return (
     <button
-      className="btn-get-started pdf-download-button"
+      className="gray-button-round pdf-download-button"
       style={{ marginBottom: 24 }}
       onClick={handleDownload}
       data-tooltip="pdf를 다운받으시면, 자료에 대한 gemini의 summarize도 포함됩니다!"
