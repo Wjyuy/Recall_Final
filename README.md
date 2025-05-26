@@ -80,11 +80,11 @@ made by. team_KH리콜안전공단
   - 기존 JSP 기반 프론트엔드-> React SPA 마이그레이션  
   - 각 JSP 화면을 React 컴포넌트/페이지로 분리  
   - React Router로 URL 기반 화면 전환  
-  - `src/main/frontend/src/service` REST API로 Spring Boot 백엔드와 연동
+  - `src/main/frontend/src/service`: REST API로 Spring Boot 백엔드와 연동
 
 - `src/main/java/com/boot`  
   - Controller, DAO, DTO, Mapper 등 백엔드 비즈니스 로직  
-  - `React...Controller` React로 마이그레이션하며 Json전송 RestController 전체변환
+  - `React...Controller`: React로 마이그레이션하며 Json전송 RestController 전체변환
   - Gradle 기반 빌드/의존성 관리  
   - `webapp` 폴더에 마이그레이션 전 JSP 파일 보관
 
@@ -130,10 +130,10 @@ made by. team_KH리콜안전공단
 
 ## 🛠️ 마이그레이션 방식 요약
 
-- JSP에서 처리하던 화면/로직을 React 컴포넌트로 분리
+- JSP에서 처리하던 화면/로직을 React **컴포넌트로 분리**
 - 서버 템플릿 렌더링 → 클라이언트 렌더링(SPA)
-- 페이지 이동은 React Router로 구현 (새로고침 없이 전환)
-- 데이터 연동은 REST API 호출(fetch/axios 등)
+- 페이지 이동은 **React Router로 구현 (새로고침 없이 전환)**
+- 데이터 연동은 **REST API 호출**(fetch/axios 등)
 - 공통 레이아웃(헤더/푸터/네비) 컴포넌트화
 - 반응형 UI 및 사용자 경험(UX) 개선
 
@@ -158,4 +158,4 @@ made by. team_KH리콜안전공단
 
   * **시연영상 보기**
 
-  [![Video Label](http://img.youtube.com/vi/2gDThXVyRGg/0.jpg)](https://www.youtube.com/watch?v=2gDThXVyRGg)
+  [![Video Label](http://img.youtube.com/vi/cTVAbfrtdEs/0.jpg)](https://www.youtube.com/watch?v=cTVAbfrtdEs)
