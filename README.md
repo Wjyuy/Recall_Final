@@ -8,7 +8,7 @@ made by. team_KH리콜안전공단
 
 1조 3차 프로젝트 진행 기간 `2025. 05. 19 ~ 2025. 05. 25`
 
-[[파일럿 프로젝트 링크](https://github.com/Wjyuy/project_2)]
+[마이그레이션 전 [파일럿 프로젝트 링크](https://github.com/Wjyuy/project_2)]
 
 ## 프로젝트 포스터
 
@@ -16,7 +16,7 @@ made by. team_KH리콜안전공단
 
 ## 💡 프로젝트 선정 배경
 
-* 파일럿 프로젝트에서 재작한 기존 JSP 기반의 리콜 정보 시스템은 유지보수와 확장성, 사용자 경험(UX) 측면에서 한계 발견
+* [파일럿 프로젝트 링크](https://github.com/Wjyuy/project_2)에서 재작한 기존 JSP 기반의 리콜 정보 시스템은 유지보수와 확장성, 사용자 경험(UX) 측면에서 한계 발견
 * 최신 웹 트렌드에 맞는 **React 기반 SPA**로 프론트엔드 마이그레이션
 * Spring Boot 백엔드, REST API 연동
 
@@ -34,11 +34,14 @@ made by. team_KH리콜안전공단
   - Java 17+
   - MyBatis 
   - Gradle 
+  - Flask
+  - JWT token
 - **Database & Infra**
   - MySQL
   - pgAdmin4 (DB 관리)
   - Render (클라우드 배포)
 - **기타**
+  - Sourcetree
   - GitHub 
   - Slack
   - Jira
@@ -78,6 +81,19 @@ made by. team_KH리콜안전공단
   * <a href="./pptx/테이블명세서.pdf" download="document.pdf">테이블 명세서</a>
   * <a href="./pptx/화면설계서.pdf" download="document.pdf">화면 설계서</a>
 ---
+
+## 협업툴 자동화 활용
+
+  <table>
+    <tr>
+      <td align="center">slack</td>
+      <td align="center">jira</td>
+    </tr>
+    <tr>
+      <td><img src="./images/slack.png" alt="slack" width="400"></td>
+      <td><img src="./images/jira.png" alt="jira" width="400"></td>
+    </tr>
+  </table>
 
 ## 🚀 주요 기능
 
@@ -172,12 +188,25 @@ made by. team_KH리콜안전공단
 
 ---
 
-## 📌 기타
+## 결과
 
-- 추가적인 기술적 상세, API 명세, 화면 설계 등은 별도 문서 참고
+  ### 메인 화면
+  ![메인](./images/main.png)
+  ![상품](./images/product.png)
+  ### 상품 상세
+  ![상세](./images/content.png)
+  ### 리뷰
+  ![리뷰](./images/review.png)
+  ### 친구
+  ![friend](./images/friend.png)
+  ![chat](./images/chat.png)
+  ### 결제
+  ![cart](./images/cart.png)
+  ![checkout](./images/checkout.png)
+  ![kakaopay](./images/kakaopay.png)
 
 
-## 🔗 관련 링크 (레파지토리링크,ppt,유튜브링크 수정안했어요수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
+## 🔗 관련 링크 (레파지토리링크수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
   * **GitHub Repository:** 
     * [[팀장 우주연-GitHub Repository URL](https://github.com/Wjyuy/KH_PJ4)]
     * [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/ShoFriend_project3)]
@@ -187,7 +216,7 @@ made by. team_KH리콜안전공단
   * **발표자료** 
 
   * <a href="./pptx/pptx.pdf" download="document.pdf">PDF 미리보기</a>
-  * [최신 발표 자료 다운로드 (릴리스)](https://github.com/Wjyuy/ShoFriend_Final/releases/latest)
+  * [최신 발표 자료 다운로드 (릴리스)](https://github.com/Wjyuy/Recall_Final/releases/tag/latest)
 
   * **시연영상 보기**
 
