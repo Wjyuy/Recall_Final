@@ -49,6 +49,9 @@ public class RecallServiceImpl implements RecallService{
 	
 	private final String serviceKey = "PLMG96N58S";
 	
+	@Value("${flask.api.base-url}")
+	private String flaskBaseUrl;
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -285,9 +288,21 @@ public class RecallServiceImpl implements RecallService{
 	}
 
 	
+//	@Override
+//	public List<Integer> getSimilarRecallIds(Long targetId) {
+//		String apiUrl = "http://localhost:5000/recommend?id=" + targetId;
+//
+//		RestTemplate restTemplate = new RestTemplate();
+//
+//		ResponseEntity<Integer[]> response = restTemplate.getForEntity(apiUrl, Integer[].class);
+//		Integer[] ids = response.getBody();
+//
+//		return Arrays.asList(ids);
+//	}
+	
 	@Override
 	public List<Integer> getSimilarRecallIds(Long targetId) {
-		String apiUrl = "http://localhost:5000/recommend?id=" + targetId;
+		String apiUrl = flaskBaseUrl + "/recommend?id=" + targetId;
 
 		RestTemplate restTemplate = new RestTemplate();
 
