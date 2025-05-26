@@ -277,6 +277,37 @@ made by. team_KH리콜안전공단
 - PW 체크 후 수정/삭제 가능
 - 페이징 처리, 검색에 따른 리스트 출력 기능 구현
 
+### FAQ
+<table>
+  <tr>
+    <td align="center">FAQ</td>
+    <td align="center">FAQ작성</td>
+  </tr>
+  <tr>
+    <td><img src="./images/FAQ.png" alt="FAQ" width="400"></td>
+    <td><img src="./images/FAQ작성.png" alt="FAQ" width="400"></td>
+  </tr>
+</table>
+
+- QNA 작성기능
+- title만 출력하고, 클릭 시 토글되어 답변 내용이 보임 
+
+### 공지사항
+<table>
+  <tr>
+    <td align="center">공지사항</td>
+    <td align="center">공지사항 세부</td>
+  </tr>
+  <tr>
+    <td><img src="./images/공지사항.png" alt="공지사항" width="400"></td>
+    <td><img src="./images/공지사항세부.png" alt="공지사항" width="400"></td>
+  </tr>
+</table>
+
+- 공지사항 작성 - 관리자 기능
+- 공지사항 상세페이지에서 작성시간,제목,내용 출력
+- DTO에 이전글, 다음글 기능 구현 위해 Total값 추가
+
 ### 관리자
 <table>
   <tr>
@@ -287,6 +318,9 @@ made by. team_KH리콜안전공단
     <td><img src="./images/관리자로그인.png" alt="결함신고" width="400"></td>
     <td><img src="./images/관리자신고검수.png" alt="결함신고" width="400"></td>
   </tr>
+</table>
+
+<table>
   <tr>
     <td align="center">관리자 기능</td>
   </tr>
@@ -303,6 +337,8 @@ made by. team_KH리콜안전공단
 ## 🔗 관련 링크 (레파지토리링크수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
 
   * [[Render 배포링크](https://recall-final-front.onrender.com/)]
+    * 서버 불안정으로 동작 안될 수 있음
+    * 리콜통계 부분은 render 서버로 호환x 
   * **GitHub Repository:** 
     * [[팀장 우주연-GitHub Repository URL](https://github.com/Wjyuy/KH_PJ4)]
     * [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/Carrecallbigdata_project4)]
