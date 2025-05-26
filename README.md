@@ -16,7 +16,7 @@ made by. team_KH리콜안전공단
 
 ## 💡 프로젝트 선정 배경
 
-* [파일럿 프로젝트 링크](https://github.com/Wjyuy/project_2)에서 재작한 기존 JSP 기반의 리콜 정보 시스템은 유지보수와 확장성, 사용자 경험(UX) 측면에서 한계 발견
+* [파일럿 프로젝트](https://github.com/Wjyuy/project_2)에서 재작한 기존 JSP 기반의 리콜 정보 시스템은 유지보수와 확장성, 사용자 경험(UX) 측면에서 한계 발견
 * 최신 웹 트렌드에 맞는 **React 기반 SPA**로 프론트엔드 마이그레이션
 * Spring Boot 백엔드, REST API 연동
 
@@ -173,8 +173,7 @@ made by. team_KH리콜안전공단
                 ├── .env.production
                 ├── .gitignore
                 ├── package-lock.json
-                ├── package.json
-                └── README.md
+                └── package.json
 ```
 
 ## 🛠️ 마이그레이션 방식 요약
@@ -190,20 +189,38 @@ made by. team_KH리콜안전공단
 
 ## 결과
 
-  ### 메인 화면
-  ![메인](./images/main.png)
-  ![상품](./images/product.png)
-  ### 상품 상세
-  ![상세](./images/content.png)
-  ### 리뷰
-  ![리뷰](./images/review.png)
-  ### 친구
-  ![friend](./images/friend.png)
-  ![chat](./images/chat.png)
-  ### 결제
-  ![cart](./images/cart.png)
-  ![checkout](./images/checkout.png)
-  ![kakaopay](./images/kakaopay.png)
+### 메인 화면
+<table>
+  <tr>
+    <td align="center">메인화면</td>
+    <td align="center">챗봇 채팅 화면</td>
+  </tr>
+  <tr>
+    <td><img src="./images/메인_챗봇.png" alt="메인" width="400"></td>
+    <td><img src="" alt="챗봇" width="400"></td>
+  </tr>
+</table>
+
+- 플로팅 버튼으로 TOP VIEW , CHATBOT 기능 구현
+- CHATBOT 은 popup으로, 리액트 라우터 구현이기 때문에 페이지 전환되어도 채팅기록 남음
+- 드래그 앤 드랍 위치도 고정
+
+### 리콜 정보 
+<table>
+  <tr>
+    <td align="center">리콜내역</td>
+    <td align="center">리콜내역 기능</td>
+  </tr>
+  <tr>
+    <td><img src="./images/리콜내역.png" alt="메인" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/72b00276-146c-4e78-bfc4-62e42e088b85" alt="챗봇" width="400"></td>
+  </tr>
+</table>
+![Image](https://github.com/user-attachments/assets/72b00276-146c-4e78-bfc4-62e42e088b85)
+- 플로팅 버튼으로 TOP VIEW , CHATBOT 기능 구현
+- CHATBOT 은 popup으로, 리액트 라우터 구현이기 때문에 페이지 전환되어도 채팅기록 남음
+- 드래그 앤 드랍 위치도 고정
+
 
 
 ## 🔗 관련 링크 (레파지토리링크수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
