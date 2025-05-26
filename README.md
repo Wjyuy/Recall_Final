@@ -12,7 +12,7 @@ made by. team_KH리콜안전공단
 
 ## 프로젝트 포스터
 
-![포스터](./img/poster.PNG)
+![포스터](./images/poster.PNG)
 
 ## 💡 프로젝트 선정 배경
 
@@ -44,6 +44,39 @@ made by. team_KH리콜안전공단
   - Jira
   - Notion 
 
+## 설계
+
+### DB diagram을 사용한 erd 테이블 설계
+![erd](./images/erd.png)
+
+### 업무 흐름도
+<table>
+  <tr>
+    <td align="center">센터,통계</td>
+    <td align="center">관리자</td>
+    <td align="center">리콜정보,결함신고</td>
+  </tr>
+  <tr>
+    <td><img src="./images/센터_통계_흐름도.jpg" alt="flow1" width="300"></td>
+    <td><img src="./images/관리자_흐름도.jpg" alt="flow2" width="300"></td>
+    <td><img src="./images/리콜정보_결함신고_흐름도.jpg" alt="flow3" width="300"></td>
+  </tr>
+</table>
+
+### 서비스 설계단 흐름
+<table>
+  <tr>
+    <td align="center">메뉴 구조도</td>
+  </tr>
+  <tr>
+    <td><img src="./images/메뉴구조도1.jpg" alt="메뉴" width="400"></td>
+    <td><img src="./images/메뉴구조도2.jpg" alt="메뉴" width="400"></td>
+  </tr>
+</table>
+
+### 기타 문서
+  * <a href="./images/테이블명세서.xls" download="document.pdf">테이블 명세서</a>
+  * <a href="./images/화면설계서.pptx" download="document.pdf">화면 설계서</a>
 ---
 
 ## 🚀 주요 기능
@@ -146,15 +179,15 @@ made by. team_KH리콜안전공단
 
 ## 🔗 관련 링크 (레파지토리링크,ppt,유튜브링크 수정안했어요수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
   * **GitHub Repository:** 
-  [[팀장 우주연-GitHub Repository URL](https://github.com/Wjyuy/KH_PJ4)]
-  [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/ShoFriend_project3)]
-  [[팀원 김채윤-GitHub Repository URL](https://github.com/Chaeyoon-k/pilotproject_03)]
-  [[팀원 권준우-GitHub Repository URL](https://github.com/kjo5191/ShoFriend)]
+    * [[팀장 우주연-GitHub Repository URL](https://github.com/Wjyuy/KH_PJ4)]
+    * [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/ShoFriend_project3)]
+    * [[팀원 김채윤-GitHub Repository URL](https://github.com/Chaeyoon-k/pilotproject_03)]
+    * [[팀원 권준우-GitHub Repository URL](https://github.com/kjo5191/ShoFriend)]
 
   * **발표자료** 
 
-  <a href="./img/pptx.pdf" download="document.pdf">PDF 미리보기</a>
-  [최신 발표 자료 다운로드 (릴리스)](https://github.com/Wjyuy/ShoFriend_Final/releases/latest)
+  * <a href="./pptx/pptx.pdf" download="document.pdf">PDF 미리보기</a>
+  * [최신 발표 자료 다운로드 (릴리스)](https://github.com/Wjyuy/ShoFriend_Final/releases/latest)
 
   * **시연영상 보기**
 
