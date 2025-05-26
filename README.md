@@ -242,7 +242,7 @@ made by. team_KH리콜안전공단
     <td align="center">월별 리콜통계 기능</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/ebc60902-f29a-4e59-ad51-36361e95021b" alt="메인" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/ebc60902-f29a-4e59-ad51-36361e95021b" alt="통계"></td>
   </tr>
 </table>
 
@@ -251,22 +251,53 @@ made by. team_KH리콜안전공단
 - 시작연도 / 종료연도 / 시작월 / 종료월 선택 -> 제조사별 요약 표, 합산표, 도넛 차트, PDF다운로드 지원
 - PDF 다운로드에는 프롬프트 적용된 Gemini가 통계 자료를 분석한 내용 포함
 
-### 리콜 정보 
+### 결함신고
 <table>
   <tr>
-    <td align="center">리콜내역</td>
-    <td align="center">리콜내역 기능</td>
+    <td align="center">결함신고</td>
+    <td align="center">결함신고조회</td>
   </tr>
   <tr>
-    <td><img src="./images/리콜내역.png" alt="메인" width="400"></td>
-    <td><img src="https://github.com/user-attachments/assets/e03e397e-61d2-4e9f-9898-5acaf1ffabfb" alt="리콜내역" width="400"></td>
+    <td><img src="./images/결함신고1.png" alt="결함신고" width="400"></td>
+    <td><img src="./images/결함신고내역.png" alt="결함신고" width="400"></td>
+  </tr>
+  <tr>
+    <td align="center">결함신고 상세페이지</td>
+    <td align="center">결함신고 기능</td>
+  </tr>
+  <tr>
+    <td><img src="./images/신고내역세부.png" alt="결함신고" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/efdc84e8-3393-4295-989d-ae37ad245796" alt="결함신고" width="400"></td>
   </tr>
 </table>
 
-- 리콜내역([공공데이터포털](https://www.data.go.kr/data/3048950/fileData.do)) 의 XML파일을 MySQL 로 데이터 파싱 ->*추후 관리자 기능에서 추가,동기화 구현*
+
+- 결함신고 페이지는 소비자가 작성
+- 작성완료 시 신고조회페이지에서 조회 가능
+- PW 체크 후 수정/삭제 가능
 - 페이징 처리, 검색에 따른 리스트 출력 기능 구현
-- 유사 리콜 기능 : TF-IDF + 코사인 유사도 방식으로 Flask 배포된 python 서버 이용
-- 엑셀, CSV 다운로드 지원
+
+### 관리자
+<table>
+  <tr>
+    <td align="center">관리자 로그인</td>
+    <td align="center">관리자신고검수</td>
+  </tr>
+  <tr>
+    <td><img src="./images/관리자로그인.png" alt="결함신고" width="400"></td>
+    <td><img src="./images/관리자신고검수.png" alt="결함신고" width="400"></td>
+  </tr>
+  <tr>
+    <td align="center">관리자 기능</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/6fdcffab-7598-4f94-ac4e-bf95aba702ec" alt="관리자"></td>
+  </tr>
+</table>
+
+- JWT 토큰 활용한 로그인 구현
+- 유저가 작성한 결함신고 내역을 체크하여 리콜리스트 추가 가능
+- 리콜내역([공공데이터포털](https://www.data.go.kr/data/3048950/fileData.do))  자료를 DB로 추가 하는 기능, 자료 추가 될 시 동기화 기능
 
 
 ## 🔗 관련 링크 (레파지토리링크수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
@@ -274,9 +305,9 @@ made by. team_KH리콜안전공단
   * [[Render 배포링크](https://recall-final-front.onrender.com/)]
   * **GitHub Repository:** 
     * [[팀장 우주연-GitHub Repository URL](https://github.com/Wjyuy/KH_PJ4)]
-    * [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/ShoFriend_project3)]
+    * [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/Carrecallbigdata_project4)]
     * [[팀원 김채윤-GitHub Repository URL](https://github.com/Chaeyoon-k/pilotproject_03)]
-    * [[팀원 권준우-GitHub Repository URL](https://github.com/kjo5191/ShoFriend)]
+    * [[팀원 권준우-GitHub Repository URL](https://github.com/kjo5191/Project_RecallCenter)]
 
   * **발표자료** 
 
