@@ -47,7 +47,7 @@ made by. team_KH리콜안전공단
 ## 설계
 
 ### DB diagram을 사용한 erd 테이블 설계
-![erd](./images/erd.png)
+![erd](./images/ERD.png)
 
 ### 업무 흐름도
 <table>
@@ -75,8 +75,8 @@ made by. team_KH리콜안전공단
 </table>
 
 ### 기타 문서
-  * <a href="./images/테이블명세서.xls" download="document.pdf">테이블 명세서</a>
-  * <a href="./images/화면설계서.pptx" download="document.pdf">화면 설계서</a>
+  * <a href="./pptx/테이블명세서.pdf" download="document.pdf">테이블 명세서</a>
+  * <a href="./pptx/화면설계서.pdf" download="document.pdf">화면 설계서</a>
 ---
 
 ## 🚀 주요 기능
