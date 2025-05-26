@@ -334,7 +334,7 @@ made by. team_KH리콜안전공단
 - 리콜내역([공공데이터포털](https://www.data.go.kr/data/3048950/fileData.do))  자료를 DB로 추가 하는 기능, 자료 추가 될 시 동기화 기능
 
 
-## 🔗 관련 링크 (레파지토리링크수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
+## 🔗 관련 링크
 
   * [[Render 배포링크](https://recall-final-front.onrender.com/)]
     * 서버 불안정으로 동작 안될 수 있음
