@@ -197,7 +197,7 @@ made by. team_KH리콜안전공단
   </tr>
   <tr>
     <td><img src="./images/메인_챗봇.png" alt="메인" width="400"></td>
-    <td><img src="" alt="챗봇" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/72b00276-146c-4e78-bfc4-62e42e088b85" alt="챗봇" width="400"></td>
   </tr>
 </table>
 
@@ -213,17 +213,65 @@ made by. team_KH리콜안전공단
   </tr>
   <tr>
     <td><img src="./images/리콜내역.png" alt="메인" width="400"></td>
-    <td><img src="https://github.com/user-attachments/assets/72b00276-146c-4e78-bfc4-62e42e088b85" alt="챗봇" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/e03e397e-61d2-4e9f-9898-5acaf1ffabfb" alt="리콜내역" width="400"></td>
   </tr>
 </table>
-![Image](https://github.com/user-attachments/assets/72b00276-146c-4e78-bfc4-62e42e088b85)
-- 플로팅 버튼으로 TOP VIEW , CHATBOT 기능 구현
-- CHATBOT 은 popup으로, 리액트 라우터 구현이기 때문에 페이지 전환되어도 채팅기록 남음
-- 드래그 앤 드랍 위치도 고정
 
+- 리콜내역([공공데이터포털](https://www.data.go.kr/data/3048950/fileData.do)) 의 XML파일을 MySQL 로 데이터 파싱 ->*추후 관리자 기능에서 추가,동기화 구현*
+- 페이징 처리, 검색에 따른 리스트 출력 기능 구현
+- 유사 리콜 기능 : TF-IDF + 코사인 유사도 방식으로 Flask 배포된 python 서버 이용
+- 엑셀, CSV 다운로드 지원
+
+### 리콜 통계
+<table>
+  <tr>
+    <td align="center">연도별 리콜통계</td>
+  </tr>
+  <tr>
+    <td><img src="./images/연리콜통계1.png" alt="메인" width="400"></td>
+    <td><img src="./images/연리콜통계2.png" alt="리콜내역" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="./images/연리콜통계3.png" alt="메인" width="400"></td>
+    <td><img src="./images/연리콜통계6.png" alt="리콜내역" width="400"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center">월별 리콜통계 기능</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/ebc60902-f29a-4e59-ad51-36361e95021b" alt="메인" width="400"></td>
+  </tr>
+</table>
+
+- 연도와 월별 기능이 유사
+- 시작연도 / 종료연도 / 시작월 / 종료월 선택 -> 국산, 수입에 따른 요약 표, 그래프, PDF다운로드 지원
+- 시작연도 / 종료연도 / 시작월 / 종료월 선택 -> 제조사별 요약 표, 합산표, 도넛 차트, PDF다운로드 지원
+- PDF 다운로드에는 프롬프트 적용된 Gemini가 통계 자료를 분석한 내용 포함
+
+### 리콜 정보 
+<table>
+  <tr>
+    <td align="center">리콜내역</td>
+    <td align="center">리콜내역 기능</td>
+  </tr>
+  <tr>
+    <td><img src="./images/리콜내역.png" alt="메인" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/e03e397e-61d2-4e9f-9898-5acaf1ffabfb" alt="리콜내역" width="400"></td>
+  </tr>
+</table>
+
+- 리콜내역([공공데이터포털](https://www.data.go.kr/data/3048950/fileData.do)) 의 XML파일을 MySQL 로 데이터 파싱 ->*추후 관리자 기능에서 추가,동기화 구현*
+- 페이징 처리, 검색에 따른 리스트 출력 기능 구현
+- 유사 리콜 기능 : TF-IDF + 코사인 유사도 방식으로 Flask 배포된 python 서버 이용
+- 엑셀, CSV 다운로드 지원
 
 
 ## 🔗 관련 링크 (레파지토리링크수정필요!!!!!!!!!!!!!!!!!!!!!!!!)
+
+  * [[Render 배포링크](https://recall-final-front.onrender.com/)]
   * **GitHub Repository:** 
     * [[팀장 우주연-GitHub Repository URL](https://github.com/Wjyuy/KH_PJ4)]
     * [[팀원 성유리-GitHub Repository URL](https://github.com/yuriuser126/ShoFriend_project3)]
